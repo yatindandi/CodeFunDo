@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+    <title>The World in your sight!</title>
+
+    <!-- Bootstrap
+    ===================================================== -->
+    <link rel="stylesheet" type="text/css"  href="css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="fonts/font-awesome/css/font-awesome.css">
+
+    <!-- Stylesheet
+    ================================================== -->
+    <link rel="stylesheet" type="text/css"  href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/responsive.css">
+    <link rel="stylesheet" type="text/css" href="css/animate.css">
+
+    <!-- Scripts 
+    ===================================================== -->
+    <script src="js/d3.v3.min.js"></script>
+    <script src="js/queue.v1.min.js"></script>
+    <script src="js/topojson.v0.min.js"></script>
+    <script type="text/javascript">
+        $(function() {
+            $(".toggle-menu").click(function(e) {
+            e.preventDefault();
+            $(".sidebar").toggleClass("toggled");
+        });
+    });
+
+    </script>
+</head>
+<body>
+    <div id='cssmenu'>
+        <ul>
+            <li><a href='#'><span>Home</span></a></li>
+            <li class='last'><a href='#'><span>Contact</span></a></li>
+        </ul>
+    </div>
+
+    <div class="container-fluid">
+            <aside class="sidebar">
+                <h3>Breaking News Here</h3>
+                <nav>
+                    <!-- Use Angular Here -->
+                    <ul>
+                        <li>Chapter 1</li>
+                        <li>Chapter 2</li>
+                        <li>Chapter 3</li>
+                        <li>Chapter 4</li>
+                        <li>Chapter 5</li>
+                        <li>Chapter 6</li>
+                        <li>Chapter 7</li>
+                        <li>Chapter 8</li>
+                        <li>Chapter 9</li>
+                        <li>Chapter 10</li>
+                    </ul>
+                </nav>
+            </aside>
+            <div style="width: 85%; float: right;">
+                <script src="js/globe.js"></script>
+            </div>
+    </div>
+</body>
+</html>
