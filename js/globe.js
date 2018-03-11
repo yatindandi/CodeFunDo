@@ -26,7 +26,7 @@ var swoosh = d3.svg.line()
 var links = [],
     arcLines = [];
 
-var svg = d3.select("body").append("svg")
+var svg = d3.select(".svg").append("svg")
             .attr("width", width)
             .attr("height", height)
             .on("mousedown", mousedown);
