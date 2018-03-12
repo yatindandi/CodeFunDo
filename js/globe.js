@@ -114,14 +114,10 @@ function ready(error, world, places) {
 
   // spawn links between cities as source/target coord pairs
   places.features.forEach(function(a) {
-    places.features.forEach(function(b) {
-      if (a !== b) {
         links.push({
           source: a.geometry.coordinates,
-          target: b.geometry.coordinates
+          target: a.end.geometry.coordinates
         });
-      }
-    });
   });
 
   // build geoJSON features from links array
