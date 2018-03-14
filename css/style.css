@@ -312,14 +312,18 @@ nav ul li:hover {
   stroke-width:4;
   opacity: .6;
 }
+.redflyer {
+  stroke: darkred;
+}
 .greenflyer {
-  stroke-linejoin: round;
   stroke: green;
+}
+.arc, .greenflyer {
+  stroke-linejoin: round;
   fill: none;
 }
-.redflyer {
+.arc, .redflyer {
   stroke-linejoin: round;
-  stroke: darkred;
   fill: none;
 }
 .arc, .flyer {
@@ -328,4 +332,8 @@ nav ul li:hover {
 }
   .arc { }
   .flyer { }
+  .flyer { }
+  .redflyer { }
   .flyer:hover { }
+  .greenflyer:hover { }
+  .redflyer:hover { }

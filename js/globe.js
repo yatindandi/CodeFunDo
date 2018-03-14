@@ -122,14 +122,14 @@ function ready(error, world, places) {
         greenlinks.push({
           source: a.geometry.coordinates,
           target: a.end.geometry.coordinates,
-          title: a.title
+          title: a.title,
         })
       }
       else{
         redlinks.push({
           source: a.geometry.coordinates,
           target: a.end.geometry.coordinates,
-          title: a.title
+          title: a.title,
         })
       }
 });
@@ -211,11 +211,16 @@ function refresh() {
         return fade_at_edge(d)
     })
 
-  svg.selectAll(".flyer")
+  svg.selectAll(".greenflyer")
     .attr("d", function(d) { return swoosh(flying_arc(d)) })
     .attr("opacity", function(d) {
       return fade_at_edge(d)
     })
+  svg.selectAll(".redflyer")
+    .attr("d", function(d) { return swoosh(flying_arc(d)) })
+    .attr("opacity", function(d) {
+      return fade_at_edge(d)
+  })
 }
 
 function fade_at_edge(d) {
