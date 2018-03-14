@@ -16,7 +16,7 @@
     <link rel="stylesheet" type="text/css" href="css/responsive.css">
     <link rel="stylesheet" type="text/css" href="css/animate.css">
 
-    <!-- Scripts 
+    <!-- Scripts
     ===================================================== -->
     <script src="js/d3.v3.min.js"></script>
     <script src="js/queue.v1.min.js"></script>
@@ -32,7 +32,9 @@
     </script>
 </head>
 <body>
-    <div id='cssmenu'>
+
+<div ng-app="myApp" ng-controller="myCtrl">
+    <div id='cssmenu' *ngFor="let c of HPC; let i=index">
         <ul>
             <li><a href='#'><span>Home</span></a></li>
             <li class='last'><a href='#'><span>Contact</span></a></li>
@@ -45,16 +47,11 @@
                 <nav>
                     <!-- Use Angular Here -->
                     <ul>
-                        <li>Chapter 1</li>
-                        <li>Chapter 2</li>
-                        <li>Chapter 3</li>
-                        <li>Chapter 4</li>
-                        <li>Chapter 5</li>
-                        <li>Chapter 6</li>
-                        <li>Chapter 7</li>
-                        <li>Chapter 8</li>
-                        <li>Chapter 9</li>
-                        <li>Chapter 10</li>
+                      <li ng-repeat="x in myData">
+
+<!-- change names here -->
+                        {{ x.news }}
+                      </li>
                     </ul>
                 </nav>
             </aside>
@@ -62,5 +59,19 @@
                 <script src="js/globe.js"></script>
             </div>
     </div>
+  </div>
+  <script>
+  var app = angular.module('myApp', []);
+  app.controller('myCtrl', function($scope, $http) {
+      $http.get("place.json").then(function(response) {
+          $scope.myData = response.data.features;
+      });
+  });
+  </script>
+    <div class="slidecontainer">
+      <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+      <p id="myPara">Value: <span id="demo"></span></p>
+    </div>
+
 </body>
 </html>

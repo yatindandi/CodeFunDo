@@ -23,7 +23,7 @@ var swoosh = d3.svg.line()
       .interpolate("cardinal")
       .tension(.0);
 
-var links = [],
+var links = [], redlinks = [], greenlinks = [],
     arcLines = [];
 
 var svg = d3.select(".svg").append("svg")
@@ -74,7 +74,7 @@ function ready(error, world, places) {
         .attr("stop-opacity",".5")
       drop_shadow.append("stop")
         .attr("offset","100%").attr("stop-color", "#000")
-        .attr("stop-opacity","0")  
+        .attr("stop-opacity","0")
 
   svg.append("ellipse")
     .attr("cx", 440).attr("cy", 450)
@@ -88,7 +88,7 @@ function ready(error, world, places) {
     .attr("r", proj.scale())
     .attr("class", "noclicks")
     .style("fill", "url(#ocean_fill)");
-  
+
   svg.append("path")
     .datum(topojson.object(world, world.objects.land))
     .attr("class", "land noclicks")
@@ -114,16 +114,37 @@ function ready(error, world, places) {
 
   // spawn links between cities as source/target coord pairs
   places.features.forEach(function(a) {
-        links.push({
+      links.push({
+        source: a.geometry.coordinates,
+        target: a.end.geometry.coordinates,
+      });
+      if(a.relation==1){
+        greenlinks.push({
           source: a.geometry.coordinates,
-          target: a.end.geometry.coordinates
-        });
-  });
+          target: a.end.geometry.coordinates,
+          title: a.title
+        })
+      }
+      else{
+        redlinks.push({
+          source: a.geometry.coordinates,
+          target: a.end.geometry.coordinates,
+          title: a.title
+        })
+      }
+});
 
   // build geoJSON features from links array
   links.forEach(function(e,i,a) {
     var feature =   { "type": "Feature", "geometry": { "type": "LineString", "coordinates": [e.source,e.target] }}
     arcLines.push(feature)
+  })
+
+  d3.select("#myRange")
+    .on("input", function() {
+
+      var myValue = this.value
+      console.log(myValue);
   })
 
   svg.append("g").attr("class","arcs")
@@ -132,12 +153,39 @@ function ready(error, world, places) {
       .attr("class","arc")
       .attr("d",path)
 
-  svg.append("g").attr("class","flyers")
-    .selectAll("path").data(links)
-    .enter().append("path")
-    .attr("class","flyer")
-    .attr("d", function(d) { return swoosh(flying_arc(d)) })
+      svg.append("g").attr("class","flyers")
+        .selectAll("path").data(redlinks)
+        .enter().append("path")
+          .attr("class","redflyer")
+          .attr("d", function(d) { return swoosh(flying_arc(d)) })
+          .on("mouseover", handleMouseOver)
+          .on("mouseout", handleMouseOut);
 
+      svg.append("g").attr("class","flyers")
+        .selectAll("path").data(greenlinks)
+        .enter().append("path")
+          .attr("class","greenflyer")
+          .attr("d", function(d) { return swoosh(flying_arc(d)) })
+          .on("mouseover", handleMouseOver)
+          .on("mouseout", handleMouseOut);
+
+
+function handleMouseOver(d){
+  console.log("Hi");
+  svg.append("text").attr({
+               id: "intext",  // Create an id for text so we can select it later for removing on mouseout
+                x: "150",
+                y: "20",
+              })
+            .text(function() {
+              return [d.title];  // Value of the text
+            });
+
+}
+function handleMouseOut(d){
+  console.log("Bye");
+  d3.select("#intext").remove();
+}
   refresh();
 }
 
@@ -157,7 +205,7 @@ function flying_arc(pts) {
 function refresh() {
   svg.selectAll(".land").attr("d", path);
   svg.selectAll(".point").attr("d", path);
-  
+
   svg.selectAll(".arc").attr("d", path)
     .attr("opacity", function(d) {
         return fade_at_edge(d)
@@ -167,7 +215,7 @@ function refresh() {
     .attr("d", function(d) { return swoosh(flying_arc(d)) })
     .attr("opacity", function(d) {
       return fade_at_edge(d)
-    }) 
+    })
 }
 
 function fade_at_edge(d) {
@@ -176,19 +224,19 @@ function fade_at_edge(d) {
       start, end;
   // function is called on 2 different data structures..
   if (d.source) {
-    start = d.source, 
-    end = d.target;  
+    start = d.source,
+    end = d.target;
   }
   else {
     start = d.geometry.coordinates[0];
     end = d.geometry.coordinates[1];
   }
-  
+
   var start_dist = 1.57 - arc.distance({source: start, target: centerPos}),
       end_dist = 1.57 - arc.distance({source: end, target: centerPos});
-    
-  var fade = d3.scale.linear().domain([-.1,0]).range([0,.1]) 
-  var dist = start_dist < end_dist ? start_dist : end_dist; 
+
+  var fade = d3.scale.linear().domain([-.1,0]).range([0,.1])
+  var dist = start_dist < end_dist ? start_dist : end_dist;
 
   return fade(dist)
 }

@@ -1,5 +1,6 @@
 @import url(http://weloveiconfonts.com/api/?family=fontawesome);
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:700);
+<link href='https://fonts.googleapis.com/css?family=Amethysta' rel='stylesheet'>
 [class*="fontawesome-"]:before {
   font-family: "fontawesome", sans-serif;
 }
@@ -292,6 +293,12 @@ nav ul li:hover {
     display:none;
 }
 
+#intext {
+  font-family: 'Amethysta';
+  font-size: 15px;
+  font-weight:bold;
+ }
+
 .noclicks { pointer-events:none; }
 
 .point {  opacity:.6; }
@@ -302,9 +309,18 @@ nav ul li:hover {
   stroke-width: 3;
 }
 .flyers {
-  stroke-width:2;
+  stroke-width:4;
   opacity: .6;
-  stroke: darkred; 
+}
+.greenflyer {
+  stroke-linejoin: round;
+  stroke: green;
+  fill: none;
+}
+.redflyer {
+  stroke-linejoin: round;
+  stroke: darkred;
+  fill: none;
 }
 .arc, .flyer {
   stroke-linejoin: round;
