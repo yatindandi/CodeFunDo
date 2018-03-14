@@ -118,7 +118,7 @@ function ready(error, world, places) {
         source: a.geometry.coordinates,
         target: a.end.geometry.coordinates,
       });
-      if(a.relation==1){
+      if(a.relation>0){
         greenlinks.push({
           source: a.geometry.coordinates,
           target: a.end.geometry.coordinates,
