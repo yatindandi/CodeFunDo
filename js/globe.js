@@ -30,7 +30,7 @@ var svg = d3.select(".svg").append("svg")
             .attr("width", width)
             .attr("height", height)
             .on("mousedown", mousedown);
-
+console.log(myValue);
 queue()
     .defer(d3.json, "world-110m.json")
     .defer(d3.json, "places.json")
@@ -123,6 +123,7 @@ function ready(error, world, places) {
           source: a.geometry.coordinates,
           target: a.end.geometry.coordinates,
           title: a.title,
+          src: a.src,
         })
       }
       else{
@@ -130,6 +131,7 @@ function ready(error, world, places) {
           source: a.geometry.coordinates,
           target: a.end.geometry.coordinates,
           title: a.title,
+          src: a.src
         })
       }
 });
@@ -159,7 +161,8 @@ function ready(error, world, places) {
           .attr("class","redflyer")
           .attr("d", function(d) { return swoosh(flying_arc(d)) })
           .on("mouseover", handleMouseOver)
-          .on("mouseout", handleMouseOut);
+          .on("mouseout", handleMouseOut)
+          .on("mouseenter", clicked);
 
       svg.append("g").attr("class","flyers")
         .selectAll("path").data(greenlinks)
@@ -167,11 +170,24 @@ function ready(error, world, places) {
           .attr("class","greenflyer")
           .attr("d", function(d) { return swoosh(flying_arc(d)) })
           .on("mouseover", handleMouseOver)
-          .on("mouseout", handleMouseOut);
+          .on("mouseout", handleMouseOut)
+          .on("mouseenter", clicked);
 
+
+function clicked(d){
+  svg.append("svg:image")
+  .attr("id", "myimg")
+  .attr("xlink:href", d.src)
+  .attr("width", 300)
+  .attr("height", 300)
+  .attr("x", 730)
+  .attr("y",70);
+}
 
 function handleMouseOver(d){
   console.log("Hi");
+  d3.select(this)
+      .style("stroke-width", 6)
   svg.append("text").attr({
                id: "intext",  // Create an id for text so we can select it later for removing on mouseout
                 x: "150",
@@ -184,7 +200,10 @@ function handleMouseOver(d){
 }
 function handleMouseOut(d){
   console.log("Bye");
+  d3.select(this)
+      .style("stroke-width", 3)
   d3.select("#intext").remove();
+  d3.select("#myimg").remove();
 }
   refresh();
 }
