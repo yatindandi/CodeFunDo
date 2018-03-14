@@ -1,2 +1,1 @@
-# CodeFunDo
-This maintains our code for Code.Fun.Do '18
+# event-notifications
