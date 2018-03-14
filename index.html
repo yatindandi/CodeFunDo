@@ -50,7 +50,7 @@
                       <li ng-repeat="x in myData">
 
 <!-- change names here -->
-                        {{ x.news }}
+                        
                       </li>
                     </ul>
                 </nav>
@@ -63,14 +63,13 @@
   <script>
   var app = angular.module('myApp', []);
   app.controller('myCtrl', function($scope, $http) {
-      $http.get("place.json").then(function(response) {
+      $http.get("").then(function(response) {
           $scope.myData = response.data.features;
       });
   });
   </script>
     <div class="slidecontainer">
-      <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
-      <p id="myPara">Value: <span id="demo"></span></p>
+   	 <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
     </div>
 
 </body>

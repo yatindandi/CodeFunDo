@@ -74,31 +74,32 @@ for i in range(1,32):
 			# extract all named entities
 
 			named_entities = list()
+			relation = sentiment(doc)
+			if relation > 0.2 or relation < -2.3 :
+				for tagged_tree in ne_chunked_sents:
+					if hasattr(tagged_tree, 'label'):
+						entity_name = ' '.join(c[0] for c in tagged_tree.leaves()) #
+						entity_type = tagged_tree.label() # get NE category
+						if entity_type=='GPE':
+							if entity_name != 'Latest':
+								named_entities.append(entity_name) 
 
-			for tagged_tree in ne_chunked_sents:
-				if hasattr(tagged_tree, 'label'):
-					entity_name = ' '.join(c[0] for c in tagged_tree.leaves()) #
-					entity_type = tagged_tree.label() # get NE category
-					if entity_type=='GPE':
-						if entity_name != 'Latest':
-							named_entities.append(entity_name) 
-
-			if len(named_entities)==2:
-				for i in range(0,2):
-					if named_entities[i] in dict:
-						named_entities[i]=dict[named_entities[i]]
-				location0=locate(named_entities[0])
-				location1=locate(named_entities[1])
-				named_entities[0]=location0['Country']
-				named_entities[1]=location1['Country']
-				if (named_entities[0]!=named_entities[1]) and ((sentiment(doc))!=0) and (not named_entities[0].isdigit()) and (not named_entities[1].isdigit()):
-					if sentiment(doc)>0.3 or sentiment(doc)<-0.4:
-						breakingnews.append(doc)
-					doc=date+' : '+doc
-					with open(file, 'a') as out_file:
-						article = { "title": doc, "geometry": {"coordinates": [ location0['Longitude']+random.uniform(-1*deviation(named_entities[0]),deviation(named_entities[0])),location0['Latitude']+random.uniform(-1*deviation(named_entities[0]),deviation(named_entities[0]))] },"end":{"geometry": {"coordinates": [ location1['Longitude']+random.uniform(-1*deviation(named_entities[1]),deviation(named_entities[1])),location1['Latitude']+random.uniform(-1*deviation(named_entities[1]),deviation(named_entities[1]))]}},"relation":sentiment(doc),"src":news['src'],"link":news['link']}
-						out = json.dumps(article)
-						out_file.write(out+",\n")
+				if len(named_entities)==2:
+					for i in range(0,2):
+						if named_entities[i] in dict:
+							named_entities[i]=dict[named_entities[i]]
+					location0=locate(named_entities[0])
+					location1=locate(named_entities[1])
+					named_entities[0]=location0['Country']
+					named_entities[1]=location1['Country']
+					if (named_entities[0]!=named_entities[1]) and ((sentiment(doc))!=0) and (not named_entities[0].isdigit()) and (not named_entities[1].isdigit()):
+						if relation>0.3 or relation<-0.4:
+							breakingnews.append(doc)
+						doc=date+' : '+doc
+						with open(file, 'a') as out_file:
+							article = { "title": doc, "geometry": {"coordinates": [ location0['Longitude']+random.uniform(-1*deviation(named_entities[0]),deviation(named_entities[0])),location0['Latitude']+random.uniform(-1*deviation(named_entities[0]),deviation(named_entities[0]))] },"end":{"geometry": {"coordinates": [ location1['Longitude']+random.uniform(-1*deviation(named_entities[1]),deviation(named_entities[1])),location1['Latitude']+random.uniform(-1*deviation(named_entities[1]),deviation(named_entities[1]))]}},"relation":sentiment(doc),"src":news['src'],"link":news['link']}
+							out = json.dumps(article)
+							out_file.write(out+",\n")
 
 open(file,'a').write("] }")
 with open('breakingnews.json','a') as out_file:
