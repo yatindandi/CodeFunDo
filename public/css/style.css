@@ -102,6 +102,43 @@ h3 {
   font-size: 24px;
 }
 
+.slidecontainer {
+    margin-left: 280px;
+    margin-top: 250px;
+    width: 100%;
+}
+
+.slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 25px;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+.slider:hover {
+    opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    background: #4CAF50;
+    cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    background: #4CAF50;
+    cursor: pointer;
+}
+
 nav ul {
   list-style: none;
   padding: 0;
@@ -269,9 +306,68 @@ nav ul li:hover {
   }
 }
 
+/*CSS for progress bar*/
 
+#navcontainer
+{
+background: #f0e7d7;
+width: 30%;
+margin: 0 auto;
+padding: 1em 0;
+font-family: georgia, serif;
+font-size: 13px;
+text-align: center;
+text-transform: lowercase;
+}
+
+ul#navlist
+{
+text-align: left;
+list-style: none;
+padding: 0;
+margin: 0 auto;
+width: 70%;
+}
+
+ul#navlist li
+{
+display: block;
+margin: 0;
+padding: 0;
+}
+
+ul#navlist li a
+{
+display: block;
+width: 100%;
+padding: 0.5em 0 0.5em 2em;
+border-width: 1px;
+border-color: #ffe #aaab9c #ccc #fff;
+border-style: solid;
+color: #777;
+text-decoration: none;
+background: #f7f2ea;
+}
+
+#navcontainer>ul#navlist li a { width: auto; }
+
+ul#navlist li#active a
+{
+background: #f0e7d7;
+color: #800000;
+}
+
+ul#navlist li a:hover, ul#navlist li#active a:hover
+{
+color: #800000;
+background: transparent;
+border-color: #aaab9c #fff #fff #ccc;
+}
 
 /*CSS for the SVG from d3.js*/
+
+/* how to move globe ? ? ? ? ? ? ? ? ? ? ? ? ?*/
+
 
 .land {
   fill: #999;
@@ -294,6 +390,11 @@ nav ul li:hover {
 }
 
 #intext {
+  white-space: pre-wrap;      /* CSS3 */   
+  white-space: -moz-pre-wrap; /* Firefox */    
+  white-space: -pre-wrap;     /* Opera <7 */   
+  white-space: -o-pre-wrap;   /* Opera 7 */    
+  word-wrap: break-word;      /* IE */
   font-family: 'Amethysta';
   font-size: 15px;
   font-weight:bold;
@@ -309,17 +410,21 @@ nav ul li:hover {
   stroke-width: 3;
 }
 .flyers {
-  stroke-width:4;
+  stroke-width:3;
   opacity: .6;
 }
+.redflyer {
+  stroke: darkred;
+}
 .greenflyer {
-  stroke-linejoin: round;
   stroke: green;
+}
+.arc, .greenflyer {
+  stroke-linejoin: round;
   fill: none;
 }
-.redflyer {
+.arc, .redflyer {
   stroke-linejoin: round;
-  stroke: darkred;
   fill: none;
 }
 .arc, .flyer {
@@ -328,4 +433,70 @@ nav ul li:hover {
 }
   .arc { }
   .flyer { }
+  .flyer { }
+  .redflyer { }
   .flyer:hover { }
+  .greenflyer:hover { }
+  .redflyer:hover { }
+
+/*Marqee*/
+
+* {
+  box-sizing: border-box;
+}
+
+@-webkit-keyframes ticker {
+  0% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    visibility: visible;
+  }
+  100% {
+    -webkit-transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+@keyframes ticker {
+  0% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    visibility: visible;
+  }
+  100% {
+    -webkit-transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+.ticker-wrap {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  overflow: hidden;
+  height: 30px;
+  background-color: rgba(0, 0, 0, 0.9);
+  padding-left: 100%;
+  box-sizing: content-box;
+}
+.ticker-wrap .ticker {
+  display: inline-block;
+  height: 30px;
+/*  height: 4rem;
+  line-height: 4rem;*/
+  white-space: nowrap;
+  padding-right: 100%;
+  box-sizing: content-box;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+  -webkit-animation-name: ticker;
+  animation-name: ticker;
+  -webkit-animation-duration: 300s;
+  animation-duration: 300s;
+}
+.ticker-wrap .ticker__item {
+  display: inline-block;
+  padding: 0 2rem;
+  font-size: 2rem;
+  color: white;
+}

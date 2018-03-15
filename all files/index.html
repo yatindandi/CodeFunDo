@@ -21,6 +21,8 @@
     <script src="js/d3.v3.min.js"></script>
     <script src="js/queue.v1.min.js"></script>
     <script src="js/topojson.v0.min.js"></script>
+    <script src="https://apis.google.com/js/platform.js?onload=onLoad" async defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
     <script type="text/javascript">
         $(function() {
             $(".toggle-menu").click(function(e) {
@@ -30,16 +32,12 @@
     });
 
     </script>
-    <script type="text/javascript">
-        var myValue = $(".myRange").val();
-        
-    </script>
 </head>
 <body>
 
 
-<div ng-app="myApp" ng-controller="myCtrl">
-    <div id='cssmenu' *ngFor="let c of HPC; let i=index">
+<div ng-app="Events">
+    <div id="cssmenu">
         <ul>
             <li><a href='#'><span>Home</span></a></li>
             <li class='last'><a href='#'><span>Contact</span></a></li>
@@ -47,35 +45,66 @@
     </div>
 
     <div class="container-fluid">
-            <aside class="sidebar">
+            <aside class="sidebar" style="width: 15%; float: left;" ng-controller="EventsController">
                 <h3>Breaking News Here</h3>
                 <nav>
-                    <!-- Use Angular Here -->
                     <ul>
-                      <li ng-repeat="x in myData">
-
-<!-- change names here -->
-                        
+                      <li ng-repeat="event in events">
+                        {{event.scores.name}}                        
                       </li>
                     </ul>
                 </nav>
             </aside>
-            <div class="svg" style="padding-top: 5% ;width: 85%; float: right;">
-                <script src="js/globe.js"></script>
+            <div class="svg" style="padding-left: 10% ;padding-top: 5% ;width: 75%; float: left;">
+                <script src="js/globe1.js"></script>
             </div>
-    </div>
-  </div>
-  <script>
-  var app = angular.module('myApp', []);
-  app.controller('myCtrl', function($scope, $http) {
-      $http.get("").then(function(response) {
-          $scope.myData = response.data.features;
+            <div id="navcontainer" style="width: 10%; float: right;">
+                <ul id="navlist">
+                    <li><a href="#">June, 2017</a></li>
+                    <li><a href="#">July, 2017</a></li>
+                    <li><a href="#">Aug, 2017</a></li>
+                    <li><a href="#">Sept, 2017</a></li>
+                    <li><a href="#">Oct, 2017</a></li>
+                    <li><a href="#">Nov, 2017</a></li>
+                    <li><a href="#">Dec, 2017</a></li>
+                    <li><a href="#">Jan, 2018</a></li>
+                    <li><a href="#">Feb, 2017</a></li>
+                </ul>
+            </div>
+        </div>
+<script>
+      var app = angular.module('myApp', []);
+      app.controller('myCtrl', function($scope, $http) {
+          $http.get("").then(function(response) {
+              $scope.myData = Json.parse();
+          });
       });
-  });
-  </script>
-    <div class="slidecontainer">
-   	 <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
-    </div>
+    </script>
 
+    <script type="text/javascript">
+        var app = angular.module("Events", []);
+        app.controller("EventsController", function($scope, $http) {
+            // Some Initial Value
+            $scope.events = [];
+            var getEventsPostOptions = { method: 'POST', url: '/user/getEvents', month = '1',};
+            function getEventsSuccessFunction(response) {
+                $scope.events = JSON.parse(response.data.eventsJson);
+                console.log($scope.events);
+            }
+            function getEventsFailureFunction(response) {
+                console.log(response);
+            }
+            $http(getEventsPostOptions).then(getEventsSuccessFunction, getEventsFailureFunction);
+        });
+        // app.controller("PageData", function($scope,$http) {
+        //     $scope.settings = [];
+        //     $http({method : 'POST', url: '/user/pageData'}).then(function(response){
+        //         $scope.settings=response.data;
+        //         console.log($scope.settings);
+        //     },function(response){
+        //         console.log(response);
+        //     });
+        // });
+    </script>
 </body>
 </html>

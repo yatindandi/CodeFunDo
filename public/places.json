@@ -1,8 +1,0 @@
-{
-"type": "FeatureCollection",
-
-"features": [
-{ "title": "White House hosts meeting on Gaza crisis without Palestinians present", "geometry": {"coordinates": [ -118.181926369940413, 33.991924108765431 ] },"end":{"geometry": {"coordinates": [ -77.011364439437159, 38.901495235087054 ] } },"relation":1 },
-{ "title": "After deadly Nepal crash, Bangladeshi airline defends pilots", "geometry": {"coordinates": [ 72.855043438766472, 19.018936234356602 ] },"end":{"geometry": {"coordinates": [ 103.853874819099019, 1.294979325105942 ] } },"relation":-1 }
-]
-}
