@@ -33,6 +33,7 @@
         });
     });
 
+
     </script>
 
 <!-- json copying -->
@@ -41,7 +42,7 @@
 <script>
         var items = [];
         $(function() {
-          $.getJSON('scores1.json', function(data) {
+          $.getJSON('data/scores1.json', function(data) {
             $.each(data.scores, function(i, a) {
               items.push('<li>' + a + '</li>')
               //console.log(items[0]);
@@ -49,22 +50,24 @@
             });
             $('#mylist').append( items.join('') );
      });
+      });
 
 </script>
 
 
 
 <script>
-        var items = [];
+        var scrll = [];
         $(function() {
-          $.getJSON('breakingnews1.json', function(data) {
+          $.getJSON('data/breakingnews1.json', function(data) {
             $.each(data.breakingnews, function(i, a) {
-              items.push('<div class="ticker__item">' + a + '</li>')
+              scrll.push('<div class="ticker__item">' + a + '</li>')
               //console.log(items[0]);
 
             });
-            $('#mylist').append( items.join('') );
+            $('.ticker').append( scrll.join('') );
      });
+      });
 
 </script>
 
@@ -352,13 +355,13 @@ $(document).ready(function(){
     <div id="cssmenu">
         <ul>
             <li><a href='worldnewsense.herokuapp.com/index.html'><span>Home</span></a></li>
-            <li class='last'><a href='worldnewsense.herokuapp.com/about.html'><span>About</span></a></li>
+<!--             <li class='last'><a href='worldnewsense.herokuapp.com/about.html'><span>About</span></a></li> -->
         </ul>
     </div>
 
     <div class="container-fluid">
             <aside class="sidebar" style="width: 15%; float: left; height: 90%">
-                <h3>Breaking News Here</h3>
+                <h3>Diplomacy Index</h3>
                 <nav>
                     <ul id="mylist">
                     </ul>
@@ -377,7 +380,7 @@ $(document).ready(function(){
                     <li id="6"><a onclick="updateData6()" href="#">Nov, 2017</a></li>
                     <li id="7"><a onclick="updateData7()" href="#">Dec, 2017</a></li>
                     <li id="8"><a onclick="updateData8()" href="#">Jan, 2018</a></li>
-                    <li id="9"><a onclick="updateData9()" href="#">Feb, 2017</a></li>
+                    <li id="9"><a onclick="updateData9()" href="#">Feb, 2018</a></li>
                 </ul>
             </div>
             <div class="ticker-wrap">
