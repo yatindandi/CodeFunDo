@@ -514,3 +514,21 @@ border-color: #aaab9c #fff #fff #ccc;
     height: auto;
     background-attachment: fixed;
     padding: 10% 0;
+}
+
+#tf-blog{
+  background: #f1f1f1;
+  padding: 5%  0 8% 0;
+  text-align: center;
+}
+
+.section-title hr{
+  border-color: rgb(47, 147, 123);
+  width: 60px;
+}
+
+.section-title h2{ font-weight: 700;}
+button.btn,
+a.btn {
+  margin: 15px 5px;
+  transition: all 0.5s;
