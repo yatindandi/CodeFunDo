@@ -1,0 +1,10 @@
+getEventsSuccessFunction	index.html	/^            function getEventsSuccessFunction(response) {$/;"	f
+getEventsFailureFunction	index.html	/^            function getEventsFailureFunction(response) {$/;"	f
+ready	svg.html	/^function ready(error, world, places) {$/;"	f
+flying_arc	svg.html	/^function flying_arc(pts) {$/;"	f
+refresh	svg.html	/^function refresh() {$/;"	f
+fade_at_edge	svg.html	/^function fade_at_edge(d) {$/;"	f
+location_along_arc	svg.html	/^function location_along_arc(start, end, loc) {$/;"	f
+mousedown	svg.html	/^function mousedown() {$/;"	f
+mousemove	svg.html	/^function mousemove() {$/;"	f
+mouseup	svg.html	/^function mouseup() {$/;"	f

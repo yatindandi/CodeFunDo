@@ -15,12 +15,16 @@
     <link rel="stylesheet" type="text/css"  href="css/style.css">
     <link rel="stylesheet" type="text/css" href="css/responsive.css">
     <link rel="stylesheet" type="text/css" href="css/animate.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 
     <!-- Scripts
     ===================================================== -->
     <script src="js/d3.v3.min.js"></script>
     <script src="js/queue.v1.min.js"></script>
     <script src="js/topojson.v0.min.js"></script>
+    <script src="https://apis.google.com/js/platform.js?onload=onLoad" async defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript">
         $(function() {
             $(".toggle-menu").click(function(e) {
@@ -29,53 +33,360 @@
         });
     });
 
+
     </script>
-    <script type="text/javascript">
-        var myValue = $(".myRange").val();
-        
-    </script>
+
+<!-- json copying -->
+
+
+<script>
+        var items = [];
+        $(function() {
+          $.getJSON('data/scores1.json', function(data) {
+            $.each(data.scores, function(i, a) {
+              items.push('<li>' + a + '</li>')
+              //console.log(items[0]);
+
+            });
+            $('#mylist').append( items.join('') );
+     });
+      });
+
+</script>
+
+
+
+<script>
+        var scrll = [];
+        $(function() {
+          $.getJSON('data/breakingnews1.json', function(data) {
+            $.each(data.breakingnews, function(i, a) {
+              scrll.push('<div class="ticker__item">' + a + '</li>')
+              //console.log(items[0]);
+
+            });
+            $('.ticker').append( scrll.join('') );
+     });
+      });
+
+</script>
+
 </head>
 <body>
 
+<script>
+$(document).ready(function(){
+    $('#1').click(function(){
+                var items = [];
+        $.getJSON('data/scores1.json', function(data) {
+            $.each(data.scores, function(i, a) {
+              items.push('<li>' + a + '</li>')
+              //console.log(items[0]);
 
-<div ng-app="myApp" ng-controller="myCtrl">
-    <div id='cssmenu' *ngFor="let c of HPC; let i=index">
+            });
+                    $('#mylist').empty();
+            $('#mylist').append( items.join('') );
+        });  
+    });
+});
+
+$(document).ready(function(){
+    $('#2').click(function(){
+                var items = [];
+        $.getJSON('data/scores2.json', function(data) {
+            $.each(data.scores, function(i, a) {
+              items.push('<li>' + a + '</li>')
+              //console.log(items[0]);
+
+            });
+                                $('#mylist').empty();
+            $('#mylist').append( items.join('') );
+        });  
+    });
+});
+
+$(document).ready(function(){
+    $('#3').click(function(){
+                var items = [];
+        $.getJSON('data/scores3.json', function(data) {
+            $.each(data.scores, function(i, a) {
+              items.push('<li>' + a + '</li>')
+              //console.log(items[0]);
+
+            });
+                                $('#mylist').empty();
+            $('#mylist').append( items.join('') );
+        });  
+    });
+});
+
+$(document).ready(function(){
+    $('#4').click(function(){
+                var items = [];
+        $.getJSON('data/scores4.json', function(data) {
+            $.each(data.scores, function(i, a) {
+              items.push('<li>' + a + '</li>')
+              //console.log(items[0]);
+
+            });
+                                $('#mylist').empty();
+            $('#mylist').append( items.join('') );
+        });  
+    });
+});
+
+$(document).ready(function(){
+    $('#5').click(function(){
+                var items = [];
+        $.getJSON('data/scores5.json', function(data) {
+            $.each(data.scores, function(i, a) {
+              items.push('<li>' + a + '</li>')
+              //console.log(items[0]);
+
+            });
+                                $('#mylist').empty();
+            $('#mylist').append( items.join('') );
+        });  
+    });
+});
+$(document).ready(function(){
+    $('#6').click(function(){
+                var items = [];
+        $.getJSON('data/scores6.json', function(data) {
+            $.each(data.scores, function(i, a) {
+              items.push('<li>' + a + '</li>')
+              //console.log(items[0]);
+
+            });
+                                $('#mylist').empty();
+            $('#mylist').append( items.join('') );
+        });  
+    });
+});
+
+$(document).ready(function(){
+    $('#7').click(function(){
+                var items = [];
+        $.getJSON('data/scores7.json', function(data) {
+            $.each(data.scores, function(i, a) {
+              items.push('<li>' + a + '</li>')
+              //console.log(items[0]);
+
+            });
+                                $('#mylist').empty();
+            $('#mylist').append( items.join('') );
+        });  
+    });
+});
+
+$(document).ready(function(){
+    $('#8').click(function(){
+                var items = [];
+        $.getJSON('data/scores8.json', function(data) {
+            $.each(data.scores, function(i, a) {
+              items.push('<li>' + a + '</li>')
+              //console.log(items[0]);
+
+            });
+                                $('#mylist').empty();
+            $('#mylist').append( items.join('') );
+        });  
+    });
+});
+
+$(document).ready(function(){
+    $('#9').click(function(){
+                var items = [];
+        $.getJSON('data/scores9.json', function(data) {
+            $.each(data.scores, function(i, a) {
+              items.push('<li>' + a + '</li>')
+              //console.log(items[0]);
+
+            });
+                                $('#mylist').empty();
+            $('#mylist').append( items.join('') );
+        });  
+    });
+});
+</script>
+
+<!-- Marqee -->
+<script>
+
+$(document).ready(function(){
+    $('#1').click(function(){
+                var scrll = [];
+        $.getJSON('data/breakingnews1.json', function(data) {
+            $.each(data.breakingnews, function(i, a) {
+              scrll.push('<div class="ticker__item">' + a + '</div>')
+              //console.log(items[0]);
+
+            });
+                                $('.ticker').empty();
+            $('.ticker').append( scrll.join('') );
+     });
+        });  
+    });
+
+$(document).ready(function(){
+    $('#2').click(function(){
+                var scrll = [];
+        $.getJSON('data/breakingnews2.json', function(data) {
+            $.each(data.breakingnews, function(i, a) {
+              scrll.push('<div class="ticker__item">' + a + '</div>')
+              //console.log(items[0]);
+
+            });
+                                            $('.ticker').empty();
+            $('.ticker').append( scrll.join('') );
+     });
+        });  
+    });
+
+$(document).ready(function(){
+    $('#3').click(function(){
+                var scrll = [];
+        $.getJSON('data/breakingnews3.json', function(data) {
+            $.each(data.breakingnews, function(i, a) {
+              scrll.push('<div class="ticker__item">' + a + '</div>')
+              //console.log(items[0]);
+
+            });
+                                            $('.ticker').empty();
+            $('.ticker').append( scrll.join('') );
+     });
+        });  
+    });
+
+$(document).ready(function(){
+    $('#4').click(function(){
+                var scrll = [];
+        $.getJSON('data/breakingnews4.json', function(data) {
+            $.each(data.breakingnews, function(i, a) {
+              scrll.push('<div class="ticker__item">' + a + '</div>')
+              //console.log(items[0]);
+
+            });
+                                            $('.ticker').empty();
+            $('.ticker').append( scrll.join('') );
+     });
+        });  
+    });
+
+$(document).ready(function(){
+    $('#5').click(function(){
+                var scrll = [];
+        $.getJSON('data/breakingnews5.json', function(data) {
+            $.each(data.breakingnews, function(i, a) {
+              scrll.push('<div class="ticker__item">' + a + '</div>')
+              //console.log(items[0]);
+
+            });
+                                            $('.ticker').empty();
+            $('.ticker').append( scrll.join('') );
+     });
+        });  
+    });
+
+$(document).ready(function(){
+    $('#6').click(function(){
+                var scrll = [];
+        $.getJSON('data/breakingnews6.json', function(data) {
+            $.each(data.breakingnews, function(i, a) {
+              scrll.push('<div class="ticker__item">' + a + '</div>')
+              //console.log(items[0]);
+
+            });
+                                            $('.ticker').empty();
+            $('.ticker').append( scrll.join('') );
+     });
+        });  
+    });
+
+$(document).ready(function(){
+    $('#7').click(function(){
+                var scrll = [];
+        $.getJSON('data/breakingnews7.json', function(data) {
+            $.each(data.breakingnews, function(i, a) {
+              scrll.push('<div class="ticker__item">' + a + '</div>')
+              //console.log(items[0]);
+
+            });
+                                            $('.ticker').empty();
+            $('.ticker').append( scrll.join('') );
+     });
+        });  
+    });
+
+$(document).ready(function(){
+    $('#8').click(function(){
+                var scrll = [];
+        $.getJSON('data/breakingnews8.json', function(data) {
+            $.each(data.breakingnews, function(i, a) {
+              scrll.push('<div class="ticker__item">' + a + '</div>')
+              //console.log(items[0]);
+
+            });
+                                            $('.ticker').empty();
+            $('.ticker').append( scrll.join('') );
+     });
+        });  
+    });
+
+$(document).ready(function(){
+    $('#9').click(function(){
+                var scrll = [];
+        $.getJSON('data/breakingnews9.json', function(data) {
+            $.each(data.breakingnews, function(i, a) {
+              scrll.push('<div class="ticker__item">' + a + '</div>')
+              //console.log(items[0]);
+
+            });
+                                            $('.ticker').empty();
+            $('.ticker').append( scrll.join('') );
+     });
+        });  
+    });
+
+</script>
+
+
+<div>
+    <div id="cssmenu">
         <ul>
-            <li><a href='#'><span>Home</span></a></li>
-            <li class='last'><a href='#'><span>Contact</span></a></li>
+            <li><a href='worldnewsense.herokuapp.com/index.html'><span>Home</span></a></li>
+<!--             <li class='last'><a href='worldnewsense.herokuapp.com/about.html'><span>About</span></a></li> -->
         </ul>
     </div>
 
     <div class="container-fluid">
-            <aside class="sidebar">
-                <h3>Breaking News Here</h3>
+            <aside class="sidebar" style="width: 15%; float: left; height: 90%">
+                <h3>Diplomacy Index</h3>
                 <nav>
-                    <!-- Use Angular Here -->
-                    <ul>
-                      <li ng-repeat="x in myData">
-
-<!-- change names here -->
-                        
-                      </li>
+                    <ul id="mylist">
                     </ul>
                 </nav>
             </aside>
-            <div class="svg" style="padding-top: 5% ;width: 85%; float: right;">
+            <div class="svg" style="padding-left: 5% ;padding-top: 5% ;width: 90%; float: left; height: 90%">
                 <script src="js/globe.js"></script>
             </div>
-    </div>
-  </div>
-  <script>
-  var app = angular.module('myApp', []);
-  app.controller('myCtrl', function($scope, $http) {
-      $http.get("").then(function(response) {
-          $scope.myData = response.data.features;
-      });
-  });
-  </script>
-    <div class="slidecontainer">
-   	 <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
-    </div>
-
+            <div id="navcontainer" style="width: 10%; float: right; height: 90%">
+                <ul id="navlist">
+                    <li id="1"><a onclick="updateData1()" href="#">June, 2017</a></li>
+                    <li id="2"><a onclick="updateData2()" href="#">July, 2017</a></li>
+                    <li id="3"><a onclick="updateData3()" href="#">Aug, 2017</a></li>
+                    <li id="4"><a onclick="updateData4()" href="#">Sept, 2017</a></li>
+                    <li id="5"><a onclick="updateData5()" href="#">Oct, 2017</a></li>
+                    <li id="6"><a onclick="updateData6()" href="#">Nov, 2017</a></li>
+                    <li id="7"><a onclick="updateData7()" href="#">Dec, 2017</a></li>
+                    <li id="8"><a onclick="updateData8()" href="#">Jan, 2018</a></li>
+                    <li id="9"><a onclick="updateData9()" href="#">Feb, 2018</a></li>
+                </ul>
+            </div>
+            <div class="ticker-wrap">
+                <div class="ticker">
+                </div>
+            </div>
+        </div>
 </body>
 </html>
