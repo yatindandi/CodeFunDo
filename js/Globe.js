@@ -33,7 +33,7 @@ var svg = d3.select(".svg").append("svg")
 
 queue()
     .defer(d3.json, "world-110m.json")
-    .defer(d3.json, "data/places9.json")
+    .defer(d3.json, "data/places6.json")
     .await(ready);
 function ready(error, world, places) {
   var ocean_fill = svg.append("defs").append("radialGradient")
@@ -112,126 +112,30 @@ function ready(error, world, places) {
       .attr("class", "point")
       .attr("d", path);
 
-      var select;
-      var x = document.getElementById("topbar-multiple").value;
-      //contains country name string
-      var y = document.getElementById("mySelectCat").value;
-      //contains country name string
-      //console.log(y);
-
-      if(x=="All" && y=="All"){
-      select = 1;
-      }
-      else if(y=="All"){
-      select = 2;
-      }
-      else if(x=="All"){
-      select = 3;
+  // spawn links between cities as source/target coord pairs
+  places.features.forEach(function(a) {
+      links.push({
+        source: a.geometry.coordinates,
+        target: a.end.geometry.coordinates,
+      });
+      if(a.relation>0){
+        greenlinks.push({
+          source: a.geometry.coordinates,
+          target: a.end.geometry.coordinates,
+          title: a.title,
+          src: a.src,
+        })
       }
       else{
-      select = 4;
+        redlinks.push({
+          source: a.geometry.coordinates,
+          target: a.end.geometry.coordinates,
+          title: a.title,
+          src: a.src
+        })
       }
-      console.log(select);console.log(x);console.log(y);
-      // spawn links between cities as source/target coord pairs
-      places.features.forEach(function(a) {
-        if(select==1){
-          links.push({
-            source: a.geometry.coordinates,
-            target: a.end.geometry.coordinates,
-          });
-          if(a.relation>0){
-            greenlinks.push({
-              source: a.geometry.coordinates,
-              target: a.end.geometry.coordinates,
-              title: a.title,
-              src: a.src,
-            })
-          }
-          else{
-            redlinks.push({
-              source: a.geometry.coordinates,
-              target: a.end.geometry.coordinates,
-              title: a.title,
-              src: a.src
-            })
-          }
-        }
+});
 
-        else if(select==2){
-          if(a.countries.includes(x)){
-            links.push({
-              source: a.geometry.coordinates,
-              target: a.end.geometry.coordinates,
-            });
-            if(a.relation>0){
-              greenlinks.push({
-                source: a.geometry.coordinates,
-                target: a.end.geometry.coordinates,
-                title: a.title,
-                src: a.src,
-              })
-            }
-            else{
-              redlinks.push({
-                source: a.geometry.coordinates,
-                target: a.end.geometry.coordinates,
-                title: a.title,
-                src: a.src
-              })
-            }
-          }
-        }
-
-        else if(select==3){
-          if(a.tags[0].includes(y)){
-            links.push({
-              source: a.geometry.coordinates,
-              target: a.end.geometry.coordinates,
-            });
-            if(a.relation>0){
-              greenlinks.push({
-                source: a.geometry.coordinates,
-                target: a.end.geometry.coordinates,
-                title: a.title,
-                src: a.src,
-              })
-            }
-            else{
-              redlinks.push({
-                source: a.geometry.coordinates,
-                target: a.end.geometry.coordinates,
-                title: a.title,
-                src: a.src
-              })
-            }
-          }
-        }
-
-        else if(select==4){
-          if(a.countries.includes(x) && a.tags[0].includes(y)){
-            links.push({
-              source: a.geometry.coordinates,
-              target: a.end.geometry.coordinates,
-            });
-            if(a.relation>0){
-              greenlinks.push({
-                source: a.geometry.coordinates,
-                target: a.end.geometry.coordinates,
-                title: a.title,
-                src: a.src,
-              })
-            }
-            else{
-              redlinks.push({
-                source: a.geometry.coordinates,
-                target: a.end.geometry.coordinates,
-                title: a.title,
-                src: a.src
-              })
-            }
-          }
-        }
-      });
   // build geoJSON features from links array
   links.forEach(function(e,i,a) {
     var feature =   { "type": "Feature", "geometry": { "type": "LineString", "coordinates": [e.source,e.target] }}
@@ -478,126 +382,29 @@ function updateData1(){
         .attr("class", "point")
         .attr("d", path);
 
-        var select;
-        var x = document.getElementById("topbar-multiple").value;
-        //contains country name string
-        var y = document.getElementById("mySelectCat").value;
-        //contains country name string
-        //console.log(y);
-
-        if(x=="All" && y=="All"){
-        select = 1;
-        }
-        else if(y=="All"){
-        select = 2;
-        }
-        else if(x=="All"){
-        select = 3;
+    // spawn links between cities as source/target coord pairs
+    places.features.forEach(function(a) {
+        links.push({
+          source: a.geometry.coordinates,
+          target: a.end.geometry.coordinates,
+        });
+        if(a.relation>0){
+          greenlinks.push({
+            source: a.geometry.coordinates,
+            target: a.end.geometry.coordinates,
+            title: a.title,
+            src: a.src,
+          })
         }
         else{
-        select = 4;
+          redlinks.push({
+            source: a.geometry.coordinates,
+            target: a.end.geometry.coordinates,
+            title: a.title,
+            src: a.src
+          })
         }
-        console.log(select);console.log(x);console.log(y);
-        // spawn links between cities as source/target coord pairs
-        places.features.forEach(function(a) {
-          if(select==1){
-            links.push({
-              source: a.geometry.coordinates,
-              target: a.end.geometry.coordinates,
-            });
-            if(a.relation>0){
-              greenlinks.push({
-                source: a.geometry.coordinates,
-                target: a.end.geometry.coordinates,
-                title: a.title,
-                src: a.src,
-              })
-            }
-            else{
-              redlinks.push({
-                source: a.geometry.coordinates,
-                target: a.end.geometry.coordinates,
-                title: a.title,
-                src: a.src
-              })
-            }
-          }
-
-          else if(select==2){
-            if(a.countries.includes(x)){
-              links.push({
-                source: a.geometry.coordinates,
-                target: a.end.geometry.coordinates,
-              });
-              if(a.relation>0){
-                greenlinks.push({
-                  source: a.geometry.coordinates,
-                  target: a.end.geometry.coordinates,
-                  title: a.title,
-                  src: a.src,
-                })
-              }
-              else{
-                redlinks.push({
-                  source: a.geometry.coordinates,
-                  target: a.end.geometry.coordinates,
-                  title: a.title,
-                  src: a.src
-                })
-              }
-            }
-          }
-
-          else if(select==3){
-            if(a.tags[0].includes(y)){
-              links.push({
-                source: a.geometry.coordinates,
-                target: a.end.geometry.coordinates,
-              });
-              if(a.relation>0){
-                greenlinks.push({
-                  source: a.geometry.coordinates,
-                  target: a.end.geometry.coordinates,
-                  title: a.title,
-                  src: a.src,
-                })
-              }
-              else{
-                redlinks.push({
-                  source: a.geometry.coordinates,
-                  target: a.end.geometry.coordinates,
-                  title: a.title,
-                  src: a.src
-                })
-              }
-            }
-          }
-
-          else if(select==4){
-            if(a.countries.includes(x) && a.tags[0].includes(y)){
-              links.push({
-                source: a.geometry.coordinates,
-                target: a.end.geometry.coordinates,
-              });
-              if(a.relation>0){
-                greenlinks.push({
-                  source: a.geometry.coordinates,
-                  target: a.end.geometry.coordinates,
-                  title: a.title,
-                  src: a.src,
-                })
-              }
-              else{
-                redlinks.push({
-                  source: a.geometry.coordinates,
-                  target: a.end.geometry.coordinates,
-                  title: a.title,
-                  src: a.src
-                })
-              }
-            }
-          }
-        });
+  });
 
     // build geoJSON features from links array
     links.forEach(function(e,i,a) {
@@ -846,126 +653,29 @@ function updateData2(){
         .attr("class", "point")
         .attr("d", path);
 
-        var select;
-        var x = document.getElementById("topbar-multiple").value;
-        //contains country name string
-        var y = document.getElementById("mySelectCat").value;
-        //contains country name string
-        //console.log(y);
-
-        if(x=="All" && y=="All"){
-        select = 1;
-        }
-        else if(y=="All"){
-        select = 2;
-        }
-        else if(x=="All"){
-        select = 3;
+    // spawn links between cities as source/target coord pairs
+    places.features.forEach(function(a) {
+        links.push({
+          source: a.geometry.coordinates,
+          target: a.end.geometry.coordinates,
+        });
+        if(a.relation>0){
+          greenlinks.push({
+            source: a.geometry.coordinates,
+            target: a.end.geometry.coordinates,
+            title: a.title,
+            src: a.src,
+          })
         }
         else{
-        select = 4;
+          redlinks.push({
+            source: a.geometry.coordinates,
+            target: a.end.geometry.coordinates,
+            title: a.title,
+            src: a.src
+          })
         }
-        console.log(select);console.log(x);console.log(y);
-        // spawn links between cities as source/target coord pairs
-        places.features.forEach(function(a) {
-          if(select==1){
-            links.push({
-              source: a.geometry.coordinates,
-              target: a.end.geometry.coordinates,
-            });
-            if(a.relation>0){
-              greenlinks.push({
-                source: a.geometry.coordinates,
-                target: a.end.geometry.coordinates,
-                title: a.title,
-                src: a.src,
-              })
-            }
-            else{
-              redlinks.push({
-                source: a.geometry.coordinates,
-                target: a.end.geometry.coordinates,
-                title: a.title,
-                src: a.src
-              })
-            }
-          }
-
-          else if(select==2){
-            if(a.countries.includes(x)){
-              links.push({
-                source: a.geometry.coordinates,
-                target: a.end.geometry.coordinates,
-              });
-              if(a.relation>0){
-                greenlinks.push({
-                  source: a.geometry.coordinates,
-                  target: a.end.geometry.coordinates,
-                  title: a.title,
-                  src: a.src,
-                })
-              }
-              else{
-                redlinks.push({
-                  source: a.geometry.coordinates,
-                  target: a.end.geometry.coordinates,
-                  title: a.title,
-                  src: a.src
-                })
-              }
-            }
-          }
-
-          else if(select==3){
-            if(a.tags[0].includes(y)){
-              links.push({
-                source: a.geometry.coordinates,
-                target: a.end.geometry.coordinates,
-              });
-              if(a.relation>0){
-                greenlinks.push({
-                  source: a.geometry.coordinates,
-                  target: a.end.geometry.coordinates,
-                  title: a.title,
-                  src: a.src,
-                })
-              }
-              else{
-                redlinks.push({
-                  source: a.geometry.coordinates,
-                  target: a.end.geometry.coordinates,
-                  title: a.title,
-                  src: a.src
-                })
-              }
-            }
-          }
-
-          else if(select==4){
-            if(a.countries.includes(x) && a.tags[0].includes(y)){
-              links.push({
-                source: a.geometry.coordinates,
-                target: a.end.geometry.coordinates,
-              });
-              if(a.relation>0){
-                greenlinks.push({
-                  source: a.geometry.coordinates,
-                  target: a.end.geometry.coordinates,
-                  title: a.title,
-                  src: a.src,
-                })
-              }
-              else{
-                redlinks.push({
-                  source: a.geometry.coordinates,
-                  target: a.end.geometry.coordinates,
-                  title: a.title,
-                  src: a.src
-                })
-              }
-            }
-          }
-        });
+  });
 
     // build geoJSON features from links array
     links.forEach(function(e,i,a) {
@@ -1214,126 +924,29 @@ function updateData3(){
         .attr("class", "point")
         .attr("d", path);
 
-        var select;
-        var x = document.getElementById("topbar-multiple").value;
-        //contains country name string
-        var y = document.getElementById("mySelectCat").value;
-        //contains country name string
-        //console.log(y);
-
-        if(x=="All" && y=="All"){
-        select = 1;
-        }
-        else if(y=="All"){
-        select = 2;
-        }
-        else if(x=="All"){
-        select = 3;
+    // spawn links between cities as source/target coord pairs
+    places.features.forEach(function(a) {
+        links.push({
+          source: a.geometry.coordinates,
+          target: a.end.geometry.coordinates,
+        });
+        if(a.relation>0){
+          greenlinks.push({
+            source: a.geometry.coordinates,
+            target: a.end.geometry.coordinates,
+            title: a.title,
+            src: a.src,
+          })
         }
         else{
-        select = 4;
+          redlinks.push({
+            source: a.geometry.coordinates,
+            target: a.end.geometry.coordinates,
+            title: a.title,
+            src: a.src
+          })
         }
-        console.log(select);console.log(x);console.log(y);
-        // spawn links between cities as source/target coord pairs
-        places.features.forEach(function(a) {
-          if(select==1){
-            links.push({
-              source: a.geometry.coordinates,
-              target: a.end.geometry.coordinates,
-            });
-            if(a.relation>0){
-              greenlinks.push({
-                source: a.geometry.coordinates,
-                target: a.end.geometry.coordinates,
-                title: a.title,
-                src: a.src,
-              })
-            }
-            else{
-              redlinks.push({
-                source: a.geometry.coordinates,
-                target: a.end.geometry.coordinates,
-                title: a.title,
-                src: a.src
-              })
-            }
-          }
-
-          else if(select==2){
-            if(a.countries.includes(x)){
-              links.push({
-                source: a.geometry.coordinates,
-                target: a.end.geometry.coordinates,
-              });
-              if(a.relation>0){
-                greenlinks.push({
-                  source: a.geometry.coordinates,
-                  target: a.end.geometry.coordinates,
-                  title: a.title,
-                  src: a.src,
-                })
-              }
-              else{
-                redlinks.push({
-                  source: a.geometry.coordinates,
-                  target: a.end.geometry.coordinates,
-                  title: a.title,
-                  src: a.src
-                })
-              }
-            }
-          }
-
-          else if(select==3){
-            if(a.tags[0].includes(y)){
-              links.push({
-                source: a.geometry.coordinates,
-                target: a.end.geometry.coordinates,
-              });
-              if(a.relation>0){
-                greenlinks.push({
-                  source: a.geometry.coordinates,
-                  target: a.end.geometry.coordinates,
-                  title: a.title,
-                  src: a.src,
-                })
-              }
-              else{
-                redlinks.push({
-                  source: a.geometry.coordinates,
-                  target: a.end.geometry.coordinates,
-                  title: a.title,
-                  src: a.src
-                })
-              }
-            }
-          }
-
-          else if(select==4){
-            if(a.countries.includes(x) && a.tags[0].includes(y)){
-              links.push({
-                source: a.geometry.coordinates,
-                target: a.end.geometry.coordinates,
-              });
-              if(a.relation>0){
-                greenlinks.push({
-                  source: a.geometry.coordinates,
-                  target: a.end.geometry.coordinates,
-                  title: a.title,
-                  src: a.src,
-                })
-              }
-              else{
-                redlinks.push({
-                  source: a.geometry.coordinates,
-                  target: a.end.geometry.coordinates,
-                  title: a.title,
-                  src: a.src
-                })
-              }
-            }
-          }
-        });
+  });
 
     // build geoJSON features from links array
     links.forEach(function(e,i,a) {
@@ -1582,126 +1195,29 @@ function updateData4(){
         .attr("class", "point")
         .attr("d", path);
 
-        var select;
-        var x = document.getElementById("topbar-multiple").value;
-        //contains country name string
-        var y = document.getElementById("mySelectCat").value;
-        //contains country name string
-        //console.log(y);
-
-        if(x=="All" && y=="All"){
-        select = 1;
-        }
-        else if(y=="All"){
-        select = 2;
-        }
-        else if(x=="All"){
-        select = 3;
+    // spawn links between cities as source/target coord pairs
+    places.features.forEach(function(a) {
+        links.push({
+          source: a.geometry.coordinates,
+          target: a.end.geometry.coordinates,
+        });
+        if(a.relation>0){
+          greenlinks.push({
+            source: a.geometry.coordinates,
+            target: a.end.geometry.coordinates,
+            title: a.title,
+            src: a.src,
+          })
         }
         else{
-        select = 4;
+          redlinks.push({
+            source: a.geometry.coordinates,
+            target: a.end.geometry.coordinates,
+            title: a.title,
+            src: a.src
+          })
         }
-        console.log(select);console.log(x);console.log(y);
-        // spawn links between cities as source/target coord pairs
-        places.features.forEach(function(a) {
-          if(select==1){
-            links.push({
-              source: a.geometry.coordinates,
-              target: a.end.geometry.coordinates,
-            });
-            if(a.relation>0){
-              greenlinks.push({
-                source: a.geometry.coordinates,
-                target: a.end.geometry.coordinates,
-                title: a.title,
-                src: a.src,
-              })
-            }
-            else{
-              redlinks.push({
-                source: a.geometry.coordinates,
-                target: a.end.geometry.coordinates,
-                title: a.title,
-                src: a.src
-              })
-            }
-          }
-
-          else if(select==2){
-            if(a.countries.includes(x)){
-              links.push({
-                source: a.geometry.coordinates,
-                target: a.end.geometry.coordinates,
-              });
-              if(a.relation>0){
-                greenlinks.push({
-                  source: a.geometry.coordinates,
-                  target: a.end.geometry.coordinates,
-                  title: a.title,
-                  src: a.src,
-                })
-              }
-              else{
-                redlinks.push({
-                  source: a.geometry.coordinates,
-                  target: a.end.geometry.coordinates,
-                  title: a.title,
-                  src: a.src
-                })
-              }
-            }
-          }
-
-          else if(select==3){
-            if(a.tags[0].includes(y)){
-              links.push({
-                source: a.geometry.coordinates,
-                target: a.end.geometry.coordinates,
-              });
-              if(a.relation>0){
-                greenlinks.push({
-                  source: a.geometry.coordinates,
-                  target: a.end.geometry.coordinates,
-                  title: a.title,
-                  src: a.src,
-                })
-              }
-              else{
-                redlinks.push({
-                  source: a.geometry.coordinates,
-                  target: a.end.geometry.coordinates,
-                  title: a.title,
-                  src: a.src
-                })
-              }
-            }
-          }
-
-          else if(select==4){
-            if(a.countries.includes(x) && a.tags[0].includes(y)){
-              links.push({
-                source: a.geometry.coordinates,
-                target: a.end.geometry.coordinates,
-              });
-              if(a.relation>0){
-                greenlinks.push({
-                  source: a.geometry.coordinates,
-                  target: a.end.geometry.coordinates,
-                  title: a.title,
-                  src: a.src,
-                })
-              }
-              else{
-                redlinks.push({
-                  source: a.geometry.coordinates,
-                  target: a.end.geometry.coordinates,
-                  title: a.title,
-                  src: a.src
-                })
-              }
-            }
-          }
-        });
+  });
 
     // build geoJSON features from links array
     links.forEach(function(e,i,a) {
@@ -1950,126 +1466,29 @@ function updateData5(){
         .attr("class", "point")
         .attr("d", path);
 
-        var select;
-        var x = document.getElementById("topbar-multiple").value;
-        //contains country name string
-        var y = document.getElementById("mySelectCat").value;
-        //contains country name string
-        //console.log(y);
-
-        if(x=="All" && y=="All"){
-        select = 1;
-        }
-        else if(y=="All"){
-        select = 2;
-        }
-        else if(x=="All"){
-        select = 3;
+    // spawn links between cities as source/target coord pairs
+    places.features.forEach(function(a) {
+        links.push({
+          source: a.geometry.coordinates,
+          target: a.end.geometry.coordinates,
+        });
+        if(a.relation>0){
+          greenlinks.push({
+            source: a.geometry.coordinates,
+            target: a.end.geometry.coordinates,
+            title: a.title,
+            src: a.src,
+          })
         }
         else{
-        select = 4;
+          redlinks.push({
+            source: a.geometry.coordinates,
+            target: a.end.geometry.coordinates,
+            title: a.title,
+            src: a.src
+          })
         }
-        console.log(select);console.log(x);console.log(y);
-        // spawn links between cities as source/target coord pairs
-        places.features.forEach(function(a) {
-          if(select==1){
-            links.push({
-              source: a.geometry.coordinates,
-              target: a.end.geometry.coordinates,
-            });
-            if(a.relation>0){
-              greenlinks.push({
-                source: a.geometry.coordinates,
-                target: a.end.geometry.coordinates,
-                title: a.title,
-                src: a.src,
-              })
-            }
-            else{
-              redlinks.push({
-                source: a.geometry.coordinates,
-                target: a.end.geometry.coordinates,
-                title: a.title,
-                src: a.src
-              })
-            }
-          }
-
-          else if(select==2){
-            if(a.countries.includes(x)){
-              links.push({
-                source: a.geometry.coordinates,
-                target: a.end.geometry.coordinates,
-              });
-              if(a.relation>0){
-                greenlinks.push({
-                  source: a.geometry.coordinates,
-                  target: a.end.geometry.coordinates,
-                  title: a.title,
-                  src: a.src,
-                })
-              }
-              else{
-                redlinks.push({
-                  source: a.geometry.coordinates,
-                  target: a.end.geometry.coordinates,
-                  title: a.title,
-                  src: a.src
-                })
-              }
-            }
-          }
-
-          else if(select==3){
-            if(a.tags[0].includes(y)){
-              links.push({
-                source: a.geometry.coordinates,
-                target: a.end.geometry.coordinates,
-              });
-              if(a.relation>0){
-                greenlinks.push({
-                  source: a.geometry.coordinates,
-                  target: a.end.geometry.coordinates,
-                  title: a.title,
-                  src: a.src,
-                })
-              }
-              else{
-                redlinks.push({
-                  source: a.geometry.coordinates,
-                  target: a.end.geometry.coordinates,
-                  title: a.title,
-                  src: a.src
-                })
-              }
-            }
-          }
-
-          else if(select==4){
-            if(a.countries.includes(x) && a.tags[0].includes(y)){
-              links.push({
-                source: a.geometry.coordinates,
-                target: a.end.geometry.coordinates,
-              });
-              if(a.relation>0){
-                greenlinks.push({
-                  source: a.geometry.coordinates,
-                  target: a.end.geometry.coordinates,
-                  title: a.title,
-                  src: a.src,
-                })
-              }
-              else{
-                redlinks.push({
-                  source: a.geometry.coordinates,
-                  target: a.end.geometry.coordinates,
-                  title: a.title,
-                  src: a.src
-                })
-              }
-            }
-          }
-        });
+  });
 
     // build geoJSON features from links array
     links.forEach(function(e,i,a) {
@@ -2404,7 +1823,7 @@ function updateData6(){
 
   }
   function handleMouseOut(d){
-    ////console.log("Bye");
+    console.log("Bye");
     d3.select(this)
         .style("stroke-width", 3)
     d3.select("#intext").remove();
@@ -2674,16 +2093,13 @@ function updateData7(){
                 return [d.title];  // Value of the text
               });
 
-    document.getElementById('textspace').innerHTML = d.title;
-
   }
   function handleMouseOut(d){
-    //console.log("Bye");
+    console.log("Bye");
     d3.select(this)
         .style("stroke-width", 3)
     d3.select("#intext").remove();
     d3.select("#myimg").remove();
-    document.getElementById('textspace').innerHTML = "";
   }
     refresh();
   }
@@ -2865,127 +2281,29 @@ function updateData8(){
         .attr("class", "point")
         .attr("d", path);
 
-        var select ;
-        //decides what will be displayed
-        var x = document.getElementById("topbar-multiple").value;
-        //contains country name string
-        var y = document.getElementById("mySelectCat").value;
-        //contains country name string
-
-if(x=="All" && y=="All"){
-  select = 1;
-}
-else if(y=="All"){
-  select = 2;
-}
-else if(x=="All"){
-  select = 3;
-}
-else{
-  select = 4;
-}
-
-        // spawn links between cities as source/target coord pairs
-        places.features.forEach(function(a) {
-          if(select==1){
-            links.push({
-              source: a.geometry.coordinates,
-              target: a.end.geometry.coordinates,
-            });
-            if(a.relation>0){
-              greenlinks.push({
-                source: a.geometry.coordinates,
-                target: a.end.geometry.coordinates,
-                title: a.title,
-                src: a.src,
-              })
-            }
-            else{
-              redlinks.push({
-                source: a.geometry.coordinates,
-                target: a.end.geometry.coordinates,
-                title: a.title,
-                src: a.src
-              })
-            }
-          }
-
-          else if(select==2){
-            if(a.countries.includes(x)){
-              links.push({
-                source: a.geometry.coordinates,
-                target: a.end.geometry.coordinates,
-              });
-              if(a.relation>0){
-                greenlinks.push({
-                  source: a.geometry.coordinates,
-                  target: a.end.geometry.coordinates,
-                  title: a.title,
-                  src: a.src,
-                })
-              }
-              else{
-                redlinks.push({
-                  source: a.geometry.coordinates,
-                  target: a.end.geometry.coordinates,
-                  title: a.title,
-                  src: a.src
-                })
-              }
-            }
-          }
-
-          else if(select==3){
-            if(a.tags[0].includes(y)){
-              links.push({
-                source: a.geometry.coordinates,
-                target: a.end.geometry.coordinates,
-              });
-              if(a.relation>0){
-                greenlinks.push({
-                  source: a.geometry.coordinates,
-                  target: a.end.geometry.coordinates,
-                  title: a.title,
-                  src: a.src,
-                })
-              }
-              else{
-                redlinks.push({
-                  source: a.geometry.coordinates,
-                  target: a.end.geometry.coordinates,
-                  title: a.title,
-                  src: a.src
-                })
-              }
-            }
-          }
-
-          else if(select==4){
-            if(a.countries.includes(x) && a.tags[0].includes(y)){
-              links.push({
-                source: a.geometry.coordinates,
-                target: a.end.geometry.coordinates,
-              });
-              if(a.relation>0){
-                greenlinks.push({
-                  source: a.geometry.coordinates,
-                  target: a.end.geometry.coordinates,
-                  title: a.title,
-                  src: a.src,
-                })
-              }
-              else{
-                redlinks.push({
-                  source: a.geometry.coordinates,
-                  target: a.end.geometry.coordinates,
-                  title: a.title,
-                  src: a.src
-                })
-              }
-            }
-          }
+    // spawn links between cities as source/target coord pairs
+    places.features.forEach(function(a) {
+        links.push({
+          source: a.geometry.coordinates,
+          target: a.end.geometry.coordinates,
         });
-
+        if(a.relation>0){
+          greenlinks.push({
+            source: a.geometry.coordinates,
+            target: a.end.geometry.coordinates,
+            title: a.title,
+            src: a.src,
+          })
+        }
+        else{
+          redlinks.push({
+            source: a.geometry.coordinates,
+            target: a.end.geometry.coordinates,
+            title: a.title,
+            src: a.src
+          })
+        }
+  });
 
     // build geoJSON features from links array
     links.forEach(function(e,i,a) {
@@ -3049,7 +2367,7 @@ else{
 
   }
   function handleMouseOut(d){
-    //console.log("Bye");
+    console.log("Bye");
     d3.select(this)
         .style("stroke-width", 3)
     d3.select("#intext").remove();
@@ -3235,127 +2553,29 @@ function updateData9(){
         .attr("class", "point")
         .attr("d", path);
 
-        var select;
-        var x = document.getElementById("topbar-multiple").value;
-        //contains country name string
-        var y = document.getElementById("mySelectCat").value;
-        //contains country name string
-        //console.log(y);
-
-        if(x=="All" && y=="All"){
-        select = 1;
-        }
-        else if(y=="All"){
-        select = 2;
-        }
-        else if(x=="All"){
-        select = 3;
+    // spawn links between cities as source/target coord pairs
+    places.features.forEach(function(a) {
+        links.push({
+          source: a.geometry.coordinates,
+          target: a.end.geometry.coordinates,
+        });
+        if(a.relation>0){
+          greenlinks.push({
+            source: a.geometry.coordinates,
+            target: a.end.geometry.coordinates,
+            title: a.title,
+            src: a.src,
+          })
         }
         else{
-        select = 4;
+          redlinks.push({
+            source: a.geometry.coordinates,
+            target: a.end.geometry.coordinates,
+            title: a.title,
+            src: a.src
+          })
         }
-        console.log(select);console.log(x);console.log(y);
-        // spawn links between cities as source/target coord pairs
-        places.features.forEach(function(a) {
-          if(select==1){
-            links.push({
-              source: a.geometry.coordinates,
-              target: a.end.geometry.coordinates,
-            });
-            if(a.relation>0){
-              greenlinks.push({
-                source: a.geometry.coordinates,
-                target: a.end.geometry.coordinates,
-                title: a.title,
-                src: a.src,
-              })
-            }
-            else{
-              redlinks.push({
-                source: a.geometry.coordinates,
-                target: a.end.geometry.coordinates,
-                title: a.title,
-                src: a.src
-              })
-            }
-          }
-
-          else if(select==2){
-            if(a.countries.includes(x)){
-              links.push({
-                source: a.geometry.coordinates,
-                target: a.end.geometry.coordinates,
-              });
-              if(a.relation>0){
-                greenlinks.push({
-                  source: a.geometry.coordinates,
-                  target: a.end.geometry.coordinates,
-                  title: a.title,
-                  src: a.src,
-                })
-              }
-              else{
-                redlinks.push({
-                  source: a.geometry.coordinates,
-                  target: a.end.geometry.coordinates,
-                  title: a.title,
-                  src: a.src
-                })
-              }
-            }
-          }
-
-          else if(select==3){
-            if(a.tags[0].includes(y)){
-              links.push({
-                source: a.geometry.coordinates,
-                target: a.end.geometry.coordinates,
-              });
-              if(a.relation>0){
-                greenlinks.push({
-                  source: a.geometry.coordinates,
-                  target: a.end.geometry.coordinates,
-                  title: a.title,
-                  src: a.src,
-                })
-              }
-              else{
-                redlinks.push({
-                  source: a.geometry.coordinates,
-                  target: a.end.geometry.coordinates,
-                  title: a.title,
-                  src: a.src
-                })
-              }
-            }
-          }
-
-          else if(select==4){
-            if(a.countries.includes(x) && a.tags[0].includes(y)){
-              links.push({
-                source: a.geometry.coordinates,
-                target: a.end.geometry.coordinates,
-              });
-              if(a.relation>0){
-                greenlinks.push({
-                  source: a.geometry.coordinates,
-                  target: a.end.geometry.coordinates,
-                  title: a.title,
-                  src: a.src,
-                })
-              }
-              else{
-                redlinks.push({
-                  source: a.geometry.coordinates,
-                  target: a.end.geometry.coordinates,
-                  title: a.title,
-                  src: a.src
-                })
-              }
-            }
-          }
-        });
-
+  });
 
     // build geoJSON features from links array
     links.forEach(function(e,i,a) {
@@ -3383,8 +2603,7 @@ function updateData9(){
             .attr("d", function(d) { return swoosh(flying_arc(d)) })
             .on("mouseover", handleMouseOver)
             .on("mouseout", handleMouseOut)
-            .on("mouseenter", clicked)
-            .on("click", summary);
+            .on("mouseenter", clicked);
 
         svg.append("g").attr("class","flyers")
           .selectAll("path").data(greenlinks)
@@ -3393,39 +2612,7 @@ function updateData9(){
             .attr("d", function(d) { return swoosh(flying_arc(d)) })
             .on("mouseover", handleMouseOver)
             .on("mouseout", handleMouseOut)
-           .on("mouseenter", clicked)
-            .on("click", summary);
-
-   function summary(d){
-    /* var box = document.createElement("BOX");
-      box.type="text";
-      box.value = "Hi";
-      d3.select(this)
-          .style("stroke-width", 10)
-      svg.appendChild(box);
-   }*/
-
-   // d3.select(this)
-   //     .style("stroke-width", 10)
-   // svg.append("text").attr({
-   //              id: "itext",  // Create an id for text so we can select it later for removing on mouseout
-   //               x: "150",
-   //               y: "20",
-   //             })
-   //           .text("HI");
-
-      var overlay = document.getElementById("overlay");
-      //Set a variable to contain the DOM element of the popup
-      var popup = document.getElementById("popup");
-      popup.innerHTML = d.title;
-
-      //Changing the display css style from none to block will make it visible
-      overlay.style.display = "block";
-      //Same goes for the popup
-      popup.style.display = "block";
-      document.getElementById("Cancel").style.display = "block";
-  }
-
+            .on("mouseenter", clicked);
 
 
   function clicked(d){
@@ -3450,15 +2637,12 @@ function updateData9(){
                 return [d.title];  // Value of the text
               });
 
-      document.getElementById('textspace').innerHTML = d.text;
-
   }
   function handleMouseOut(d){
     d3.select(this)
         .style("stroke-width", 3)
     d3.select("#intext").remove();
     d3.select("#myimg").remove();
-      document.getElementById('textspace').innerHTML = "";
   }
     refresh();
   }

@@ -4,7 +4,7 @@
     <meta charset="utf-8">
   </meta>
     <title>Marvel Characters | Force layout with images</title>
-    <script src="js/test.js" charset="utf-8"></script>
+    <!-- <script src="js/test.js" charset="utf-8"></script> -->
 
     <style>
       @import url(http://fonts.googleapis.com/css?family=Source+Code+Pro:400,600);
@@ -32,17 +32,17 @@
       <h1>World Leaders</h1>
       <h2>Click to view their identity..</h2>
       <h3>..their designation..</h3>
-      <h4>And their relative populartity index!</h4>
+      <p>And their relative performance index!<p>
 
-      <ul>
-       <li id="I">Coffee</li>
-       <li id="II">Tea</li>
-       <li id="III">Milk</li>
-       <li id="IV">Coffee</li>
-       <li id="V">Tea</li>
-       <li id="VI">Milk</li>
-       <li id="VII">Coffee</li>
-       <li id="VIII">Tea</li>
+      <ul id="Newslist" style="display: none">
+       <li id="I"></li>
+       <li id="II"></li>
+       <li id="III"></li>
+       <li id="IV"></li>
+       <li id="V"></li>
+       <li id="VI"></li>
+       <li id="VII"></li>
+       <li id="VIII"></li>
      </ul>
 
     </header>
@@ -152,9 +152,13 @@ function update() {
   var setEvents = images
           // Append hero text
           .on( 'click', function (d) {
+
+              // Change display of Newslist to block
+              document.getElementById('Newslist').style.display = 'block';
+
               d3.select("h2").html(d.hero);
               d3.select("h3").html(d.name);
-              d3.select("h4").html(d.score);
+              d3.select("p").html(d.score);
 
               if(d.news[0][1]>0){
                 d3.select("#I").html(d.news[0][0]);

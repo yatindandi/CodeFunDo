@@ -26,6 +26,7 @@
   <link rel="shortcut icon" href="https://livedemo00.template-help.com/wt_58393/theme-2/site/assets/img/favicon.ico">
 
   <!-- Scripts -->
+  <script src="js/test.js" charset="utf-8"></script>
   <script src="js/d3.v3.min.js"></script>
   <script src="js/queue.v1.min.js"></script>
   <script src="js/topojson.v0.min.js"></script>
@@ -236,36 +237,45 @@ $(document).ready(function(){
         });
     });
 
-    var month = 99;
+    var month = 9;
 
 
     function updateMonth1(){
       month = 1;
+      document.getElementById("Monthname").innerHTML = "June, 2017";
     }
     function updateMonth2(){
       month = 2;
+      document.getElementById("Monthname").innerHTML = "July, 2017";
     }
     function updateMonth3(){
       month = 3;
+      document.getElementById("Monthname").innerHTML = "August, 2017";
     }
     function updateMonth4(){
       month = 4;
+      document.getElementById("Monthname").innerHTML = "September, 2017";
     }
     function updateMonth5(){
       month = 5;
+      document.getElementById("Monthname").innerHTML = "October, 2017";
     }
     function updateMonth6(){
       month = 6;
+      document.getElementById("Monthname").innerHTML = "November, 2017";
     }
     function updateMonth7(){
       month = 7;
+      document.getElementById("Monthname").innerHTML = "December, 2017";
     }
     function updateMonth8(){
       month = 8;
+      document.getElementById("Monthname").innerHTML = "January, 2018";
     }
     function updateMonth9(){
       month = 9;
-      //console.log(month);
+      document.getElementById("Monthname").innerHTML = "February, 2018";
+      console.log(month);
     }
 
     console.log(month);
@@ -328,6 +338,7 @@ $(document).ready(function(){
         updateData9();
       }
     }
+
 
 
 </script>
@@ -1094,37 +1105,37 @@ $(document).ready(function(){
         <div class="topbar-menu row">
           <div class="col-xs-4 col-sm-2">
             <a href="#">
-              <img src="theme_files/flag01.png"  class="metro-tile bg-primary light"/>
+              <img src="theme_files/flag01.png"  onclick="USA()" class="metro-tile bg-primary light"/>
               <span class="metro-title">United States of America</span>
             </a>
           </div>
           <div class="col-xs-4 col-sm-2">
             <a href="#">
-              <img src="theme_files/flag02.png"  class="metro-tile bg-primary light"/>
+              <img src="theme_files/flag02.png"  onclick="Russia()" class="metro-tile bg-primary light"/>
               <span class="metro-title">Russia</span>
             </a>
           </div>
           <div class="col-xs-4 col-sm-2">
             <a href="#">
-              <img src="theme_files/flag03.png"  class="metro-tile bg-primary light"/>
+              <img src="theme_files/flag03.png"  onclick="China()" class="metro-tile bg-primary light"/>
               <span class="metro-title">China</span>
             </a>
           </div>
           <div class="col-xs-4 col-sm-2">
             <a href="#">
-              <img src="theme_files/flag04.png"  class="metro-tile bg-primary light"/>
+              <img src="theme_files/flag04.png"  onclick="India()" class="metro-tile bg-primary light"/>
               <span class="metro-title">India</span>
             </a>
           </div>
           <div class="col-xs-4 col-sm-2">
             <a href="#">
-              <img src="theme_files/flag05.png"  class="metro-tile bg-primary light"/>
+              <img src="theme_files/flag05.png" onclick="Syria()" class="metro-tile bg-primary light"/>
               <span class="metro-title">Syria</span>
             </a>
           </div>
           <div class="col-xs-4 col-sm-2">
             <a href="#">
-              <img src="theme_files/flag06.png"  class="metro-tile bg-primary light"/>
+              <img src="theme_files/flag06.png"  onclick="NorthKorea()" class="metro-tile bg-primary light"/>
               <span class="metro-title">North Korea</span>
             </a>
           </div>
@@ -1136,8 +1147,8 @@ $(document).ready(function(){
       <header id="topbar" class="alt">
         <div class="topbar-left">
           <ol class="breadcrumb">
-            <li>
-              Month, Year
+            <li id="Monthname">
+              February, 2018
             </li>
             <li class="crumb-icon">
             </li>
@@ -1145,10 +1156,10 @@ $(document).ready(function(){
         </div>
         <div class="topbar-right">
           <div class="ib topbar-dropdown">
-            <label for="topbar-multiple" class="control-label fs16">Filter:</label>
-            <select id="topbar-multiple" class="hidden" style="display: none;" >
+            <label for="topbar-multiple" class="control-label fs16">Filter by country or category:</label>
+            <select id="topbar-multiple" class="hidden" value="All" style="display: none;" onchange="countryChange()">
               <optgroup label="countries:">
-                <option value="All" selected="selected">All Countries</option>
+                <option value="All">All Countries</option>
 
   <option value="Afghanistan">Afghanistan</option>
   <option value="Albania">Albania</option>
@@ -1392,66 +1403,94 @@ $(document).ready(function(){
 
               </optgroup>
             </select>
+
             <div class="btn-group">
-              <button type="button" class="multiselect dropdown-toggle btn btn-default btn-sm ph15" data-toggle="dropdown" title="Last 60 Days">
+              <!-- <button type="button" class="multiselect dropdown-toggle btn btn-default btn-sm ph15" data-toggle="dropdown" title="Last 60 Days">
                 All Categories
                 <b class="caret"></b>
-              </button>
-              <ul class="multiselect-container dropdown-menu pull-right">
-                <li class="multiselect-item multiselect-group">
-                  <label>Categories:</label>
+              </button> -->
+              <!-- <ul class="multiselect-container dropdown-menu pull-right" id="mySelectCat" value="All" onclick="categoryChange()"> -->
+                <select class="multiselect dropdown-toggle btn btn-default btn-sm ph15" id="mySelectCat" value="All" onchange="categoryChange()">
+                  <option value="All">All</option>
+                  <option value="Military Conflicts"> Military Conflicts</option>
+                  <option value="Disaster"> Disaster</option>
+                  <option value="Nuclear Proliferation"> Nuclear Proliferation</option>
+                  <option value="Judicial Process"> Judicial Process </option>
+                  <option value="Economic Events"> Economic Events</option>
+                  <option value="Insurgencies">Insurgencies</option>
+
+                </select>
+
+                <!-- <li>
+                  <a href="javascript:void(0);">
+                    <label class="radio">
+                      <input value="Military Conflicts" type="radio">
+                      Military Conflicts
+                    </label>
+                  </a>
                 </li>
+
                 <li>
                   <a href="javascript:void(0);">
                     <label class="radio">
-                      <input value="1-1" type="radio">
-                      Military
+                      <input value="All" type="radio">
+                      All Categories
                     </label>
                   </a>
                 </li>
+
                 <li>
                   <a href="javascript:void(0);">
                     <label class="radio">
-                      <input value="1-1" type="radio">
-                      Last 30 Days
+                      <input value="Disaster" type="radio">
+                      Disasters
                     </label>
                   </a>
                 </li>
+
                 <li>
                   <a href="javascript:void(0);">
                     <label class="radio">
-                      <input value="1-1" type="radio">
-                      Last 30 Days
+                      <input value="Nuclear Proliferation" type="radio">
+                      Nuclear
                     </label>
                   </a>
                 </li>
+
+
                 <li>
                   <a href="javascript:void(0);">
                     <label class="radio">
-                      <input value="1-1" type="radio">
-                      Last 30 Days
+                      <input value="Judicial Process" type="radio">
+                      Judicial Process
                     </label>
                   </a>
                 </li>
-                <li class="active">
-                  <a href="javascript:void(0);">
-                    <label class="radio">
-                      <input value="1-2" checked="checked" type="radio">
-                      Last 60 Days
-                    </label>
-                  </a>
-                </li>
+
                 <li>
                   <a href="javascript:void(0);">
                     <label class="radio">
-                      <input value="1-3" type="radio">
-                      Last Year
+                      <input value="Economic Events" type="radio">
+                      Economic Events
                     </label>
                   </a>
                 </li>
-              </ul>
+
+                <li>
+                  <a href="javascript:void(0);">
+                    <label class="radio">
+                      <input value="Insurgencies" type="radio">
+                      Insurgencies
+                    </label>
+                  </a>
+                </li> -->
+
+
+              <!-- </ul> -->
             </div>
           </div>
+
+
           <div class="ml30 ib va-m" id="toggle_sidemenu_r">
             <a href="#" class="pl5">
               <span class="fa fa-calendar"></span>
@@ -1470,7 +1509,8 @@ $(document).ready(function(){
           <div class="row">
             <div class="col-sm-12">
               <div class="panel panel-tile br-a br-grey">
-                <div class="panel-body">
+                <div class="panel-body" id="textspace">
+                  <!-- Insert summary here -->
                 </div>
               </div>
             </div>
@@ -1572,16 +1612,16 @@ $(document).ready(function(){
               </h5>
               <h5 class="title-divider text-muted mb20"> March, 2018
               </h5> -->
-              <ul id="navlist">
-                  <li class="title-divider mb20" id="1"><a onclick="updateData1()" href="#">June, 2017</a></li>
-                  <li class="title-divider mb20" id="2"><a onclick="updateData2()" href="#">July, 2017</a></li>
-                  <li class="title-divider mb20" id="3"><a onclick="updateData3()" href="#">Aug, 2017</a></li>
-                  <li class="title-divider mb20" id="4"><a onclick="updateData4()" href="#">Sept, 2017</a></li>
-                  <li class="title-divider mb20" id="5"><a onclick="updateData5()" href="#">Oct, 2017</a></li>
-                  <li class="title-divider mb20" id="6"><a onclick="updateData6()" href="#">Nov, 2017</a></li>
-                  <li class="title-divider mb20" id="7"><a onclick="updateData7()" href="#">Dec, 2017</a></li>
-                  <li class="title-divider mb20" id="8"><a onclick="updateData8()" href="#">Jan, 2018</a></li>
-                  <li class="title-divider mb20" id="9"><a onclick="updateData9()" href="#">Feb, 2018</a></li>
+              <ul id="navlist" value="9">
+                  <li id="1" value="1" class="title-divider text-muted mb20"><a onclick="updateMonth1(); updateData1();" href="#">June, 2017</a></li>
+                  <li id="2" value="2" class="title-divider text-muted mb20"><a onclick="updateMonth2(); updateData2();" href="#">July, 2017</a></li>
+                  <li id="3" value="3" class="title-divider text-muted mb20"><a onclick="updateMonth3(); updateData3();" href="#">Aug, 2017</a></li>
+                  <li id="4" value="4" class="title-divider text-muted mb20"><a onclick="updateMonth4(); updateData4();" href="#">Sept, 2017</a></li>
+                  <li id="5" value="5" class="title-divider text-muted mb20"><a onclick="updateMonth5(); updateData5();" href="#">Oct, 2017</a></li>
+                  <li id="6" value="6" class="title-divider text-muted mb20"><a onclick="updateMonth6(); updateData6();" href="#">Nov, 2017</a></li>
+                  <li id="7" value="7" class="title-divider text-muted mb20"><a onclick="updateMonth7(); updateData7();" href="#">Dec, 2017</a></li>
+                  <li id="8" value="8" class="title-divider text-muted mb20"><a onclick="updateMonth8(); updateData8();" href="#">Jan, 2018</a></li>
+                  <li id="9" value="9" class="title-divider text-muted mb20"><a onclick="updateMonth9(); updateData9();" href="#">Feb, 2018</a></li>
               </ul>
 
             </div>
