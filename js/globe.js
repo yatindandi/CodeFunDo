@@ -131,7 +131,7 @@ function ready(error, world, places) {
       else{
       select = 4;
       }
-      console.log(select);console.log(x);console.log(y);
+      console.log(select);
       // spawn links between cities as source/target coord pairs
       places.features.forEach(function(a) {
         if(select==1){
@@ -276,16 +276,16 @@ function clicked(d){
   .attr("xlink:href", d.src)
   .attr("width", 300)
   .attr("height", 300)
-  .attr("x", 730)
-  .attr("y",70);
+  .attr("x", 710)
+  .attr("y",80);
 }
 
 function handleMouseOver(d){
   d3.select(this)
-      .style("stroke-width", 6)
+      .style("stroke-width", 8)
   svg.append("text").attr({
                id: "intext",  // Create an id for text so we can select it later for removing on mouseout
-                x: "150",
+                x: "100",
                 y: "20",
               })
             .text(function() {
@@ -295,7 +295,7 @@ function handleMouseOver(d){
 }
 function handleMouseOut(d){
   d3.select(this)
-      .style("stroke-width", 3)
+      .style("stroke-width", 5)
   d3.select("#intext").remove();
   d3.select("#myimg").remove();
 }
@@ -497,7 +497,7 @@ function updateData1(){
         else{
         select = 4;
         }
-        console.log(select);console.log(x);console.log(y);
+        console.log(select);
         // spawn links between cities as source/target coord pairs
         places.features.forEach(function(a) {
           if(select==1){
@@ -643,16 +643,16 @@ function updateData1(){
     .attr("xlink:href", d.src)
     .attr("width", 300)
     .attr("height", 300)
-    .attr("x", 730)
-    .attr("y",70);
+    .attr("x", 700)
+    .attr("y",80);
   }
 
   function handleMouseOver(d){
     d3.select(this)
-        .style("stroke-width", 6)
+        .style("stroke-width", 8)
     svg.append("text").attr({
                  id: "intext",  // Create an id for text so we can select it later for removing on mouseout
-                  x: "150",
+                  x: "100",
                   y: "20",
                 })
               .text(function() {
@@ -662,7 +662,7 @@ function updateData1(){
   }
   function handleMouseOut(d){
     d3.select(this)
-        .style("stroke-width", 3)
+        .style("stroke-width", 5)
     d3.select("#intext").remove();
     d3.select("#myimg").remove();
   }
@@ -865,7 +865,7 @@ function updateData2(){
         else{
         select = 4;
         }
-        console.log(select);console.log(x);console.log(y);
+        console.log(select);
         // spawn links between cities as source/target coord pairs
         places.features.forEach(function(a) {
           if(select==1){
@@ -1011,16 +1011,16 @@ function updateData2(){
     .attr("xlink:href", d.src)
     .attr("width", 300)
     .attr("height", 300)
-    .attr("x", 730)
-    .attr("y",70);
+    .attr("x", 700)
+    .attr("y",80);
   }
 
   function handleMouseOver(d){
     d3.select(this)
-        .style("stroke-width", 6)
+        .style("stroke-width", 8)
     svg.append("text").attr({
                  id: "intext",  // Create an id for text so we can select it later for removing on mouseout
-                  x: "150",
+                  x: "100",
                   y: "20",
                 })
               .text(function() {
@@ -1030,7 +1030,7 @@ function updateData2(){
   }
   function handleMouseOut(d){
     d3.select(this)
-        .style("stroke-width", 3)
+        .style("stroke-width", 5)
     d3.select("#intext").remove();
     d3.select("#myimg").remove();
   }
@@ -1233,7 +1233,7 @@ function updateData3(){
         else{
         select = 4;
         }
-        console.log(select);console.log(x);console.log(y);
+        console.log(select);
         // spawn links between cities as source/target coord pairs
         places.features.forEach(function(a) {
           if(select==1){
@@ -1379,16 +1379,16 @@ function updateData3(){
     .attr("xlink:href", d.src)
     .attr("width", 300)
     .attr("height", 300)
-    .attr("x", 730)
-    .attr("y",70);
+    .attr("x", 700)
+    .attr("y",80);
   }
 
   function handleMouseOver(d){
     d3.select(this)
-        .style("stroke-width", 6)
+        .style("stroke-width", 8)
     svg.append("text").attr({
                  id: "intext",  // Create an id for text so we can select it later for removing on mouseout
-                  x: "150",
+                  x: "100",
                   y: "20",
                 })
               .text(function() {
@@ -1398,7 +1398,7 @@ function updateData3(){
   }
   function handleMouseOut(d){
     d3.select(this)
-        .style("stroke-width", 3)
+        .style("stroke-width", 5)
     d3.select("#intext").remove();
     d3.select("#myimg").remove();
   }
@@ -1601,7 +1601,7 @@ function updateData4(){
         else{
         select = 4;
         }
-        console.log(select);console.log(x);console.log(y);
+        console.log(select);
         // spawn links between cities as source/target coord pairs
         places.features.forEach(function(a) {
           if(select==1){
@@ -1747,16 +1747,16 @@ function updateData4(){
     .attr("xlink:href", d.src)
     .attr("width", 300)
     .attr("height", 300)
-    .attr("x", 730)
-    .attr("y",70);
+    .attr("x", 700)
+    .attr("y",80);
   }
 
   function handleMouseOver(d){
     d3.select(this)
-        .style("stroke-width", 6)
+        .style("stroke-width", 8)
     svg.append("text").attr({
                  id: "intext",  // Create an id for text so we can select it later for removing on mouseout
-                  x: "150",
+                  x: "100",
                   y: "20",
                 })
               .text(function() {
@@ -1766,7 +1766,7 @@ function updateData4(){
   }
   function handleMouseOut(d){
     d3.select(this)
-        .style("stroke-width", 3)
+        .style("stroke-width", 5)
     d3.select("#intext").remove();
     d3.select("#myimg").remove();
   }
@@ -1969,7 +1969,7 @@ function updateData5(){
         else{
         select = 4;
         }
-        console.log(select);console.log(x);console.log(y);
+        console.log(select);
         // spawn links between cities as source/target coord pairs
         places.features.forEach(function(a) {
           if(select==1){
@@ -2115,16 +2115,16 @@ function updateData5(){
     .attr("xlink:href", d.src)
     .attr("width", 300)
     .attr("height", 300)
-    .attr("x", 730)
-    .attr("y",70);
+    .attr("x", 700)
+    .attr("y",80);
   }
 
   function handleMouseOver(d){
     d3.select(this)
-        .style("stroke-width", 6)
+        .style("stroke-width", 8)
     svg.append("text").attr({
                  id: "intext",  // Create an id for text so we can select it later for removing on mouseout
-                  x: "150",
+                  x: "100",
                   y: "20",
                 })
               .text(function() {
@@ -2134,7 +2134,7 @@ function updateData5(){
   }
   function handleMouseOut(d){
     d3.select(this)
-        .style("stroke-width", 3)
+        .style("stroke-width", 5)
     d3.select("#intext").remove();
     d3.select("#myimg").remove();
   }
@@ -2386,16 +2386,16 @@ function updateData6(){
     .attr("xlink:href", d.src)
     .attr("width", 300)
     .attr("height", 300)
-    .attr("x", 730)
-    .attr("y",70);
+    .attr("x", 700)
+    .attr("y",80);
   }
 
   function handleMouseOver(d){
     d3.select(this)
-        .style("stroke-width", 6)
+        .style("stroke-width", 8)
     svg.append("text").attr({
                  id: "intext",  // Create an id for text so we can select it later for removing on mouseout
-                  x: "150",
+                  x: "100",
                   y: "20",
                 })
               .text(function() {
@@ -2406,7 +2406,7 @@ function updateData6(){
   function handleMouseOut(d){
     ////console.log("Bye");
     d3.select(this)
-        .style("stroke-width", 3)
+        .style("stroke-width", 5)
     d3.select("#intext").remove();
     d3.select("#myimg").remove();
   }
@@ -2658,16 +2658,16 @@ function updateData7(){
     .attr("xlink:href", d.src)
     .attr("width", 300)
     .attr("height", 300)
-    .attr("x", 730)
-    .attr("y",70);
+    .attr("x", 700)
+    .attr("y",80);
   }
 
   function handleMouseOver(d){
     d3.select(this)
-        .style("stroke-width", 6)
+        .style("stroke-width", 8)
     svg.append("text").attr({
                  id: "intext",  // Create an id for text so we can select it later for removing on mouseout
-                  x: "150",
+                  x: "100",
                   y: "20",
                 })
               .text(function() {
@@ -2680,7 +2680,7 @@ function updateData7(){
   function handleMouseOut(d){
     //console.log("Bye");
     d3.select(this)
-        .style("stroke-width", 3)
+        .style("stroke-width", 5)
     d3.select("#intext").remove();
     d3.select("#myimg").remove();
     document.getElementById('textspace').innerHTML = "";
@@ -2885,6 +2885,8 @@ else{
   select = 4;
 }
 
+
+
         // spawn links between cities as source/target coord pairs
         places.features.forEach(function(a) {
           if(select==1){
@@ -3031,16 +3033,16 @@ else{
     .attr("xlink:href", d.src)
     .attr("width", 300)
     .attr("height", 300)
-    .attr("x", 730)
-    .attr("y",70);
+    .attr("x", 700)
+    .attr("y",80);
   }
 
   function handleMouseOver(d){
     d3.select(this)
-        .style("stroke-width", 6)
+        .style("stroke-width", 8)
     svg.append("text").attr({
                  id: "intext",  // Create an id for text so we can select it later for removing on mouseout
-                  x: "150",
+                  x: "100",
                   y: "20",
                 })
               .text(function() {
@@ -3051,7 +3053,7 @@ else{
   function handleMouseOut(d){
     //console.log("Bye");
     d3.select(this)
-        .style("stroke-width", 3)
+        .style("stroke-width", 5)
     d3.select("#intext").remove();
     d3.select("#myimg").remove();
   }
@@ -3254,7 +3256,7 @@ function updateData9(){
         else{
         select = 4;
         }
-        console.log(select);console.log(x);console.log(y);
+        console.log(select);
         // spawn links between cities as source/target coord pairs
         places.features.forEach(function(a) {
           if(select==1){
@@ -3409,7 +3411,7 @@ function updateData9(){
    //     .style("stroke-width", 10)
    // svg.append("text").attr({
    //              id: "itext",  // Create an id for text so we can select it later for removing on mouseout
-   //               x: "150",
+   //               x: "100",
    //               y: "20",
    //             })
    //           .text("HI");
@@ -3434,16 +3436,16 @@ function updateData9(){
     .attr("xlink:href", d.src)
     .attr("width", 300)
     .attr("height", 300)
-    .attr("x", 730)
-    .attr("y",70);
+    .attr("x", 700)
+    .attr("y",80);
   }
 
   function handleMouseOver(d){
     d3.select(this)
-        .style("stroke-width", 6)
+        .style("stroke-width", 8)
     svg.append("text").attr({
                  id: "intext",  // Create an id for text so we can select it later for removing on mouseout
-                  x: "150",
+                  x: "100",
                   y: "20",
                 })
               .text(function() {
@@ -3455,7 +3457,7 @@ function updateData9(){
   }
   function handleMouseOut(d){
     d3.select(this)
-        .style("stroke-width", 3)
+        .style("stroke-width", 5)
     d3.select("#intext").remove();
     d3.select("#myimg").remove();
       document.getElementById('textspace').innerHTML = "";
