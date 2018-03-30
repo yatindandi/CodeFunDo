@@ -40,12 +40,12 @@
 <![endif]-->
 
  <!-- Embedd the other SVG -->
-  <script src="jquery.js"></script> 
-    <script> 
+  <script src="jquery.js"></script>
+    <script>
     $(function(){
-      $("#forcedDirectedImages").load("test.html"); 
+      $("#forcedDirectedImages").load("test.html");
     });
-  </script> 
+  </script>
 
 
   <script>
@@ -68,8 +68,8 @@
 <body class="dashboard-page sb-l-o sb-r-c onload-check" style="min-height: 724px;"><!-- <div class="theme-switcher"><div class="theme-switcher__header"><div class="theme-switcher__icon"></div><div class="theme-switcher__title">Theme switcher</div></div><div class="theme-switcher__item"><a href="https://livedemo00.template-help.com/wt_58393/theme-1/site">Theme 1<img src="theme_files/1_002.jpg"></a></div><div class="theme-switcher__item"><a href="https://livedemo00.template-help.com/wt_58393/theme-2/site">Theme 2<img src="theme_files/2.jpg"></a></div><div class="theme-switcher__item"><a href="https://livedemo00.template-help.com/wt_58393/theme-3/site">Theme 3<img src="theme_files/3.jpg"></a></div><div class="theme-switcher__item"><a href="https://livedemo00.template-help.com/wt_58393/theme-4/site">Theme 4<img src="theme_files/4.jpg"></a></div><div class="theme-switcher__item"><a href="https://livedemo00.template-help.com/wt_58393/theme-5/site">Theme 5<img src="theme_files/5.jpg"></a></div></div> -->
 
 <!--
-  <body> Helper Classes: 
- 
+  <body> Helper Classes:
+
   '.sb-l-o' - Sets Left Sidebar to "open"
   '.sb-l-m' - Sets Left Sidebar to "minified"
   '.sb-l-c' - Sets Left Sidebar to "closed"
@@ -96,7 +96,7 @@ $(document).ready(function(){
                                 $('.ticker').empty();
             $('.ticker').append( scrll.join('') );
      });
-        });  
+        });
     });
 </script>
 
@@ -191,17 +191,17 @@ $(document).ready(function(){
   <div id="main">
 
     <!--
-       ".navbar" Helper Classes: 
-       * Positioning Classes: 
+       ".navbar" Helper Classes:
+       * Positioning Classes:
         '.navbar-static-top' - Static top positioned navbar
         '.navbar-static-top' - Fixed top positioned navbar
 
        * Available Skin Classes:
-         .bg-dark    .bg-primary   .bg-success   
+         .bg-dark    .bg-primary   .bg-success
          .bg-info    .bg-warning   .bg-danger
-         .bg-alert   .bg-system 
+         .bg-alert   .bg-system
       Example: <header class="navbar navbar-fixed-top bg-primary">
-      Results: Fixed top navbar with blue background 
+      Results: Fixed top navbar with blue background
 -->
 
     <!-- Start: Header -->
@@ -615,15 +615,15 @@ $(document).ready(function(){
       </ul>
     </header>
     <!-- End: Header -->
-    <!-- "#sidebar_left" Helper Classes: 
+    <!-- "#sidebar_left" Helper Classes:
 
-       * Positioning Classes: 
-        '.affix' - Sets Sidebar Left to the fixed position 
+       * Positioning Classes:
+        '.affix' - Sets Sidebar Left to the fixed position
 
        * Available Skin Classes:
          .sidebar-dark (default no class needed)
-         .sidebar-light  
-         .sidebar-light.light   
+         .sidebar-light
+         .sidebar-light.light
 
        Example: <aside id="sidebar_left" class="affix sidebar-light">
        Results: Fixed Left Sidebar with light/white background
@@ -765,12 +765,76 @@ $(document).ready(function(){
           <div class="ib topbar-dropdown">
             <label for="topbar-multiple" class="control-label fs16">Filter:</label>
             <select id="topbar-multiple" class="hidden" style="display: none;">
-              <optgroup label="Filter By:" value="">
-                <option value="1-1">Last 30 Days</option>
+              <optgroup label="countries:">
+                <option value="1-1">India</option>
                 <option value="1-2" selected="selected">All Countries</option>
-                <option value="1-3">Last Year</option>
+                <option value="1-3">United States</option>
+                <option value="1-4">United States</option>
+                <option value="1-3">United States</option>
+                <option value="1-3">United States</option>
+                <option value="1-3">United States</option>
+
               </optgroup>
-            </select><div class="btn-group"><button type="button" class="multiselect dropdown-toggle btn btn-default btn-sm ph15" data-toggle="dropdown" title="Last 60 Days">Last 60 Days <b class="caret"></b></button><ul class="multiselect-container dropdown-menu pull-right"><li class="multiselect-item multiselect-group"><label>Filter By:</label></li><li><a href="javascript:void(0);"><label class="radio"><input value="1-1" type="radio"> Last 30 Days</label></a></li><li class="active"><a href="javascript:void(0);"><label class="radio"><input value="1-2" checked="checked" type="radio"> Last 60 Days</label></a></li><li><a href="javascript:void(0);"><label class="radio"><input value="1-3" type="radio"> Last Year</label></a></li></ul></div>
+            </select>
+            <div class="btn-group">
+              <button type="button" class="multiselect dropdown-toggle btn btn-default btn-sm ph15" data-toggle="dropdown" title="Last 60 Days">
+                All Categories
+                <b class="caret"></b>
+              </button>
+              <ul class="multiselect-container dropdown-menu pull-right">
+                <li class="multiselect-item multiselect-group">
+                  <label>Categories:</label>
+                </li>
+                <li>
+                  <a href="javascript:void(0);">
+                    <label class="radio">
+                      <input value="1-1" type="radio">
+                      Military
+                    </label>
+                  </a>
+                </li>
+                <li>
+                  <a href="javascript:void(0);">
+                    <label class="radio">
+                      <input value="1-1" type="radio">
+                      Last 30 Days
+                    </label>
+                  </a>
+                </li>
+                <li>
+                  <a href="javascript:void(0);">
+                    <label class="radio">
+                      <input value="1-1" type="radio">
+                      Last 30 Days
+                    </label>
+                  </a>
+                </li>
+                <li>
+                  <a href="javascript:void(0);">
+                    <label class="radio">
+                      <input value="1-1" type="radio">
+                      Last 30 Days
+                    </label>
+                  </a>
+                </li>
+                <li class="active">
+                  <a href="javascript:void(0);">
+                    <label class="radio">
+                      <input value="1-2" checked="checked" type="radio">
+                      Last 60 Days
+                    </label>
+                  </a>
+                </li>
+                <li>
+                  <a href="javascript:void(0);">
+                    <label class="radio">
+                      <input value="1-3" type="radio">
+                      Last Year
+                    </label>
+                  </a>
+                </li>
+              </ul>
+            </div>
           </div>
           <div class="ml30 ib va-m" id="toggle_sidemenu_r">
             <a href="#" class="pl5">
@@ -783,7 +847,7 @@ $(document).ready(function(){
       <section id="content" class="table-layout">
 
         <!-- begin: .tray-center -->
-        <div class="tray tray-center" style="height: 611px;">      
+        <div class="tray tray-center" style="height: 611px;">
 
           <!-- dashboard tiles -->
 
@@ -872,18 +936,18 @@ $(document).ready(function(){
             <li id="8"><a onclick="updateData8()" href="#">Jan, 2018</a></li>
             <li id="9"><a onclick="updateData9()" href="#">Feb, 2018</a></li>
           </ul> -->
-              <h5 class="title-divider text-muted mb20"> June, 2017
+              <h5 class="title-divider mb20"> June, 2017
               </h5>
-              <h5 class="title-divider text-muted mb20"> July, 2017
+              <h5 class="title-divider mb20"> July, 2017
               </h5>
-              <h5 class="title-divider text-muted mb20"> August, 2017
-              </h5>    
-              <h5 class="title-divider text-muted mb20"> September, 2017
+              <h5 class="title-divider mb20"> August, 2017
               </h5>
-              <h5 class="title-divider text-muted mb20"> October, 2017
+              <h5 class="title-divider mb20"> September, 2017
               </h5>
-              <h5 class="title-divider text-muted mb20"> November, 2017
-              </h5>          
+              <h5 class="title-divider mb20"> October, 2017
+              </h5>
+              <h5 class="title-divider mb20"> November, 2017
+              </h5>
               <h5 class="title-divider text-muted mb20"> December, 2017
               </h5>
               <h5 class="title-divider text-muted mb20"> January, 2018
@@ -917,7 +981,7 @@ $(document).ready(function(){
 
   <!-- JvectorMap Plugin + US Map (more maps in plugin/assets folder) -->
   <script src="theme_files/jquery.js"></script>
-  <script src="theme_files/jquery-jvectormap-us-lcc-en.js"></script> 
+  <script src="theme_files/jquery-jvectormap-us-lcc-en.js"></script>
 
   <!-- Bootstrap Tabdrop Plugin -->
   <script src="theme_files/bootstrap-tabdrop.js"></script>
@@ -938,20 +1002,20 @@ $(document).ready(function(){
 
     "use strict";
 
-    // Init Demo JS  
+    // Init Demo JS
     Demo.init();
- 
 
-    // Init Theme Core    
+
+    // Init Theme Core
     Core.init();
 
 
     // Init Widget Demo JS
     // demoHighCharts.init();
 
-    // Because we are using Admin Panels we use the OnFinish 
+    // Because we are using Admin Panels we use the OnFinish
     // callback to activate the demoWidgets. It's smoother if
-    // we let the panels be moved and organized before 
+    // we let the panels be moved and organized before
     // filling them with content from various plugins
 
     // Init plugins used on this page
@@ -1003,7 +1067,7 @@ $(document).ready(function(){
             "hide": 200
           }
         });
-        // create a tooltip auto close timer  
+        // create a tooltip auto close timer
         $(element).on('show.bs.tooltip', function() {
           var autoClose = setTimeout(function() {
             $('.tooltip').fadeOut();
