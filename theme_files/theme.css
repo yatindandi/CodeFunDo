@@ -26741,6 +26741,7 @@ body.timeline-page .panel-clone {
 }
 .theme-switcher{
   position: fixed;
+  display: none;
   right: -205px;
   top: 260px;
   z-index: 100;
@@ -26854,6 +26855,23 @@ body.timeline-page .panel-clone {
   left: 260px;
   right: 0;
   padding: 20px;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  background-color: #444;
+}
+nav ul li {
+  padding: 20px;
+  color: #eee;
+  background-color: #333;
+  margin-bottom: 1px;
+  border-left: 10px solid transparent;
+}
+nav ul li:hover {
+  border-color: #e35205;
 }
 
 /*Marqee for breaking news*/

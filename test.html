@@ -32,7 +32,7 @@
       <h1>World Leaders</h1>
       <h2>Click to view their identity..</h2>
       <h3>..their designation..</h3>
-      <p>And their relative performance index!<p>
+      <p>And their relative performance index!</p>
 
       <ul id="Newslist" style="display: none">
        <li id="I"></li>
@@ -158,7 +158,10 @@ function update() {
 
               d3.select("h2").html(d.hero);
               d3.select("h3").html(d.name);
-              d3.select("p").html(d.score);
+              
+              var n = d.score.toFixed(2);
+
+              d3.select("p").html(n);
 
               if(d.news[0][1]>0){
                 d3.select("#I").html(d.news[0][0]);
