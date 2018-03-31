@@ -23,7 +23,14 @@
   <link rel="stylesheet" type="text/css" href="theme_files/admin-forms.css">
 
   <!-- Favicon -->
-  <link rel="shortcut icon" href="https://livedemo00.template-help.com/wt_58393/theme-2/site/assets/img/favicon.ico">
+<!--   <link rel="shortcut icon" href="https://livedemo00.template-help.com/wt_58393/theme-2/site/assets/img/favicon.ico"> -->
+
+<!-- Bootstrap wrapper -->
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
 
   <!-- Scripts -->
   <script src="js/test.js" charset="utf-8"></script>
@@ -83,7 +90,7 @@ $('.ticker').append( scrll.join('') );
 
 </head>
 
-<body class="dashboard-page sb-l-o sb-r-c onload-check" style="min-height: 724px;"><!-- <div class="theme-switcher"><div class="theme-switcher__header"><div class="theme-switcher__icon"></div><div class="theme-switcher__title">Theme switcher</div></div><div class="theme-switcher__item"><a href="https://livedemo00.template-help.com/wt_58393/theme-1/site">Theme 1<img src="theme_files/1_002.jpg"></a></div><div class="theme-switcher__item"><a href="https://livedemo00.template-help.com/wt_58393/theme-2/site">Theme 2<img src="theme_files/2.jpg"></a></div><div class="theme-switcher__item"><a href="https://livedemo00.template-help.com/wt_58393/theme-3/site">Theme 3<img src="theme_files/3.jpg"></a></div><div class="theme-switcher__item"><a href="https://livedemo00.template-help.com/wt_58393/theme-4/site">Theme 4<img src="theme_files/4.jpg"></a></div><div class="theme-switcher__item"><a href="https://livedemo00.template-help.com/wt_58393/theme-5/site">Theme 5<img src="theme_files/5.jpg"></a></div></div> -->
+<body class="dashboard-page sb-l-o sb-r-c onload-check" style="min-height: 724px;">
 
 <!--
   <body> Helper Classes:
@@ -237,7 +244,52 @@ $(document).ready(function(){
         });
     });
 
-    var month = 9;
+    $(document).ready(function(){
+        $('#10').click(function(){
+                    var scrll = [];
+            $.getJSON('data/breakingnews10.json', function(data) {
+                $.each(data.breakingnews, function(i, a) {
+                  scrll.push('<div class="ticker__item">' + a + '</div>')
+                  //console.log(items[0]);
+
+                });
+                                                $('.ticker').empty();
+                $('.ticker').append( scrll.join('') );
+         });
+            });
+        });
+
+        $(document).ready(function(){
+            $('#11').click(function(){
+                        var scrll = [];
+                $.getJSON('data/breakingnews11.json', function(data) {
+                    $.each(data.breakingnews, function(i, a) {
+                      scrll.push('<div class="ticker__item">' + a + '</div>')
+                      //console.log(items[0]);
+
+                    });
+                                                    $('.ticker').empty();
+                    $('.ticker').append( scrll.join('') );
+             });
+                });
+            });
+
+            $(document).ready(function(){
+                $('#12').click(function(){
+                            var scrll = [];
+                    $.getJSON('data/breakingnews12.json', function(data) {
+                        $.each(data.breakingnews, function(i, a) {
+                          scrll.push('<div class="ticker__item">' + a + '</div>')
+                          //console.log(items[0]);
+
+                        });
+                                                        $('.ticker').empty();
+                        $('.ticker').append( scrll.join('') );
+                 });
+                    });
+                });
+
+    var month = 10;
 
 
     function updateMonth1(){
@@ -275,7 +327,19 @@ $(document).ready(function(){
     function updateMonth9(){
       month = 9;
       document.getElementById("Monthname").innerHTML = "February, 2018";
-      console.log(month);
+      // console.log(month);
+    }
+    function updateMonth10(){
+      month = 10;
+      document.getElementById("Monthname").innerHTML = "January, 2018";
+    }
+    function updateMonth11(){
+      month = 11;
+      document.getElementById("Monthname").innerHTML = "January, 2018";
+    }
+    function updateMonth12(){
+      month = 12;
+      document.getElementById("Monthname").innerHTML = "January, 2018";
     }
 
     console.log(month);
@@ -307,6 +371,15 @@ $(document).ready(function(){
       else if(month==9){
         updateData9();
       }
+      else if(month==10){
+        updateData10();
+      }
+      else if(month==11){
+        updateData11();
+      }
+      else if(month==12){
+        updateData12();
+      }
     }
 
     function categoryChange(){
@@ -337,35 +410,44 @@ $(document).ready(function(){
       else if(month==9){
         updateData9();
       }
+      else if(month==10){
+        updateData10();
+      }
+      else if(month==11){
+        updateData11();
+      }
+      else if(month==12){
+        updateData12();
+      }
     }
 
 function USA(){
-  document.getElementById("topbar-multiple").value = "United States";
+  document.getElementById("countryselectid").value = "United States";
   countryChange();
 }
 
 function India(){
-  document.getElementById("topbar-multiple").value = "India";
+  document.getElementById("countryselectid").value = "India";
   countryChange()
 }
 
 function Russia(){
-  document.getElementById("topbar-multiple").value = "Russia";
+  document.getElementById("countryselectid").value = "Russia";
   countryChange()
 }
 
 function China(){
-  document.getElementById("topbar-multiple").value = "China";
+  document.getElementById("countryselectid").value = "China";
   countryChange()
 }
 
 function NorthKorea(){
-  document.getElementById("topbar-multiple").value = "North Korea";
+  document.getElementById("countryselectid").value = "North Korea";
   countryChange()
 }
 
 function Syria(){
-  document.getElementById("topbar-multiple").value = "Syria";
+  document.getElementById("countryselectid").value = "Syria";
   countryChange()
 }
 
@@ -517,6 +599,54 @@ $(document).ready(function(){
     });
 });
 
+$(document).ready(function(){
+    $('#10').click(function(){
+                var items = [];
+        $.getJSON('data/scores10.json', function(data) {
+            $.each(data.scores, function(i, a) {
+            //  items.push('<li>' + a + '</li>')
+            items.push('<li class="sidebar-title">' + a + '</li>')
+              //console.log(items[0]);
+
+            });
+                                $('#mylist').empty();
+            $('#mylist').append( items.join('') );
+        });
+    });
+});
+
+$(document).ready(function(){
+    $('#11').click(function(){
+                var items = [];
+        $.getJSON('data/scores11.json', function(data) {
+            $.each(data.scores, function(i, a) {
+            //  items.push('<li>' + a + '</li>')
+            items.push('<li class="sidebar-title">' + a + '</li>')
+              //console.log(items[0]);
+
+            });
+                                $('#mylist').empty();
+            $('#mylist').append( items.join('') );
+        });
+    });
+});
+
+$(document).ready(function(){
+    $('#12').click(function(){
+                var items = [];
+        $.getJSON('data/scores12.json', function(data) {
+            $.each(data.scores, function(i, a) {
+            //  items.push('<li>' + a + '</li>')
+            items.push('<li class="sidebar-title">' + a + '</li>')
+              //console.log(items[0]);
+
+            });
+                                $('#mylist').empty();
+            $('#mylist').append( items.join('') );
+        });
+    });
+});
+
 </script>
 
   <!-- Start: Theme Preview Pane -->
@@ -626,9 +756,10 @@ $(document).ready(function(){
     <!-- Start: Header -->
     <header class="navbar navbar-fixed-top navbar-shadow bg-danger">
       <div class="navbar-branding dark bg-danger">
-        <a class="navbar-brand" href="https://livedemo00.template-help.com/wt_58393/theme-2/site/dashboard.html">
+        <a class="navbar-brand" href="#">
           <b>Diplomacy</b>Index
         </a>
+        <span id="toggle_sidemenu_l" class="fa fa-align-justify"></span>
       </div>
       <ul class="nav navbar-nav navbar-left">
         <li class="hidden-xs">
@@ -669,370 +800,7 @@ $(document).ready(function(){
             </a>
           </div>
         </li>
-        <li class="dropdown menu-merge">
-          <div class="navbar-btn btn-group">
-            <button aria-expanded="true" data-toggle="dropdown" class="btn btn-sm dropdown-toggle">
-              Option2
-            </button>
-            <div class="dropdown-menu dropdown-persist w350 animated animated-shorter fadeIn" role="menu">
-              <div class="panel mbn">
-                <div class="panel-menu">
-                  <div class="btn-group btn-group-justified btn-group-nav" role="tablist">
-                    <a href="#nav-tab1" data-toggle="tab" class="btn btn-default btn-md active">Notifications</a>
-                    <a href="#nav-tab2" data-toggle="tab" class="btn btn-default btn-md br-l-n br-r-n">Messages</a>
-                    <a href="#nav-tab3" data-toggle="tab" class="btn btn-default btn-md">Activity</a>
-                  </div>
-                </div>
-                <div class="panel-body panel-scroller scroller-navbar pn scroller scroller-active">
-                  <div class="scroller-content">
-                    <div class="tab-content br-n pn">
-                      <div id="nav-tab1" class="tab-pane alerts-widget active" role="tabpanel">
-                        <div class="media">
-                          <a class="media-left" href="#"> <span class="glyphicon glyphicon-user"></span> </a>
-                          <div class="media-body">
-                            <h5 class="media-heading">New Registration
-                              <small class="text-muted"></small>
-                            </h5> Tyler Durden - 16 hours ago
 
-                          </div>
-                          <div class="media-right">
-                            <div class="media-response"> Approve?</div>
-                            <div class="btn-group">
-                              <button type="button" class="btn btn-default btn-xs dark">
-                                <i class="fa fa-check text-primary"></i>
-                              </button>
-                              <button type="button" class="btn btn-default btn-xs dark">
-                                <i class="fa fa-remove"></i>
-                              </button>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="media">
-                          <a class="media-left" href="#"> <span class="glyphicon glyphicon-shopping-cart"></span> </a>
-                          <div class="media-body">
-                            <h5 class="media-heading">New Order
-                              <small class="text-muted"></small>
-                            </h5> <a href="#">Apple Ipod</a> - 4 hours ago
-                          </div>
-                          <div class="media-right">
-                            <div class="media-response"> Confirm?</div>
-                            <div class="btn-group">
-                              <button type="button" class="btn btn-default btn-xs dark">
-                                <i class="fa fa-check text-primary"></i>
-                              </button>
-                              <button type="button" class="btn btn-default btn-xs dark">
-                                <i class="fa fa-print"></i>
-                              </button>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="media">
-                          <a class="media-left" href="#"> <span class="glyphicon glyphicon-comment"></span> </a>
-                          <div class="media-body">
-                            <h5 class="media-heading">New Comment
-                              <small class="text-muted"></small>
-                            </h5> Mike - I loved your article!
-                          </div>
-                          <div class="media-right">
-                            <div class="media-response text-right"> Moderate?</div>
-                            <div class="btn-group">
-                              <button type="button" class="btn btn-default btn-xs dark">
-                                <i class="fa fa-pencil"></i>
-                              </button>
-                              <button type="button" class="btn btn-default btn-xs dark">
-                                <i class="fa fa-check text-primary"></i>
-                              </button>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="media">
-                          <a class="media-left" href="#"> <span class="glyphicon glyphicon-star"></span> </a>
-                          <div class="media-body">
-                            <h5 class="media-heading">New Review
-                              <small class="text-muted"></small>
-                            </h5> Sammy Hilton - 4 hours ago
-                          </div>
-                          <div class="media-right">
-                            <div class="media-response"> Approve?</div>
-                            <div class="btn-group">
-                              <button type="button" class="btn btn-default btn-xs dark">
-                                <i class="fa fa-check text-primary"></i>
-                              </button>
-                              <button type="button" class="btn btn-default btn-xs dark">
-                                <i class="fa fa-remove"></i>
-                              </button>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="media">
-                          <a class="media-left" href="#"> <span class="glyphicon glyphicon-user"></span> </a>
-                          <div class="media-body">
-                            <h5 class="media-heading">New Registration
-                              <small class="text-muted"></small>
-                            </h5> Michael Sober - 7 hours ago
-                          </div>
-                          <div class="media-right">
-                            <div class="media-response"> Approve?</div>
-                            <div class="btn-group">
-                              <button type="button" class="btn btn-default btn-xs dark">
-                                <i class="fa fa-check text-primary"></i>
-                              </button>
-                              <button type="button" class="btn btn-default btn-xs dark">
-                                <i class="fa fa-remove"></i>
-                              </button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div id="nav-tab2" class="tab-pane chat-widget" role="tabpanel">
-                        <div class="media">
-                          <div class="media-left">
-                            <a href="#">
-                              <img class="media-object" alt="64x64" src="theme_files/3_002.jpg">
-                            </a>
-                          </div>
-                          <div class="media-body">
-                            <span class="media-status online"></span>
-                            <h5 class="media-heading">Courtney Faught
-                              <small> - 12:30am</small>
-                            </h5> Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin.
-                          </div>
-                        </div>
-                        <div class="media">
-                          <div class="media-body">
-                            <span class="media-status offline"></span>
-                            <h5 class="media-heading">Joe Gibbons
-                              <small> - 12:30am</small>
-                            </h5> Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque.
-                          </div>
-                          <div class="media-right">
-                            <a href="#">
-                              <img class="media-object" alt="64x64" src="theme_files/1.jpg">
-                            </a>
-                          </div>
-                        </div>
-                      </div>
-                      <div id="nav-tab3" class="tab-pane scroller-nm" role="tabpanel">
-                        <ul class="media-list" role="menu">
-                          <li class="media">
-                            <a class="media-left" href="#"> <img src="theme_files/5_002.jpg" class="mw40" alt="avatar"> </a>
-                            <div class="media-body">
-                              <h5 class="media-heading">Article
-                                <small class="text-muted">- 08/16/22</small>
-                              </h5> Last Updated 36 days ago by
-                              <a class="text-system" href="#"> Max </a>
-                            </div>
-                          </li>
-                          <li class="media">
-                            <a class="media-left" href="#"> <img src="theme_files/2_002.jpg" class="mw40" alt="avatar"> </a>
-                            <div class="media-body">
-                              <h5 class="media-heading mv5">Article
-                                <small> - 08/16/22</small>
-                              </h5>
-                              Last Updated 36 days ago by
-                              <a class="text-system" href="#"> Max </a>
-                            </div>
-                          </li>
-                          <li class="media">
-                            <a class="media-left" href="#"> <img src="theme_files/3_002.jpg" class="mw40" alt="avatar"> </a>
-                            <div class="media-body">
-                              <h5 class="media-heading">Article
-                                <small class="text-muted">- 08/16/22</small>
-                              </h5> Last Updated 36 days ago by
-                              <a class="text-system" href="#"> Max </a>
-                            </div>
-                          </li>
-                          <li class="media">
-                            <a class="media-left" href="#"> <img src="theme_files/4_002.jpg" class="mw40" alt="avatar"> </a>
-                            <div class="media-body">
-                              <h5 class="media-heading mv5">Article
-                                <small class="text-muted">- 08/16/22</small>
-                              </h5> Last Updated 36 days ago by
-                              <a class="text-system" href="#"> Max </a>
-                            </div>
-                          </li>
-                          <li class="media">
-                            <a class="media-left" href="#"> <img src="theme_files/5_002.jpg" class="mw40" alt="avatar"> </a>
-                            <div class="media-body">
-                              <h5 class="media-heading">Article
-                                <small class="text-muted">- 08/16/22</small>
-                              </h5> Last Updated 36 days ago by
-                              <a class="text-system" href="#"> Max </a>
-                            </div>
-                          </li>
-                          <li class="media">
-                            <a class="media-left" href="#"> <img src="theme_files/2_002.jpg" class="mw40" alt="avatar"> </a>
-                            <div class="media-body">
-                              <h5 class="media-heading mv5">Article
-                                <small> - 08/16/22</small>
-                              </h5>
-                              Last Updated 36 days ago by
-                              <a class="text-system" href="#"> Max </a>
-                            </div>
-                          </li>
-                          <li class="media">
-                            <a class="media-left" href="#"> <img src="theme_files/3_002.jpg" class="mw40" alt="avatar"> </a>
-                            <div class="media-body">
-                              <h5 class="media-heading">Article
-                                <small class="text-muted">- 08/16/22</small>
-                              </h5> Last Updated 36 days ago by
-                              <a class="text-system" href="#"> Max </a>
-                            </div>
-                          </li>
-                        </ul>
-                        <table class="table table-striped hidden">
-                          <thead>
-                          <tr>
-                            <th>First Name</th>
-                            <th>Last Name</th>
-                            <th>Username</th>
-                          </tr>
-                          </thead>
-                          <tbody>
-                          <tr>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                          </tr>
-                          <tr>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                          </tr>
-                          <tr>
-                            <td>Larry</td>
-                            <td>the Bird</td>
-                            <td>@twitter</td>
-                          </tr>
-                          <tr>
-                            <td>Sussy</td>
-                            <td>Watcher</td>
-                            <td>@thehawk</td>
-                          </tr>
-                          <tr>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                          </tr>
-                          <tr>
-                            <td>Sussy</td>
-                            <td>Watcher</td>
-                            <td>@thehawk</td>
-                          </tr>
-                          <tr>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                          </tr>
-                          <tr>
-                            <td>Larry</td>
-                            <td>the Bird</td>
-                            <td>@twitter</td>
-                          </tr>
-                          <tr>
-                            <td>Sussy</td>
-                            <td>Watcher</td>
-                            <td>@thehawk</td>
-                          </tr>
-                          <tr>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                          </tr>
-                          <tr>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                          </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                    </div>
-                  </div></div>
-                <div class="panel-footer text-center p9">
-                  <a href="#" class=""> View All </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li class="dropdown menu-merge">
-          <div class="navbar-btn btn-group">
-            <button data-toggle="dropdown" class="btn btn-sm dropdown-toggle">
-              Option3
-            </button>
-            <ul class="dropdown-menu pv5 animated animated-short white-drop flipInX" role="menu">
-              <li>
-                <a href="javascript:void(0);">
-                  <span class="flag-xs flag-in mr10"></span> Hindu </a>
-              </li>
-              <li>
-                <a href="javascript:void(0);">
-                  <span class="flag-xs flag-tr mr10"></span> Turkish </a>
-              </li>
-              <li>
-                <a href="javascript:void(0);">
-                  <span class="flag-xs flag-es mr10"></span> Spanish </a>
-              </li>
-            </ul>
-          </div>
-        </li>
-        <li class="menu-divider hidden-xs">
-        </li>
-        <li class="dropdown menu-merge">
-          <a href="#" class="dropdown-toggle fw700 p15" data-toggle="dropdown">
-            <img src="theme_files/1.jpg" alt="avatar" class="mw30 br64">
-            <span class="hidden-xs pl15 pr5"> Famous Person </span>
-            <span class="fa fa-angle-down hidden-xs"></span>
-          </a>
-          <ul class="dropdown-menu list-group dropdown-persist w250" role="menu">
-            <li class="dropdown-header clearfix">
-              <div class="pull-left ml10">
-                <select id="user-status" style="display: none;">
-                  <optgroup label="Current Status:">
-                    <option value="1-1">Away</option>
-                    <option value="1-2">Offline</option>
-                    <option value="1-3" selected="selected">Online</option>
-                  </optgroup>
-                </select><div class="btn-group" style="width: 100px;"><button type="button" class="multiselect dropdown-toggle btn btn-default btn-sm" data-toggle="dropdown" style="width: 100px;" title="Online">Online <b class="caret"></b></button><ul class="multiselect-container dropdown-menu"><li class="multiselect-item multiselect-group"><label>Current Status:</label></li><li><a href="javascript:void(0);"><label class="radio"><input value="1-1" type="radio"> Away</label></a></li><li><a href="javascript:void(0);"><label class="radio"><input value="1-2" type="radio"> Offline</label></a></li><li class="active"><a href="javascript:void(0);"><label class="radio"><input value="1-3" checked="checked" type="radio"> Online</label></a></li></ul></div>
-              </div>
-
-              <div class="pull-right mr10">
-                <select id="user-role" style="display: none;">
-                  <optgroup label="Logged in As:">
-                    <option value="1-1">Client</option>
-                    <option value="1-2">Editor</option>
-                    <option value="1-3" selected="selected">Admin</option>
-                  </optgroup>
-                </select><div class="btn-group" style="width: 100px;"><button type="button" class="multiselect dropdown-toggle btn btn-default btn-sm" data-toggle="dropdown" style="width: 100px;" title="Admin">Admin <b class="caret"></b></button><ul class="multiselect-container dropdown-menu pull-right"><li class="multiselect-item multiselect-group"><label>Logged in As:</label></li><li><a href="javascript:void(0);"><label class="radio"><input value="1-1" type="radio"> Client</label></a></li><li><a href="javascript:void(0);"><label class="radio"><input value="1-2" type="radio"> Editor</label></a></li><li class="active"><a href="javascript:void(0);"><label class="radio"><input value="1-3" checked="checked" type="radio"> Admin</label></a></li></ul></div>
-              </div>
-            </li>
-            <li class="list-group-item">
-              <a href="#" class="animated animated-short fadeInUp">
-                <span class="fa fa-envelope"></span> Messages
-                <span class="label label-primary">2</span>
-              </a>
-            </li>
-            <li class="list-group-item">
-              <a href="#" class="animated animated-short fadeInUp">
-                <span class="fa fa-user"></span> Friends
-                <span class="label label-primary">6</span>
-              </a>
-            </li>
-            <li class="list-group-item">
-              <a href="#" class="animated animated-short fadeInUp">
-                <span class="fa fa-bell"></span> Notifications </a>
-            </li>
-            <li class="list-group-item">
-              <a href="#" class="animated animated-short fadeInUp">
-                <span class="fa fa-gear"></span> Settings </a>
-            </li>
-            <li class="dropdown-footer">
-              <a href="#" class="">
-                Logout </a>
-            </li>
-          </ul>
-        </li>
       </ul>
     </header>
     <!-- End: Header -->
@@ -1109,6 +877,7 @@ $(document).ready(function(){
         <!-- End: Sidebar Header -->
 
         <!-- Start: Sidebar Menu -->
+        <nav>
        <ul class="nav sidebar-menu" id="mylist">
 <!--           <li>
             <a href="https://livedemo00.template-help.com/wt_58393/theme-2/site/pages_calendar.html">
@@ -1117,6 +886,7 @@ $(document).ready(function(){
             </a>
           </li> -->
        </ul>
+     </nav>
 
         <!-- End: Sidebar Menu -->
       </div>
@@ -1185,254 +955,170 @@ $(document).ready(function(){
         <div class="topbar-right">
           <div class="ib topbar-dropdown">
             <label for="topbar-multiple" class="control-label fs16">Filter by country or category:</label>
-            <select id="topbar-multiple" class="hidden" value="All" style="display: none;" onchange="countryChange()">
-              <optgroup label="countries:">
+            <select class="multiselect dropdown-toggle btn btn-default btn-sm ph15" id="countryselectid" value="All" onchange="countryChange()" style="max-height: 300px;">
                 <option value="All">All Countries</option>
-
-  <option value="Afghanistan">Afghanistan</option>
-  <option value="Albania">Albania</option>
-  <option value="Algeria">Algeria</option>
-  <option value="American Samoa">American Samoa</option>
-  <option value="Andorra">Andorra</option>
-  <option value="Angola">Angola</option>
-  <option value="Anguilla">Anguilla</option>
-  <option value="Antartica">Antarctica</option>
-  <option value="Antigua and Barbuda">Antigua and Barbuda</option>
-  <option value="Argentina">Argentina</option>
-  <option value="Armenia">Armenia</option>
-  <option value="Aruba">Aruba</option>
-  <option value="Australia">Australia</option>
-  <option value="Austria">Austria</option>
-  <option value="Azerbaijan">Azerbaijan</option>
-  <option value="Bahamas">Bahamas</option>
-  <option value="Bahrain">Bahrain</option>
-  <option value="Bangladesh">Bangladesh</option>
-  <option value="Barbados">Barbados</option>
-  <option value="Belarus">Belarus</option>
-  <option value="Belgium">Belgium</option>
-  <option value="Belize">Belize</option>
-  <option value="Benin">Benin</option>
-  <option value="Bermuda">Bermuda</option>
-  <option value="Bhutan">Bhutan</option>
-  <option value="Bolivia">Bolivia</option>
-  <option value="Bosnia and Herzegowina">Bosnia and Herzegowina</option>
-  <option value="Botswana">Botswana</option>
-  <option value="Bouvet Island">Bouvet Island</option>
-  <option value="Brazil">Brazil</option>
-  <option value="British Indian Ocean Territory">British Indian Ocean Territory</option>
-  <option value="Brunei Darussalam">Brunei Darussalam</option>
-  <option value="Bulgaria">Bulgaria</option>
-  <option value="Burkina Faso">Burkina Faso</option>
-  <option value="Burundi">Burundi</option>
-  <option value="Cambodia">Cambodia</option>
-  <option value="Cameroon">Cameroon</option>
-  <option value="Canada">Canada</option>
-  <option value="Cape Verde">Cape Verde</option>
-  <option value="Cayman Islands">Cayman Islands</option>
-  <option value="Central African Republic">Central African Republic</option>
-  <option value="Chad">Chad</option>
-  <option value="Chile">Chile</option>
-  <option value="China">China</option>
-  <option value="Christmas Island">Christmas Island</option>
-  <option value="Cocos Islands">Cocos (Keeling) Islands</option>
-  <option value="Colombia">Colombia</option>
-  <option value="Comoros">Comoros</option>
-  <option value="Congo">Congo</option>
-  <option value="Congo">Congo, the Democratic Republic of the</option>
-  <option value="Cook Islands">Cook Islands</option>
-  <option value="Costa Rica">Costa Rica</option>
-  <option value="Cota D'Ivoire">Cote d'Ivoire</option>
-  <option value="Croatia">Croatia (Hrvatska)</option>
-  <option value="Cuba">Cuba</option>
-  <option value="Cyprus">Cyprus</option>
-  <option value="Czech Republic">Czech Republic</option>
-  <option value="Denmark">Denmark</option>
-  <option value="Djibouti">Djibouti</option>
-  <option value="Dominica">Dominica</option>
-  <option value="Dominican Republic">Dominican Republic</option>
-  <option value="East Timor">East Timor</option>
-  <option value="Ecuador">Ecuador</option>
-  <option value="Egypt">Egypt</option>
-  <option value="El Salvador">El Salvador</option>
-  <option value="Equatorial Guinea">Equatorial Guinea</option>
-  <option value="Eritrea">Eritrea</option>
-  <option value="Estonia">Estonia</option>
-  <option value="Ethiopia">Ethiopia</option>
-  <option value="Falkland Islands">Falkland Islands (Malvinas)</option>
-  <option value="Faroe Islands">Faroe Islands</option>
-  <option value="Fiji">Fiji</option>
-  <option value="Finland">Finland</option>
-  <option value="France">France</option>
-  <option value="France Metropolitan">France, Metropolitan</option>
-  <option value="French Guiana">French Guiana</option>
-  <option value="French Polynesia">French Polynesia</option>
-  <option value="French Southern Territories">French Southern Territories</option>
-  <option value="Gabon">Gabon</option>
-  <option value="Gambia">Gambia</option>
-  <option value="Georgia">Georgia</option>
-  <option value="Germany">Germany</option>
-  <option value="Ghana">Ghana</option>
-  <option value="Gibraltar">Gibraltar</option>
-  <option value="Greece">Greece</option>
-  <option value="Greenland">Greenland</option>
-  <option value="Grenada">Grenada</option>
-  <option value="Guadeloupe">Guadeloupe</option>
-  <option value="Guam">Guam</option>
-  <option value="Guatemala">Guatemala</option>
-  <option value="Guinea">Guinea</option>
-  <option value="Guinea-Bissau">Guinea-Bissau</option>
-  <option value="Guyana">Guyana</option>
-  <option value="Haiti">Haiti</option>
-  <option value="Heard and McDonald Islands">Heard and Mc Donald Islands</option>
-  <option value="Holy See">Holy See (Vatican City State)</option>
-  <option value="Honduras">Honduras</option>
-  <option value="Hong Kong">Hong Kong</option>
-  <option value="Hungary">Hungary</option>
-  <option value="Iceland">Iceland</option>
-  <option value="India">India</option>
-  <option value="Indonesia">Indonesia</option>
-  <option value="Iran">Iran</option>
-  <option value="Iraq">Iraq</option>
-  <option value="Ireland">Ireland</option>
-  <option value="Israel">Israel</option>
-  <option value="Italy">Italy</option>
-  <option value="Jamaica">Jamaica</option>
-  <option value="Japan">Japan</option>
-  <option value="Jordan">Jordan</option>
-  <option value="Kazakhstan">Kazakhstan</option>
-  <option value="Kenya">Kenya</option>
-  <option value="Kiribati">Kiribati</option>
-  <option value="Democratic People's Republic of Korea">North Korea</option>
-  <option value="Korea">South Korea</option>
-  <option value="Kuwait">Kuwait</option>
-  <option value="Kyrgyzstan">Kyrgyzstan</option>
-  <option value="Lao">Lao People's Democratic Republic</option>
-  <option value="Latvia">Latvia</option>
-  <option value="Lebanon">Lebanon</option>
-  <option value="Lesotho">Lesotho</option>
-  <option value="Liberia">Liberia</option>
-  <option value="Libyan Arab Jamahiriya">Libyan Arab Jamahiriya</option>
-  <option value="Liechtenstein">Liechtenstein</option>
-  <option value="Lithuania">Lithuania</option>
-  <option value="Luxembourg">Luxembourg</option>
-  <option value="Macau">Macau</option>
-  <option value="Macedonia">Macedonia, The Former Yugoslav Republic of</option>
-  <option value="Madagascar">Madagascar</option>
-  <option value="Malawi">Malawi</option>
-  <option value="Malaysia">Malaysia</option>
-  <option value="Maldives">Maldives</option>
-  <option value="Mali">Mali</option>
-  <option value="Malta">Malta</option>
-  <option value="Marshall Islands">Marshall Islands</option>
-  <option value="Martinique">Martinique</option>
-  <option value="Mauritania">Mauritania</option>
-  <option value="Mauritius">Mauritius</option>
-  <option value="Mayotte">Mayotte</option>
-  <option value="Mexico">Mexico</option>
-  <option value="Micronesia">Micronesia, Federated States of</option>
-  <option value="Moldova">Moldova, Republic of</option>
-  <option value="Monaco">Monaco</option>
-  <option value="Mongolia">Mongolia</option>
-  <option value="Montserrat">Montserrat</option>
-  <option value="Morocco">Morocco</option>
-  <option value="Mozambique">Mozambique</option>
-  <option value="Myanmar">Myanmar</option>
-  <option value="Namibia">Namibia</option>
-  <option value="Nauru">Nauru</option>
-  <option value="Nepal">Nepal</option>
-  <option value="Netherlands">Netherlands</option>
-  <option value="Netherlands Antilles">Netherlands Antilles</option>
-  <option value="New Caledonia">New Caledonia</option>
-  <option value="New Zealand">New Zealand</option>
-  <option value="Nicaragua">Nicaragua</option>
-  <option value="Niger">Niger</option>
-  <option value="Nigeria">Nigeria</option>
-  <option value="Niue">Niue</option>
-  <option value="Norfolk Island">Norfolk Island</option>
-  <option value="Northern Mariana Islands">Northern Mariana Islands</option>
-  <option value="Norway">Norway</option>
-  <option value="Oman">Oman</option>
-  <option value="Pakistan">Pakistan</option>
-  <option value="Palau">Palau</option>
-  <option value="Panama">Panama</option>
-  <option value="Papua New Guinea">Papua New Guinea</option>
-  <option value="Paraguay">Paraguay</option>
-  <option value="Peru">Peru</option>
-  <option value="Philippines">Philippines</option>
-  <option value="Pitcairn">Pitcairn</option>
-  <option value="Poland">Poland</option>
-  <option value="Portugal">Portugal</option>
-  <option value="Puerto Rico">Puerto Rico</option>
-  <option value="Qatar">Qatar</option>
-  <option value="Reunion">Reunion</option>
-  <option value="Romania">Romania</option>
-  <option value="Russia">Russian Federation</option>
-  <option value="Rwanda">Rwanda</option>
-  <option value="Saint Kitts and Nevis">Saint Kitts and Nevis</option>
-  <option value="Saint LUCIA">Saint LUCIA</option>
-  <option value="Saint Vincent">Saint Vincent and the Grenadines</option>
-  <option value="Samoa">Samoa</option>
-  <option value="San Marino">San Marino</option>
-  <option value="Sao Tome and Principe">Sao Tome and Principe</option>
-  <option value="Saudi Arabia">Saudi Arabia</option>
-  <option value="Senegal">Senegal</option>
-  <option value="Seychelles">Seychelles</option>
-  <option value="Sierra">Sierra Leone</option>
-  <option value="Singapore">Singapore</option>
-  <option value="Slovakia">Slovakia (Slovak Republic)</option>
-  <option value="Slovenia">Slovenia</option>
-  <option value="Solomon Islands">Solomon Islands</option>
-  <option value="Somalia">Somalia</option>
-  <option value="South Africa">South Africa</option>
-  <option value="South Georgia">South Georgia and the South Sandwich Islands</option>
-  <option value="Span">Spain</option>
-  <option value="SriLanka">Sri Lanka</option>
-  <option value="St. Helena">St. Helena</option>
-  <option value="St. Pierre and Miguelon">St. Pierre and Miquelon</option>
-  <option value="Sudan">Sudan</option>
-  <option value="Suriname">Suriname</option>
-  <option value="Svalbard">Svalbard and Jan Mayen Islands</option>
-  <option value="Swaziland">Swaziland</option>
-  <option value="Sweden">Sweden</option>
-  <option value="Switzerland">Switzerland</option>
-  <option value="Syria">Syrian Arab Republic</option>
-  <option value="Taiwan">Taiwan, Province of China</option>
-  <option value="Tajikistan">Tajikistan</option>
-  <option value="Tanzania">Tanzania, United Republic of</option>
-  <option value="Thailand">Thailand</option>
-  <option value="Togo">Togo</option>
-  <option value="Tokelau">Tokelau</option>
-  <option value="Tonga">Tonga</option>
-  <option value="Trinidad and Tobago">Trinidad and Tobago</option>
-  <option value="Tunisia">Tunisia</option>
-  <option value="Turkey">Turkey</option>
-  <option value="Turkmenistan">Turkmenistan</option>
-  <option value="Turks and Caicos">Turks and Caicos Islands</option>
-  <option value="Tuvalu">Tuvalu</option>
-  <option value="Uganda">Uganda</option>
-  <option value="Ukraine">Ukraine</option>
-  <option value="United Arab Emirates">United Arab Emirates</option>
-  <option value="United Kingdom">United Kingdom</option>
-  <option value="United States">United States</option>
-  <option value="United States Minor Outlying Islands">United States Minor Outlying Islands</option>
-  <option value="Uruguay">Uruguay</option>
-  <option value="Uzbekistan">Uzbekistan</option>
-  <option value="Vanuatu">Vanuatu</option>
-  <option value="Venezuela">Venezuela</option>
-  <option value="Vietnam">Viet Nam</option>
-  <option value="Virgin Islands (British)">Virgin Islands (British)</option>
-  <option value="Virgin Islands (U.S)">Virgin Islands (U.S.)</option>
-  <option value="Wallis and Futana Islands">Wallis and Futuna Islands</option>
-  <option value="Western Sahara">Western Sahara</option>
-  <option value="Yemen">Yemen</option>
-  <option value="Yugoslavia">Yugoslavia</option>
-  <option value="Zambia">Zambia</option>
-  <option value="Zimbabwe">Zimbabwe</option>
-
-              </optgroup>
+                <option value = "Afghanistan">Afghanistan</option>
+                <option value = "Albania">Albania</option>
+                <option value = "Algeria">Algeria</option>
+                <option value = "Angola">Angola</option>
+                <option value = "Argentina">Argentina</option>
+                <option value = "Australia">Australia</option>
+                <option value = "Austria">Austria</option>
+                <option value = "Azerbaijan">Azerbaijan</option>
+                <option value = "Bahrain">Bahrain</option>
+                <option value = "Bangladesh">Bangladesh</option>
+                <option value = "Belarus">Belarus</option>
+                <option value = "Belgium">Belgium</option>
+                <option value = "Bolivia">Bolivia</option>
+                <option value = "Bosnia and Herzegovina">Bosnia and Herzegovina</option>
+                <option value = "Botswana">Botswana</option>
+                <option value = "Brazil">Brazil</option>
+                <option value = "Bulgaria">Bulgaria</option>
+                <option value = "Burkina Faso">Burkina Faso</option>
+                <option value = "Burundi">Burundi</option>
+                <option value = "Cambodia">Cambodia</option>
+                <option value = "Cameroon">Cameroon</option>
+                <option value = "Canada">Canada</option>
+                <option value = "Central African Republic">Central African Republic</option>
+                <option value = "Chad">Chad</option>
+                <option value = "Chile">Chile</option>
+                <option value = "China">China</option>
+                <option value = "Colombia">Colombia</option>
+                <option value = "Comoros">Comoros</option>
+                <option value = "Costa Rica">Costa Rica</option>
+                <option value = "Croatia">Croatia</option>
+                <option value = "Cuba">Cuba</option>
+                <option value = "Curaçao">Curaçao</option>
+                <option value = "Cyprus">Cyprus</option>
+                <option value = "Czechia">Czechia</option>
+                <option value = "Côte d'Ivoire">Côte d'Ivoire</option>
+                <option value = "Darfur">Darfur</option>
+                <option value = "Democratic Republic of the Congo">Democratic Republic of the Congo</option>
+                <option value = "Denmark">Denmark</option>
+                <option value = "East Africa">East Africa</option>
+                <option value = "Ecuador">Ecuador</option>
+                <option value = "Egypt">Egypt</option>
+                <option value = "El Salvador">El Salvador</option>
+                <option value = "Equatorial Guinea">Equatorial Guinea</option>
+                <option value = "Estonia">Estonia</option>
+                <option value = "Ethiopia">Ethiopia</option>
+                <option value = "Fiji">Fiji</option>
+                <option value = "Finland">Finland</option>
+                <option value = "France">France</option>
+                <option value = "Gabon">Gabon</option>
+                <option value = "Gaza Strip">Gaza Strip</option>
+                <option value = "Germany">Germany</option>
+                <option value = "Golan">Golan</option>
+                <option value = "Greece">Greece</option>
+                <option value = "Guam">Guam</option>
+                <option value = "Guatemala">Guatemala</option>
+                <option value = "Gulf of Guinea">Gulf of Guinea</option>
+                <option value = "Haiti">Haiti</option>
+                <option value = "Honduras">Honduras</option>
+                <option value = "Hong Kong">Hong Kong</option>
+                <option value = "Hungary">Hungary</option>
+                <option value = "India">India</option>
+                <option value = "Indonesia">Indonesia</option>
+                <option value = "Iran">Iran</option>
+                <option value = "Iraq">Iraq</option>
+                <option value = "Ireland">Ireland</option>
+                <option value = "Israel">Israel</option>
+                <option value = "Italy">Italy</option>
+                <option value = "Japan">Japan</option>
+                <option value = "Jerusalem">Jerusalem</option>
+                <option value = "Jordan">Jordan</option>
+                <option value = "Kasai">Kasai</option>
+                <option value = "Kazakhstan">Kazakhstan</option>
+                <option value = "Kenya">Kenya</option>
+                <option value = "Korea">Korea</option>
+                <option value = "Kosovo">Kosovo</option>
+                <option value = "Kuwait">Kuwait</option>
+                <option value = "Kyrgyzstan">Kyrgyzstan</option>
+                <option value = "Lake Tanganyika">Lake Tanganyika</option>
+                <option value = "Laos">Laos</option>
+                <option value = "Lebanon">Lebanon</option>
+                <option value = "Lesotho">Lesotho</option>
+                <option value = "Libya">Libya</option>
+                <option value = "Lithuania">Lithuania</option>
+                <option value = "Macau">Macau</option>
+                <option value = "Macedonia (FYROM)">Macedonia (FYROM)</option>
+                <option value = "Maghreb">Maghreb</option>
+                <option value = "Malawi">Malawi</option>
+                <option value = "Malaysia">Malaysia</option>
+                <option value = "Maldives">Maldives</option>
+                <option value = "Mali">Mali</option>
+                <option value = "Malta">Malta</option>
+                <option value = "Mexico">Mexico</option>
+                <option value = "Mitrovica">Mitrovica</option>
+                <option value = "Moldova">Moldova</option>
+                <option value = "Montenegro">Montenegro</option>
+                <option value = "Morocco">Morocco</option>
+                <option value = "Myanmar (Burma)">Myanmar (Burma)</option>
+                <option value = "Nepal">Nepal</option>
+                <option value = "Netherlands">Netherlands</option>
+                <option value = "New Zealand">New Zealand</option>
+                <option value = "Nicaragua">Nicaragua</option>
+                <option value = "Niger">Niger</option>
+                <option value = "Nigeria">Nigeria</option>
+                <option value = "North District">North District</option>
+                <option value = "North Korea">North Korea</option>
+                <option value = "Norway">Norway</option>
+                <option value = "Oman">Oman</option>
+                <option value = "Pakistan">Pakistan</option>
+                <option value = "Palestine">Palestine</option>
+                <option value = "Panama">Panama</option>
+                <option value = "Papua New Guinea">Papua New Guinea</option>
+                <option value = "Peru">Peru</option>
+                <option value = "Philippines">Philippines</option>
+                <option value = "Poland">Poland</option>
+                <option value = "Portugal">Portugal</option>
+                <option value = "Qatar">Qatar</option>
+                <option value = "Ramallah">Ramallah</option>
+                <option value = "Romania">Romania</option>
+                <option value = "Russia">Russia</option>
+                <option value = "Rwanda">Rwanda</option>
+                <option value = "Saudi Arabia">Saudi Arabia</option>
+                <option value = "Senegal">Senegal</option>
+                <option value = "Serbia">Serbia</option>
+                <option value = "Singapore">Singapore</option>
+                <option value = "Slovakia">Slovakia</option>
+                <option value = "Slovenia">Slovenia</option>
+                <option value = "Somalia">Somalia</option>
+                <option value = "South Africa">South Africa</option>
+                <option value = "South Korea">South Korea</option>
+                <option value = "South Sudan">South Sudan</option>
+                <option value = "Spain">Spain</option>
+                <option value = "Sri Lanka">Sri Lanka</option>
+                <option value = "Sudan">Sudan</option>
+                <option value = "Svalbard and Jan Mayen">Svalbard and Jan Mayen</option>
+                <option value = "Sweden">Sweden</option>
+                <option value = "Switzerland">Switzerland</option>
+                <option value = "Syria">Syria</option>
+                <option value = "Taiwan">Taiwan</option>
+                <option value = "Tanzania">Tanzania</option>
+                <option value = "Thailand">Thailand</option>
+                <option value = "The Bahamas">The Bahamas</option>
+                <option value = "The Gambia">The Gambia</option>
+                <option value = "Timor-Leste">Timor-Leste</option>
+                <option value = "Tunisia">Tunisia</option>
+                <option value = "Turkey">Turkey</option>
+                <option value = "Turkmenistan">Turkmenistan</option>
+                <option value = "Uganda">Uganda</option>
+                <option value = "Ukraine">Ukraine</option>
+                <option value = "United Arab Emirates">United Arab Emirates</option>
+                <option value = "United Kingdom">United Kingdom</option>
+                <option value = "United States">United States</option>
+                <option value = "Uruguay">Uruguay</option>
+                <option value = "Uzbekistan">Uzbekistan</option>
+                <option value = "Venezuela">Venezuela</option>
+                <option value = "Vietnam">Vietnam</option>
+                <option value = "West Africa">West Africa</option>
+                <option value = "West Bank">West Bank</option>
+                <option value = "Yemen">Yemen</option>
+                <option value = "Zambia">Zambia</option>
+                <option value = "Zimbabwe">Zimbabwe</option>
             </select>
 
-            <div class="btn-group">
               <!-- <button type="button" class="multiselect dropdown-toggle btn btn-default btn-sm ph15" data-toggle="dropdown" title="Last 60 Days">
                 All Categories
                 <b class="caret"></b>
@@ -1448,74 +1134,6 @@ $(document).ready(function(){
                   <option value="Insurgencies">Insurgencies</option>
 
                 </select>
-
-                <!-- <li>
-                  <a href="javascript:void(0);">
-                    <label class="radio">
-                      <input value="Military Conflicts" type="radio">
-                      Military Conflicts
-                    </label>
-                  </a>
-                </li>
-
-                <li>
-                  <a href="javascript:void(0);">
-                    <label class="radio">
-                      <input value="All" type="radio">
-                      All Categories
-                    </label>
-                  </a>
-                </li>
-
-                <li>
-                  <a href="javascript:void(0);">
-                    <label class="radio">
-                      <input value="Disaster" type="radio">
-                      Disasters
-                    </label>
-                  </a>
-                </li>
-
-                <li>
-                  <a href="javascript:void(0);">
-                    <label class="radio">
-                      <input value="Nuclear Proliferation" type="radio">
-                      Nuclear
-                    </label>
-                  </a>
-                </li>
-
-
-                <li>
-                  <a href="javascript:void(0);">
-                    <label class="radio">
-                      <input value="Judicial Process" type="radio">
-                      Judicial Process
-                    </label>
-                  </a>
-                </li>
-
-                <li>
-                  <a href="javascript:void(0);">
-                    <label class="radio">
-                      <input value="Economic Events" type="radio">
-                      Economic Events
-                    </label>
-                  </a>
-                </li>
-
-                <li>
-                  <a href="javascript:void(0);">
-                    <label class="radio">
-                      <input value="Insurgencies" type="radio">
-                      Insurgencies
-                    </label>
-                  </a>
-                </li> -->
-
-
-              <!-- </ul> -->
-            </div>
           </div>
 
 
@@ -1640,7 +1258,9 @@ $(document).ready(function(){
               </h5>
               <h5 class="title-divider text-muted mb20"> March, 2018
               </h5> -->
-              <ul id="navlist" value="9">
+              <ul id="navlist" value="10">
+                  <li id="11" value="11" class="title-divider text-muted mb20"><a onclick="updateMonth11(); updateData11();" href="#">Apr, 2017</a></li>
+                  <li id="12" value="12" class="title-divider text-muted mb20"><a onclick="updateMonth12(); updateData12();" href="#">May, 2017</a></li>
                   <li id="1" value="1" class="title-divider text-muted mb20"><a onclick="updateMonth1(); updateData1();" href="#">June, 2017</a></li>
                   <li id="2" value="2" class="title-divider text-muted mb20"><a onclick="updateMonth2(); updateData2();" href="#">July, 2017</a></li>
                   <li id="3" value="3" class="title-divider text-muted mb20"><a onclick="updateMonth3(); updateData3();" href="#">Aug, 2017</a></li>
@@ -1650,6 +1270,7 @@ $(document).ready(function(){
                   <li id="7" value="7" class="title-divider text-muted mb20"><a onclick="updateMonth7(); updateData7();" href="#">Dec, 2017</a></li>
                   <li id="8" value="8" class="title-divider text-muted mb20"><a onclick="updateMonth8(); updateData8();" href="#">Jan, 2018</a></li>
                   <li id="9" value="9" class="title-divider text-muted mb20"><a onclick="updateMonth9(); updateData9();" href="#">Feb, 2018</a></li>
+                  <li id="10" value="10" class="title-divider text-muted mb20"><a onclick="updateMonth10(); updateData10();" href="#">Mar, 2018</a></li>
               </ul>
 
             </div>
