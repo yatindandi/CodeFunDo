@@ -347,32 +347,32 @@ $(document).ready(function(){
     }
 
 function USA(){
-  document.getElementById("topbar-multiple").value = "United States";
+  document.getElementById("countryselectid").value = "United States";
   countryChange();
 }
 
 function India(){
-  document.getElementById("topbar-multiple").value = "India";
+  document.getElementById("countryselectid").value = "India";
   countryChange()
 }
 
 function Russia(){
-  document.getElementById("topbar-multiple").value = "Russia";
+  document.getElementById("countryselectid").value = "Russia";
   countryChange()
 }
 
 function China(){
-  document.getElementById("topbar-multiple").value = "China";
+  document.getElementById("countryselectid").value = "China";
   countryChange()
 }
 
 function NorthKorea(){
-  document.getElementById("topbar-multiple").value = "North Korea";
+  document.getElementById("countryselectid").value = "North Korea";
   countryChange()
 }
 
 function Syria(){
-  document.getElementById("topbar-multiple").value = "Syria";
+  document.getElementById("countryselectid").value = "Syria";
   countryChange()
 }
 
@@ -832,7 +832,7 @@ $(document).ready(function(){
         <div class="topbar-right">
           <div class="ib topbar-dropdown">
             <label for="topbar-multiple" class="control-label fs16">Filter by country or category:</label>
-            <select class="multiselect dropdown-toggle btn btn-default btn-sm ph15" value="All" onchange="countryChange()" style="max-height: 300px;">
+            <select class="multiselect dropdown-toggle btn btn-default btn-sm ph15" id="countryselectid" value="All" onchange="countryChange()" style="max-height: 300px;">
                 <option value="All">All Countries</option>
                 <option value = "Afghanistan">Afghanistan</option>
                 <option value = "Albania">Albania</option>

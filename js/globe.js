@@ -113,7 +113,7 @@ function ready(error, world, places) {
       .attr("d", path);
 
       var select;
-      var x = document.getElementById("topbar-multiple").value;
+      var x = document.getElementById("countryselectid").value;
       //contains country name string
       var y = document.getElementById("mySelectCat").value;
       //contains country name string
@@ -479,7 +479,7 @@ function updateData1(){
         .attr("d", path);
 
         var select;
-        var x = document.getElementById("topbar-multiple").value;
+        var x = document.getElementById("countryselectid").value;
         //contains country name string
         var y = document.getElementById("mySelectCat").value;
         //contains country name string
@@ -847,7 +847,7 @@ function updateData2(){
         .attr("d", path);
 
         var select;
-        var x = document.getElementById("topbar-multiple").value;
+        var x = document.getElementById("countryselectid").value;
         //contains country name string
         var y = document.getElementById("mySelectCat").value;
         //contains country name string
@@ -1215,7 +1215,7 @@ function updateData3(){
         .attr("d", path);
 
         var select;
-        var x = document.getElementById("topbar-multiple").value;
+        var x = document.getElementById("countryselectid").value;
         //contains country name string
         var y = document.getElementById("mySelectCat").value;
         //contains country name string
@@ -1583,7 +1583,7 @@ function updateData4(){
         .attr("d", path);
 
         var select;
-        var x = document.getElementById("topbar-multiple").value;
+        var x = document.getElementById("countryselectid").value;
         //contains country name string
         var y = document.getElementById("mySelectCat").value;
         //contains country name string
@@ -1951,7 +1951,7 @@ function updateData5(){
         .attr("d", path);
 
         var select;
-        var x = document.getElementById("topbar-multiple").value;
+        var x = document.getElementById("countryselectid").value;
         //contains country name string
         var y = document.getElementById("mySelectCat").value;
         //contains country name string
@@ -2867,7 +2867,7 @@ function updateData8(){
 
         var select ;
         //decides what will be displayed
-        var x = document.getElementById("topbar-multiple").value;
+        var x = document.getElementById("countryselectid").value;
         //contains country name string
         var y = document.getElementById("mySelectCat").value;
         //contains country name string
@@ -3238,7 +3238,7 @@ function updateData9(){
         .attr("d", path);
 
         var select;
-        var x = document.getElementById("topbar-multiple").value;
+        var x = document.getElementById("countryselectid").value;
         //contains country name string
         var y = document.getElementById("mySelectCat").value;
         //contains country name string
