@@ -244,7 +244,52 @@ $(document).ready(function(){
         });
     });
 
-    var month = 9;
+    $(document).ready(function(){
+        $('#10').click(function(){
+                    var scrll = [];
+            $.getJSON('data/breakingnews10.json', function(data) {
+                $.each(data.breakingnews, function(i, a) {
+                  scrll.push('<div class="ticker__item">' + a + '</div>')
+                  //console.log(items[0]);
+
+                });
+                                                $('.ticker').empty();
+                $('.ticker').append( scrll.join('') );
+         });
+            });
+        });
+
+        $(document).ready(function(){
+            $('#11').click(function(){
+                        var scrll = [];
+                $.getJSON('data/breakingnews11.json', function(data) {
+                    $.each(data.breakingnews, function(i, a) {
+                      scrll.push('<div class="ticker__item">' + a + '</div>')
+                      //console.log(items[0]);
+
+                    });
+                                                    $('.ticker').empty();
+                    $('.ticker').append( scrll.join('') );
+             });
+                });
+            });
+
+            $(document).ready(function(){
+                $('#12').click(function(){
+                            var scrll = [];
+                    $.getJSON('data/breakingnews12.json', function(data) {
+                        $.each(data.breakingnews, function(i, a) {
+                          scrll.push('<div class="ticker__item">' + a + '</div>')
+                          //console.log(items[0]);
+
+                        });
+                                                        $('.ticker').empty();
+                        $('.ticker').append( scrll.join('') );
+                 });
+                    });
+                });
+
+    var month = 10;
 
 
     function updateMonth1(){
@@ -282,7 +327,19 @@ $(document).ready(function(){
     function updateMonth9(){
       month = 9;
       document.getElementById("Monthname").innerHTML = "February, 2018";
-      console.log(month);
+      // console.log(month);
+    }
+    function updateMonth10(){
+      month = 10;
+      document.getElementById("Monthname").innerHTML = "January, 2018";
+    }
+    function updateMonth11(){
+      month = 11;
+      document.getElementById("Monthname").innerHTML = "January, 2018";
+    }
+    function updateMonth12(){
+      month = 12;
+      document.getElementById("Monthname").innerHTML = "January, 2018";
     }
 
     console.log(month);
@@ -314,6 +371,15 @@ $(document).ready(function(){
       else if(month==9){
         updateData9();
       }
+      else if(month==10){
+        updateData10();
+      }
+      else if(month==11){
+        updateData11();
+      }
+      else if(month==12){
+        updateData12();
+      }
     }
 
     function categoryChange(){
@@ -343,6 +409,15 @@ $(document).ready(function(){
       }
       else if(month==9){
         updateData9();
+      }
+      else if(month==10){
+        updateData10();
+      }
+      else if(month==11){
+        updateData11();
+      }
+      else if(month==12){
+        updateData12();
       }
     }
 
@@ -512,6 +587,54 @@ $(document).ready(function(){
     $('#9').click(function(){
                 var items = [];
         $.getJSON('data/scores9.json', function(data) {
+            $.each(data.scores, function(i, a) {
+            //  items.push('<li>' + a + '</li>')
+            items.push('<li class="sidebar-title">' + a + '</li>')
+              //console.log(items[0]);
+
+            });
+                                $('#mylist').empty();
+            $('#mylist').append( items.join('') );
+        });
+    });
+});
+
+$(document).ready(function(){
+    $('#10').click(function(){
+                var items = [];
+        $.getJSON('data/scores10.json', function(data) {
+            $.each(data.scores, function(i, a) {
+            //  items.push('<li>' + a + '</li>')
+            items.push('<li class="sidebar-title">' + a + '</li>')
+              //console.log(items[0]);
+
+            });
+                                $('#mylist').empty();
+            $('#mylist').append( items.join('') );
+        });
+    });
+});
+
+$(document).ready(function(){
+    $('#11').click(function(){
+                var items = [];
+        $.getJSON('data/scores11.json', function(data) {
+            $.each(data.scores, function(i, a) {
+            //  items.push('<li>' + a + '</li>')
+            items.push('<li class="sidebar-title">' + a + '</li>')
+              //console.log(items[0]);
+
+            });
+                                $('#mylist').empty();
+            $('#mylist').append( items.join('') );
+        });
+    });
+});
+
+$(document).ready(function(){
+    $('#12').click(function(){
+                var items = [];
+        $.getJSON('data/scores12.json', function(data) {
             $.each(data.scores, function(i, a) {
             //  items.push('<li>' + a + '</li>')
             items.push('<li class="sidebar-title">' + a + '</li>')
@@ -1135,7 +1258,9 @@ $(document).ready(function(){
               </h5>
               <h5 class="title-divider text-muted mb20"> March, 2018
               </h5> -->
-              <ul id="navlist" value="9">
+              <ul id="navlist" value="10">
+                  <li id="11" value="11" class="title-divider text-muted mb20"><a onclick="updateMonth11(); updateData11();" href="#">Apr, 2017</a></li>
+                  <li id="12" value="12" class="title-divider text-muted mb20"><a onclick="updateMonth12(); updateData12();" href="#">May, 2017</a></li>
                   <li id="1" value="1" class="title-divider text-muted mb20"><a onclick="updateMonth1(); updateData1();" href="#">June, 2017</a></li>
                   <li id="2" value="2" class="title-divider text-muted mb20"><a onclick="updateMonth2(); updateData2();" href="#">July, 2017</a></li>
                   <li id="3" value="3" class="title-divider text-muted mb20"><a onclick="updateMonth3(); updateData3();" href="#">Aug, 2017</a></li>
@@ -1145,6 +1270,7 @@ $(document).ready(function(){
                   <li id="7" value="7" class="title-divider text-muted mb20"><a onclick="updateMonth7(); updateData7();" href="#">Dec, 2017</a></li>
                   <li id="8" value="8" class="title-divider text-muted mb20"><a onclick="updateMonth8(); updateData8();" href="#">Jan, 2018</a></li>
                   <li id="9" value="9" class="title-divider text-muted mb20"><a onclick="updateMonth9(); updateData9();" href="#">Feb, 2018</a></li>
+                  <li id="10" value="10" class="title-divider text-muted mb20"><a onclick="updateMonth10(); updateData10();" href="#">Mar, 2018</a></li>
               </ul>
 
             </div>
