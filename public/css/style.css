@@ -389,10 +389,10 @@ border-color: #aaab9c #fff #fff #ccc;
 }
 
 #intext {
-  white-space: pre-wrap;      /* CSS3 */   
-  white-space: -moz-pre-wrap; /* Firefox */    
-  white-space: -pre-wrap;     /* Opera <7 */   
-  white-space: -o-pre-wrap;   /* Opera 7 */    
+  white-space: pre-wrap;      /* CSS3 */
+  white-space: -moz-pre-wrap; /* Firefox */
+  white-space: -pre-wrap;     /* Opera <7 */
+  white-space: -o-pre-wrap;   /* Opera 7 */
   word-wrap: break-word;      /* IE */
   font-family: 'Amethysta';
   font-size: 15px;
@@ -409,7 +409,7 @@ border-color: #aaab9c #fff #fff #ccc;
   stroke-width: 3;
 }
 .flyers {
-  stroke-width:3;
+  stroke-width:7;
   opacity: .6;
 }
 .redflyer {

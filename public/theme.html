@@ -1,0 +1,1758 @@
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <!-- Meta, title, CSS, favicons, etc. -->
+  <meta charset="utf-8">
+  <title>WorldNewSense</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Font CSS (Via CDN) -->
+  <link rel="stylesheet" type="text/css" href="theme_files/css.css">
+  <link rel="stylesheet" type="text/css" href="fonts/font-awesome/css/font-awesome.css">
+
+  <!-- FullCalendar Plugin CSS -->
+  <link rel="stylesheet" type="text/css" href="theme_files/fullcalendar.css">
+
+  <!-- Theme CSS -->
+  <link rel="stylesheet" type="text/css" href="theme_files/theme.css">
+  <link rel="stylesheet" type="text/css" href="css/responsive.css">
+  <link rel="stylesheet" type="text/css" href="css/animate.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+
+  <!-- Admin Forms CSS -->
+  <link rel="stylesheet" type="text/css" href="theme_files/admin-forms.css">
+
+  <!-- Favicon -->
+<!--   <link rel="shortcut icon" href="https://livedemo00.template-help.com/wt_58393/theme-2/site/assets/img/favicon.ico"> -->
+
+<!-- Bootstrap wrapper -->
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
+
+  <!-- Scripts -->
+  <script src="js/test.js" charset="utf-8"></script>
+  <script src="js/d3.v3.min.js"></script>
+  <script src="js/queue.v1.min.js"></script>
+  <script src="js/topojson.v0.min.js"></script>
+  <script src="https://apis.google.com/js/platform.js?onload=onLoad" async defer></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+<![endif]-->
+
+ <!-- Embedd the other SVG -->
+  <script src="jquery.js"></script>
+    <script>
+    $(function(){
+      $("#forcedDirectedImages").load("test.html");
+    });
+  </script>
+
+  <!-- Embed Charts -->
+  <script>
+    $(function(){
+      $("#chartgraph1").load("charts/UnitedStates-Russia.html");
+    });
+    $(function(){
+      $("#chartgraph2").load("charts/UnitedStates-Venezuela.html");
+    });
+
+    // $('#sr').click(function(){
+    // //Some code
+    //       $("#chartgraph").load("charts/Syria-Russia.html");
+
+    // });
+
+    //     $('#tus').click(function(){
+    // //Some code
+    //       $("#chartgraph").load("charts/UnitedStates-Turkey.html");
+
+    // });
+
+    //     $('#usaf').click(function(){
+    // //Some code
+    //       $("#chartgraph").load("charts/UnitedStates-Afghanistan.html");
+
+    // });
+
+    //     $('#usr').click(function(){
+    // //Some code
+    //       $("#chartgraph").load("charts/UnitedStates-Russia.html");
+
+    // });
+
+    //     $('#usi').click(function(){
+    // //Some code
+    //       $("#chartgraph").load("charts/UnitedStates-Iran.html");
+
+    // });
+
+    //     $('#usnk').click(function(){
+    // //Some code
+    //       $("#chartgraph").load("charts/UnitedStates-North Korea");
+
+    // });
+
+    //     $('#usv').click(function(){
+    // //Some code
+    // //       $("#chartgraph").load("charts/UnitedStates-Venezuela");
+
+    // });
+
+    // $(document).ready(function(){
+    // $('#sr').click(function(e){
+    // e.preventDefault();
+    // $("#chartgraph2").empty();
+    // $("#chartgraph3").empty();
+    // $("#chartgraph4").empty();
+    // $("#chartgraph5").empty();
+    // $("#chartgraph6").empty();
+    // $("#chartgraph7").empty();
+    // $("#chartgraph8").empty();
+    // $("#chartgraph1").load("charts/Syria-Russia.html")
+    // });
+    // });
+
+  </script>
+
+<script>
+
+
+                var items = [];
+        $.getJSON('data/scores1.json', function(data) {
+            $.each(data.scores, function(i, a) {
+              items.push('<li class="sidebar-title">' + a + '</li>')
+              //console.log(items[0]);
+
+            });
+
+                    $('#mylist').empty();
+            $('#mylist').append( items.join('') );
+        });
+
+</script>
+
+<script>
+
+var scrll = [];
+$.getJSON('data/breakingnews2.json', function(data) {
+$.each(data.breakingnews, function(i, a) {
+scrll.push('<div class="ticker__item">' + a + '</div>')
+//console.log(items[0]);
+
+});
+                            $('.ticker').empty();
+$('.ticker').append( scrll.join('') );
+});
+
+</script>
+
+</head>
+
+<body class="dashboard-page sb-l-o sb-r-c onload-check" style="min-height: 724px;">
+
+<!--
+  <body> Helper Classes:
+
+  '.sb-l-o' - Sets Left Sidebar to "open"
+  '.sb-l-m' - Sets Left Sidebar to "minified"
+  '.sb-l-c' - Sets Left Sidebar to "closed"
+
+  '.sb-r-o' - Sets Right Sidebar to "open"
+  '.sb-r-c' - Sets Right Sidebar to "closed"
+
+ Example: <body class="example-page sb-l-o sb-r-c">
+ Results: Sidebar left Open, Sidebar right Closed
+-->
+
+<!-- Body Marqee Scripts -->
+<script>
+
+$(document).ready(function(){
+    $('#1').click(function(){
+                var scrll = [];
+        $.getJSON('data/breakingnews1.json', function(data) {
+            $.each(data.breakingnews, function(i, a) {
+              scrll.push('<div class="ticker__item">' + a + '</div>')
+              //console.log(items[0]);
+
+            });
+                                $('.ticker').empty();
+            $('.ticker').append( scrll.join('') );
+     });
+        });
+    });
+
+$(document).ready(function(){
+    $('#2').click(function(){
+                var scrll = [];
+        $.getJSON('data/breakingnews2.json', function(data) {
+            $.each(data.breakingnews, function(i, a) {
+              scrll.push('<div class="ticker__item">' + a + '</div>')
+              //console.log(items[0]);
+
+            });
+                                            $('.ticker').empty();
+            $('.ticker').append( scrll.join('') );
+     });
+        });
+    });
+
+$(document).ready(function(){
+    $('#3').click(function(){
+                var scrll = [];
+        $.getJSON('data/breakingnews3.json', function(data) {
+            $.each(data.breakingnews, function(i, a) {
+              scrll.push('<div class="ticker__item">' + a + '</div>')
+              //console.log(items[0]);
+
+            });
+                                            $('.ticker').empty();
+            $('.ticker').append( scrll.join('') );
+     });
+        });
+    });
+
+$(document).ready(function(){
+    $('#4').click(function(){
+                var scrll = [];
+        $.getJSON('data/breakingnews4.json', function(data) {
+            $.each(data.breakingnews, function(i, a) {
+              scrll.push('<div class="ticker__item">' + a + '</div>')
+              //console.log(items[0]);
+
+            });
+                                            $('.ticker').empty();
+            $('.ticker').append( scrll.join('') );
+     });
+        });
+    });
+
+$(document).ready(function(){
+    $('#5').click(function(){
+                var scrll = [];
+        $.getJSON('data/breakingnews5.json', function(data) {
+            $.each(data.breakingnews, function(i, a) {
+              scrll.push('<div class="ticker__item">' + a + '</div>')
+              //console.log(items[0]);
+
+            });
+                                            $('.ticker').empty();
+            $('.ticker').append( scrll.join('') );
+     });
+        });
+    });
+
+$(document).ready(function(){
+    $('#6').click(function(){
+                var scrll = [];
+        $.getJSON('data/breakingnews6.json', function(data) {
+            $.each(data.breakingnews, function(i, a) {
+              scrll.push('<div class="ticker__item">' + a + '</div>')
+              //console.log(items[0]);
+
+            });
+                                            $('.ticker').empty();
+            $('.ticker').append( scrll.join('') );
+     });
+        });
+    });
+
+$(document).ready(function(){
+    $('#7').click(function(){
+                var scrll = [];
+        $.getJSON('data/breakingnews7.json', function(data) {
+            $.each(data.breakingnews, function(i, a) {
+              scrll.push('<div class="ticker__item">' + a + '</div>')
+              //console.log(items[0]);
+
+            });
+                                            $('.ticker').empty();
+            $('.ticker').append( scrll.join('') );
+     });
+        });
+    });
+
+$(document).ready(function(){
+    $('#8').click(function(){
+                var scrll = [];
+        $.getJSON('data/breakingnews8.json', function(data) {
+            $.each(data.breakingnews, function(i, a) {
+              scrll.push('<div class="ticker__item">' + a + '</div>')
+              //console.log(items[0]);
+
+            });
+                                            $('.ticker').empty();
+            $('.ticker').append( scrll.join('') );
+     });
+        });
+    });
+
+$(document).ready(function(){
+    $('#9').click(function(){
+                var scrll = [];
+        $.getJSON('data/breakingnews9.json', function(data) {
+            $.each(data.breakingnews, function(i, a) {
+              scrll.push('<div class="ticker__item">' + a + '</div>')
+              //console.log(items[0]);
+
+            });
+                                            $('.ticker').empty();
+            $('.ticker').append( scrll.join('') );
+     });
+        });
+    });
+
+    $(document).ready(function(){
+        $('#10').click(function(){
+                    var scrll = [];
+            $.getJSON('data/breakingnews10.json', function(data) {
+                $.each(data.breakingnews, function(i, a) {
+                  scrll.push('<div class="ticker__item">' + a + '</div>')
+                  //console.log(items[0]);
+
+                });
+                                                $('.ticker').empty();
+                $('.ticker').append( scrll.join('') );
+         });
+            });
+        });
+
+        $(document).ready(function(){
+            $('#11').click(function(){
+                        var scrll = [];
+                $.getJSON('data/breakingnews11.json', function(data) {
+                    $.each(data.breakingnews, function(i, a) {
+                      scrll.push('<div class="ticker__item">' + a + '</div>')
+                      //console.log(items[0]);
+
+                    });
+                                                    $('.ticker').empty();
+                    $('.ticker').append( scrll.join('') );
+             });
+                });
+            });
+
+            $(document).ready(function(){
+                $('#12').click(function(){
+                            var scrll = [];
+                    $.getJSON('data/breakingnews12.json', function(data) {
+                        $.each(data.breakingnews, function(i, a) {
+                          scrll.push('<div class="ticker__item">' + a + '</div>')
+                          //console.log(items[0]);
+
+                        });
+                                                        $('.ticker').empty();
+                        $('.ticker').append( scrll.join('') );
+                 });
+                    });
+                });
+
+    var month = 10;
+
+
+    function updateMonth1(){
+      month = 1;
+      document.getElementById("Monthname").innerHTML = "June, 2017";
+    }
+    function updateMonth2(){
+      month = 2;
+      document.getElementById("Monthname").innerHTML = "July, 2017";
+    }
+    function updateMonth3(){
+      month = 3;
+      document.getElementById("Monthname").innerHTML = "August, 2017";
+    }
+    function updateMonth4(){
+      month = 4;
+      document.getElementById("Monthname").innerHTML = "September, 2017";
+    }
+    function updateMonth5(){
+      month = 5;
+      document.getElementById("Monthname").innerHTML = "October, 2017";
+    }
+    function updateMonth6(){
+      month = 6;
+      document.getElementById("Monthname").innerHTML = "November, 2017";
+    }
+    function updateMonth7(){
+      month = 7;
+      document.getElementById("Monthname").innerHTML = "December, 2017";
+    }
+    function updateMonth8(){
+      month = 8;
+      document.getElementById("Monthname").innerHTML = "January, 2018";
+    }
+    function updateMonth9(){
+      month = 9;
+      document.getElementById("Monthname").innerHTML = "February, 2018";
+      // console.log(month);
+    }
+    function updateMonth10(){
+      month = 10;
+      document.getElementById("Monthname").innerHTML = "March, 2018";
+    }
+    function updateMonth11(){
+      month = 11;
+      document.getElementById("Monthname").innerHTML = "April, 2017";
+    }
+    function updateMonth12(){
+      month = 12;
+      document.getElementById("Monthname").innerHTML = "May, 2017";
+    }
+
+    console.log(month);
+    function countryChange(){
+      if(month==1){
+        updateData1();
+      }
+      else if(month==2){
+        updateData2();
+      }
+      else if(month==3){
+        updateData3();
+      }
+      else if(month==4){
+        updateData4();
+      }
+      else if(month==5){
+        updateData5();
+      }
+      else if(month==6){
+        updateData6();
+      }
+      else if(month==7){
+        updateData7();
+      }
+      else if(month==8){
+        updateData8();
+      }
+      else if(month==9){
+        updateData9();
+      }
+      else if(month==10){
+        updateData10();
+      }
+      else if(month==11){
+        updateData11();
+      }
+      else if(month==12){
+        updateData12();
+      }
+    }
+
+    function categoryChange(){
+      if(month==1){
+        updateData1();
+      }
+      else if(month==2){
+        updateData2();
+      }
+      else if(month==3){
+        updateData3();
+      }
+      else if(month==4){
+        updateData4();
+      }
+      else if(month==5){
+        updateData5();
+      }
+      else if(month==6){
+        updateData6();
+      }
+      else if(month==7){
+        updateData7();
+      }
+      else if(month==8){
+        updateData8();
+      }
+      else if(month==9){
+        updateData9();
+      }
+      else if(month==10){
+        updateData10();
+      }
+      else if(month==11){
+        updateData11();
+      }
+      else if(month==12){
+        updateData12();
+      }
+    }
+
+function USA(){
+  document.getElementById("countryselectid").value = "United States";
+  countryChange();
+}
+
+function India(){
+  document.getElementById("countryselectid").value = "India";
+  countryChange()
+}
+
+function Russia(){
+  document.getElementById("countryselectid").value = "Russia";
+  countryChange()
+}
+
+function China(){
+  document.getElementById("countryselectid").value = "China";
+  countryChange()
+}
+
+function NorthKorea(){
+  document.getElementById("countryselectid").value = "North Korea";
+  countryChange()
+}
+
+function Syria(){
+  document.getElementById("countryselectid").value = "Syria";
+  countryChange()
+}
+
+</script>
+
+    <!-- Marqee -->
+<script>
+
+$(document).ready(function(){
+    $('#1').click(function(){
+                var items = [];
+        $.getJSON('data/scores1.json', function(data) {
+            $.each(data.scores, function(i, a) {
+              items.push('<li class="sidebar-title">' + a + '</li>')
+              //console.log(items[0]);
+
+            });
+
+                    $('#mylist').empty();
+            $('#mylist').append( items.join('') );
+        });
+    });
+});
+
+$(document).ready(function(){
+    $('#2').click(function(){
+                var items = [];
+        $.getJSON('data/scores2.json', function(data) {
+            $.each(data.scores, function(i, a) {
+              //items.push('<li>' + a + '</li>')
+              items.push('<li class="sidebar-title">' + a + '</li>')
+              //console.log(items[0]);
+
+            });
+                                $('#mylist').empty();
+            $('#mylist').append( items.join('') );
+        });
+    });
+});
+
+$(document).ready(function(){
+    $('#3').click(function(){
+                var items = [];
+        $.getJSON('data/scores3.json', function(data) {
+            $.each(data.scores, function(i, a) {
+            //  items.push('<li>' + a + '</li>')
+            items.push('<li class="sidebar-title">' + a + '</li>')
+              //console.log(items[0]);
+
+            });
+                                $('#mylist').empty();
+            $('#mylist').append( items.join('') );
+        });
+    });
+});
+
+$(document).ready(function(){
+    $('#4').click(function(){
+                var items = [];
+        $.getJSON('data/scores4.json', function(data) {
+            $.each(data.scores, function(i, a) {
+            //  items.push('<li>' + a + '</li>')
+            items.push('<li class="sidebar-title">' + a + '</li>')
+              //console.log(items[0]);
+
+            });
+                                $('#mylist').empty();
+            $('#mylist').append( items.join('') );
+        });
+    });
+});
+
+$(document).ready(function(){
+    $('#5').click(function(){
+                var items = [];
+        $.getJSON('data/scores5.json', function(data) {
+            $.each(data.scores, function(i, a) {
+            //  items.push('<li>' + a + '</li>')
+            items.push('<li class="sidebar-title">' + a + '</li>')
+              //console.log(items[0]);
+
+            });
+                                $('#mylist').empty();
+            $('#mylist').append( items.join('') );
+        });
+    });
+});
+$(document).ready(function(){
+    $('#6').click(function(){
+                var items = [];
+        $.getJSON('data/scores6.json', function(data) {
+            $.each(data.scores, function(i, a) {
+            //  items.push('<li>' + a + '</li>')
+            items.push('<li class="sidebar-title">' + a + '</li>')
+              //console.log(items[0]);
+
+            });
+                                $('#mylist').empty();
+            $('#mylist').append( items.join('') );
+        });
+    });
+});
+
+$(document).ready(function(){
+    $('#7').click(function(){
+                var items = [];
+        $.getJSON('data/scores7.json', function(data) {
+            $.each(data.scores, function(i, a) {
+            //  items.push('<li>' + a + '</li>')
+            items.push('<li class="sidebar-title">' + a + '</li>')
+              //console.log(items[0]);
+
+            });
+                                $('#mylist').empty();
+            $('#mylist').append( items.join('') );
+        });
+    });
+});
+
+$(document).ready(function(){
+    $('#8').click(function(){
+                var items = [];
+        $.getJSON('data/scores8.json', function(data) {
+            $.each(data.scores, function(i, a) {
+            //  items.push('<li>' + a + '</li>')
+            items.push('<li class="sidebar-title">' + a + '</li>')
+              //console.log(items[0]);
+
+            });
+                                $('#mylist').empty();
+            $('#mylist').append( items.join('') );
+        });
+    });
+});
+
+$(document).ready(function(){
+    $('#9').click(function(){
+                var items = [];
+        $.getJSON('data/scores9.json', function(data) {
+            $.each(data.scores, function(i, a) {
+            //  items.push('<li>' + a + '</li>')
+            items.push('<li class="sidebar-title">' + a + '</li>')
+              //console.log(items[0]);
+
+            });
+                                $('#mylist').empty();
+            $('#mylist').append( items.join('') );
+        });
+    });
+});
+
+$(document).ready(function(){
+    $('#10').click(function(){
+                var items = [];
+        $.getJSON('data/scores10.json', function(data) {
+            $.each(data.scores, function(i, a) {
+            //  items.push('<li>' + a + '</li>')
+            items.push('<li class="sidebar-title">' + a + '</li>')
+              //console.log(items[0]);
+
+            });
+                                $('#mylist').empty();
+            $('#mylist').append( items.join('') );
+        });
+    });
+});
+
+$(document).ready(function(){
+    $('#11').click(function(){
+                var items = [];
+        $.getJSON('data/scores11.json', function(data) {
+            $.each(data.scores, function(i, a) {
+            //  items.push('<li>' + a + '</li>')
+            items.push('<li class="sidebar-title">' + a + '</li>')
+              //console.log(items[0]);
+
+            });
+                                $('#mylist').empty();
+            $('#mylist').append( items.join('') );
+        });
+    });
+});
+
+$(document).ready(function(){
+    $('#12').click(function(){
+                var items = [];
+        $.getJSON('data/scores12.json', function(data) {
+            $.each(data.scores, function(i, a) {
+            //  items.push('<li>' + a + '</li>')
+            items.push('<li class="sidebar-title">' + a + '</li>')
+              //console.log(items[0]);
+
+            });
+                                $('#mylist').empty();
+            $('#mylist').append( items.join('') );
+        });
+    });
+});
+
+</script>
+
+  <!-- Start: Theme Preview Pane -->
+  <div id="skin-toolbox" class="">
+    <div class="panel">
+      <div class="panel-heading">
+        <span class="panel-icon">
+          <i class="fa fa-gear text-primary"></i>
+        </span>
+        <span class="panel-title"> Theme Options</span>
+      </div>
+      <div class="panel-body pn">
+        <ul class="nav nav-list nav-list-sm pl15 pt10" role="tablist">
+          <li class="active">
+            <a href="#toolbox-header" role="tab" data-toggle="tab">Navbar</a>
+          </li>
+          <li>
+            <a href="#toolbox-sidebar" role="tab" data-toggle="tab">Sidebar</a>
+          </li>
+        </ul>
+        <div class="tab-content p20 ptn pb15">
+          <div role="tabpanel" class="tab-pane active" id="toolbox-header">
+            <form id="toolbox-header-skin">
+              <h4 class="mv20">Header Skins</h4>
+              <div class="skin-toolbox-swatches">
+                <div class="checkbox-custom checkbox-light fill mb5">
+                  <input name="headerSkin" id="headerSkin8" value="" type="radio">
+                  <label for="headerSkin8">Light</label>
+                </div>
+                <div class="checkbox-custom fill checkbox-primary mb5">
+                  <input name="headerSkin" id="headerSkin1" value="bg-primary" type="radio">
+                  <label for="headerSkin1">Primary</label>
+                </div>
+                <div class="checkbox-custom fill checkbox-info mb5">
+                  <input name="headerSkin" id="headerSkin3" value="bg-info" type="radio">
+                  <label for="headerSkin3">Info</label>
+                </div>
+                <div class="checkbox-custom fill checkbox-warning mb5">
+                  <input name="headerSkin" id="headerSkin4" value="bg-warning" type="radio">
+                  <label for="headerSkin4">Warning</label>
+                </div>
+                <div class="checkbox-custom fill checkbox-danger mb5">
+                  <input name="headerSkin" id="headerSkin5" value="bg-danger" checked="checked" type="radio">
+                  <label for="headerSkin5">Danger</label>
+                </div>
+                <div class="checkbox-custom fill checkbox-alert mb5">
+                  <input name="headerSkin" id="headerSkin6" value="bg-alert" type="radio">
+                  <label for="headerSkin6">Alert</label>
+                </div>
+                <div class="checkbox-custom fill checkbox-system mb5">
+                  <input name="headerSkin" id="headerSkin7" value="bg-system" type="radio">
+                  <label for="headerSkin7">System</label>
+                </div>
+                <div class="checkbox-custom fill checkbox-success mb5">
+                  <input name="headerSkin" id="headerSkin2" value="bg-success" type="radio">
+                  <label for="headerSkin2">Success</label>
+                </div>
+                <div class="checkbox-custom fill mb5">
+                  <input name="headerSkin" id="headerSkin9" value="bg-dark" type="radio">
+                  <label for="headerSkin9">Dark</label>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div role="tabpanel" class="tab-pane" id="toolbox-sidebar">
+            <form id="toolbox-sidebar-skin">
+              <h4 class="mv20">Sidebar Skins</h4>
+              <div class="skin-toolbox-swatches">
+                <div class="checkbox-custom fill mb5">
+                  <input name="sidebarSkin" checked="checked" id="sidebarSkin3" value="" type="radio">
+                  <label for="sidebarSkin3">Dark</label>
+                </div>
+                <div class="checkbox-custom fill checkbox-disabled mb5">
+                  <input name="sidebarSkin" id="sidebarSkin1" value="sidebar-light" type="radio">
+                  <label for="sidebarSkin1">Light</label>
+                </div>
+                <div class="checkbox-custom fill checkbox-light mb5">
+                  <input name="sidebarSkin" id="sidebarSkin2" value="sidebar-light light" type="radio">
+                  <label for="sidebarSkin2">Lighter</label>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End: Theme Preview Pane -->
+
+  <!-- Start: Main -->
+  <div id="main">
+
+    <!--
+       ".navbar" Helper Classes:
+       * Positioning Classes:
+        '.navbar-static-top' - Static top positioned navbar
+        '.navbar-static-top' - Fixed top positioned navbar
+
+       * Available Skin Classes:
+         .bg-dark    .bg-primary   .bg-success
+         .bg-info    .bg-warning   .bg-danger
+         .bg-alert   .bg-system
+      Example: <header class="navbar navbar-fixed-top bg-primary">
+      Results: Fixed top navbar with blue background
+-->
+
+    <!-- Start: Header -->
+    <header class="navbar navbar-fixed-top navbar-shadow bg-danger">
+      <div class="navbar-branding dark bg-danger">
+        <a class="navbar-brand" href="#">
+          <b>Diplomacy</b>Index
+        </a>
+        <span id="toggle_sidemenu_l" class="fa fa-align-justify"></span>
+      </div>
+      <ul class="nav navbar-nav navbar-left">
+        <li class="hidden-xs">
+          <a class="request-fullscreen toggle-active" href="#">
+            Full Screen
+          </a>
+        </li>
+        <li>
+ <!--          <form class="navbar-form navbar-left navbar-search alt" role="search">
+            <div class="form-group">
+              <input class="form-control" placeholder="Search..." type="text">
+            </div>
+          </form> -->
+        </li>
+        <li class="dropdown menu-merge hidden-xs">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Month
+          </a>
+          <ul class="dropdown-menu white-drop left" role="menu">
+            <li id="11"><a onclick="updateData1()" href="#">June, 2017</a></li>
+            <li id="12"><a onclick="updateData2()" href="#">July, 2017</a></li>
+            <li id="13"><a onclick="updateData3()" href="#">Aug, 2017</a></li>
+            <li id="14"><a onclick="updateData4()" href="#">Sept, 2017</a></li>
+            <li id="15"><a onclick="updateData5()" href="#">Oct, 2017</a></li>
+            <li id="16"><a onclick="updateData6()" href="#">Nov, 2017</a></li>
+            <li id="17"><a onclick="updateData7()" href="#">Dec, 2017</a></li>
+            <li id="18"><a onclick="updateData8()" href="#">Jan, 2018</a></li>
+            <li id="19"><a onclick="updateData9()" href="#">Feb, 2018</a></li>
+          </ul>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+
+
+        <li>
+          <div class="navbar-btn btn-group">
+            <a href="#" class="topbar-menu-toggle btn btn-sm" data-toggle="button">
+              Top Countries
+            </a>
+          </div>
+        </li>
+
+      </ul>
+    </header>
+    <!-- End: Header -->
+    <!-- "#sidebar_left" Helper Classes:
+
+       * Positioning Classes:
+        '.affix' - Sets Sidebar Left to the fixed position
+
+       * Available Skin Classes:
+         .sidebar-dark (default no class needed)
+         .sidebar-light
+         .sidebar-light.light
+
+       Example: <aside id="sidebar_left" class="affix sidebar-light">
+       Results: Fixed Left Sidebar with light/white background
+-->
+
+    <!-- Start: Sidebar -->
+    <aside id="sidebar_left" class="nano nano-light affix sidebar-default has-scrollbar">
+
+      <!-- Start: Sidebar Left Content -->
+      <div class="sidebar-left-content nano-content" tabindex="0" style="margin-right: -13px;">
+
+        <!-- Start: Sidebar Header -->
+        <header class="sidebar-header">
+
+          <!-- Sidebar Widget - Menu (slidedown) -->
+          <div class="sidebar-widget menu-widget">
+            <div class="row text-center mbn">
+              <div class="col-xs-4">
+                <a href="https://livedemo00.template-help.com/wt_58393/theme-2/site/dashboard.html" class="text-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="Dashboard">
+                  <span class="glyphicon glyphicon-home"></span>
+                </a>
+              </div>
+              <div class="col-xs-4">
+                <a href="https://livedemo00.template-help.com/wt_58393/theme-2/site/pages_messages.html" class="text-info" data-toggle="tooltip" data-placement="top" title="" data-original-title="Messages">
+                  <span class="glyphicon glyphicon-inbox"></span>
+                </a>
+              </div>
+              <div class="col-xs-4">
+                <a href="https://livedemo00.template-help.com/wt_58393/theme-2/site/pages_profile.html" class="text-alert" data-toggle="tooltip" data-placement="top" title="" data-original-title="Tasks">
+                  <span class="glyphicon glyphicon-bell"></span>
+                </a>
+              </div>
+              <div class="col-xs-4">
+                <a href="https://livedemo00.template-help.com/wt_58393/theme-2/site/pages_timeline.html" class="text-system" data-toggle="tooltip" data-placement="top" title="" data-original-title="Activity">
+                  <span class="fa fa-desktop"></span>
+                </a>
+              </div>
+              <div class="col-xs-4">
+                <a href="https://livedemo00.template-help.com/wt_58393/theme-2/site/pages_profile.html" class="text-danger" data-toggle="tooltip" data-placement="top" title="" data-original-title="Settings">
+                  <span class="fa fa-gears"></span>
+                </a>
+              </div>
+              <div class="col-xs-4">
+                <a href="https://livedemo00.template-help.com/wt_58393/theme-2/site/pages_gallery.html" class="text-warning" data-toggle="tooltip" data-placement="top" title="" data-original-title="Cron Jobs">
+                  <span class="fa fa-flask"></span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sidebar Widget - Search (hidden) -->
+          <div class="sidebar-widget search-widget hidden">
+            <div class="input-group">
+              <span class="input-group-addon">
+                <i class="fa fa-search"></i>
+              </span>
+              <input id="sidebar-search" class="form-control" placeholder="Search..." type="text">
+            </div>
+          </div>
+
+        </header>
+        <!-- End: Sidebar Header -->
+
+        <!-- Start: Sidebar Menu -->
+        <nav>
+       <ul class="nav sidebar-menu" id="mylist">
+<!--           <li>
+            <a href="https://livedemo00.template-help.com/wt_58393/theme-2/site/pages_calendar.html">
+              <span class="fa fa-calendar"></span>
+              <span class="sidebar-title">Calendar</span>
+            </a>
+          </li> -->
+       </ul>
+     </nav>
+
+        <!-- End: Sidebar Menu -->
+      </div>
+      <!-- End: Sidebar Left Content -->
+
+    <div class="nano-pane"><div class="nano-slider" style="height: 390px; transform: translate(0px, 0px);"></div></div></aside>
+    <!-- End: Sidebar -->
+
+    <!-- Start: Content-Wrapper -->
+    <section id="content_wrapper">
+
+      <!-- Start: Topbar-Dropdown -->
+      <div id="topbar-dropmenu" class="alt">
+        <div class="topbar-menu row">
+          <div class="col-xs-4 col-sm-2">
+            <a href="#">
+              <img src="theme_files/flag01.png"  onclick="USA()" class="metro-tile bg-primary light"/>
+              <span class="metro-title">United States of America</span>
+            </a>
+          </div>
+          <div class="col-xs-4 col-sm-2">
+            <a href="#">
+              <img src="theme_files/flag02.png"  onclick="Russia()" class="metro-tile bg-primary light"/>
+              <span class="metro-title">Russia</span>
+            </a>
+          </div>
+          <div class="col-xs-4 col-sm-2">
+            <a href="#">
+              <img src="theme_files/flag03.png"  onclick="China()" class="metro-tile bg-primary light"/>
+              <span class="metro-title">China</span>
+            </a>
+          </div>
+          <div class="col-xs-4 col-sm-2">
+            <a href="#">
+              <img src="theme_files/flag04.png"  onclick="India()" class="metro-tile bg-primary light"/>
+              <span class="metro-title">India</span>
+            </a>
+          </div>
+          <div class="col-xs-4 col-sm-2">
+            <a href="#">
+              <img src="theme_files/flag05.png" onclick="Syria()" class="metro-tile bg-primary light"/>
+              <span class="metro-title">Syria</span>
+            </a>
+          </div>
+          <div class="col-xs-4 col-sm-2">
+            <a href="#">
+              <img src="theme_files/flag06.png"  onclick="NorthKorea()" class="metro-tile bg-primary light"/>
+              <span class="metro-title">North Korea</span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <!-- End: Topbar-Dropdown -->
+
+      <!-- Start: Topbar -->
+      <header id="topbar" class="alt">
+        <div class="topbar-left">
+          <ol class="breadcrumb">
+            <li id="Monthname">
+              February, 2018
+            </li>
+            <li class="crumb-icon">
+            </li>
+          </ol>
+        </div>
+        <div class="topbar-right">
+          <div class="ib topbar-dropdown">
+            <label for="topbar-multiple" class="control-label fs16">Filter by country or category:</label>
+            <select class="multiselect dropdown-toggle btn btn-default btn-sm ph15" id="countryselectid" value="All" onchange="countryChange()" style="max-height: 300px;">
+                <option value="All">All Countries</option>
+                <option value = "Afghanistan">Afghanistan</option>
+                <option value = "Albania">Albania</option>
+                <option value = "Algeria">Algeria</option>
+                <option value = "Angola">Angola</option>
+                <option value = "Argentina">Argentina</option>
+                <option value = "Australia">Australia</option>
+                <option value = "Austria">Austria</option>
+                <option value = "Azerbaijan">Azerbaijan</option>
+                <option value = "Bahrain">Bahrain</option>
+                <option value = "Bangladesh">Bangladesh</option>
+                <option value = "Belarus">Belarus</option>
+                <option value = "Belgium">Belgium</option>
+                <option value = "Bolivia">Bolivia</option>
+                <option value = "Bosnia and Herzegovina">Bosnia and Herzegovina</option>
+                <option value = "Botswana">Botswana</option>
+                <option value = "Brazil">Brazil</option>
+                <option value = "Bulgaria">Bulgaria</option>
+                <option value = "Burkina Faso">Burkina Faso</option>
+                <option value = "Burundi">Burundi</option>
+                <option value = "Cambodia">Cambodia</option>
+                <option value = "Cameroon">Cameroon</option>
+                <option value = "Canada">Canada</option>
+                <option value = "Central African Republic">Central African Republic</option>
+                <option value = "Chad">Chad</option>
+                <option value = "Chile">Chile</option>
+                <option value = "China">China</option>
+                <option value = "Colombia">Colombia</option>
+                <option value = "Comoros">Comoros</option>
+                <option value = "Costa Rica">Costa Rica</option>
+                <option value = "Croatia">Croatia</option>
+                <option value = "Cuba">Cuba</option>
+                <option value = "Curaçao">Curaçao</option>
+                <option value = "Cyprus">Cyprus</option>
+                <option value = "Czechia">Czechia</option>
+                <option value = "Côte d'Ivoire">Côte d'Ivoire</option>
+                <option value = "Darfur">Darfur</option>
+                <option value = "Democratic Republic of the Congo">Democratic Republic of the Congo</option>
+                <option value = "Denmark">Denmark</option>
+                <option value = "East Africa">East Africa</option>
+                <option value = "Ecuador">Ecuador</option>
+                <option value = "Egypt">Egypt</option>
+                <option value = "El Salvador">El Salvador</option>
+                <option value = "Equatorial Guinea">Equatorial Guinea</option>
+                <option value = "Estonia">Estonia</option>
+                <option value = "Ethiopia">Ethiopia</option>
+                <option value = "Fiji">Fiji</option>
+                <option value = "Finland">Finland</option>
+                <option value = "France">France</option>
+                <option value = "Gabon">Gabon</option>
+                <option value = "Gaza Strip">Gaza Strip</option>
+                <option value = "Germany">Germany</option>
+                <option value = "Golan">Golan</option>
+                <option value = "Greece">Greece</option>
+                <option value = "Guam">Guam</option>
+                <option value = "Guatemala">Guatemala</option>
+                <option value = "Gulf of Guinea">Gulf of Guinea</option>
+                <option value = "Haiti">Haiti</option>
+                <option value = "Honduras">Honduras</option>
+                <option value = "Hong Kong">Hong Kong</option>
+                <option value = "Hungary">Hungary</option>
+                <option value = "India">India</option>
+                <option value = "Indonesia">Indonesia</option>
+                <option value = "Iran">Iran</option>
+                <option value = "Iraq">Iraq</option>
+                <option value = "Ireland">Ireland</option>
+                <option value = "Israel">Israel</option>
+                <option value = "Italy">Italy</option>
+                <option value = "Japan">Japan</option>
+                <option value = "Jerusalem">Jerusalem</option>
+                <option value = "Jordan">Jordan</option>
+                <option value = "Kasai">Kasai</option>
+                <option value = "Kazakhstan">Kazakhstan</option>
+                <option value = "Kenya">Kenya</option>
+                <option value = "Korea">Korea</option>
+                <option value = "Kosovo">Kosovo</option>
+                <option value = "Kuwait">Kuwait</option>
+                <option value = "Kyrgyzstan">Kyrgyzstan</option>
+                <option value = "Lake Tanganyika">Lake Tanganyika</option>
+                <option value = "Laos">Laos</option>
+                <option value = "Lebanon">Lebanon</option>
+                <option value = "Lesotho">Lesotho</option>
+                <option value = "Libya">Libya</option>
+                <option value = "Lithuania">Lithuania</option>
+                <option value = "Macau">Macau</option>
+                <option value = "Macedonia (FYROM)">Macedonia (FYROM)</option>
+                <option value = "Maghreb">Maghreb</option>
+                <option value = "Malawi">Malawi</option>
+                <option value = "Malaysia">Malaysia</option>
+                <option value = "Maldives">Maldives</option>
+                <option value = "Mali">Mali</option>
+                <option value = "Malta">Malta</option>
+                <option value = "Mexico">Mexico</option>
+                <option value = "Mitrovica">Mitrovica</option>
+                <option value = "Moldova">Moldova</option>
+                <option value = "Montenegro">Montenegro</option>
+                <option value = "Morocco">Morocco</option>
+                <option value = "Myanmar (Burma)">Myanmar (Burma)</option>
+                <option value = "Nepal">Nepal</option>
+                <option value = "Netherlands">Netherlands</option>
+                <option value = "New Zealand">New Zealand</option>
+                <option value = "Nicaragua">Nicaragua</option>
+                <option value = "Niger">Niger</option>
+                <option value = "Nigeria">Nigeria</option>
+                <option value = "North District">North District</option>
+                <option value = "North Korea">North Korea</option>
+                <option value = "Norway">Norway</option>
+                <option value = "Oman">Oman</option>
+                <option value = "Pakistan">Pakistan</option>
+                <option value = "Palestine">Palestine</option>
+                <option value = "Panama">Panama</option>
+                <option value = "Papua New Guinea">Papua New Guinea</option>
+                <option value = "Peru">Peru</option>
+                <option value = "Philippines">Philippines</option>
+                <option value = "Poland">Poland</option>
+                <option value = "Portugal">Portugal</option>
+                <option value = "Qatar">Qatar</option>
+                <option value = "Ramallah">Ramallah</option>
+                <option value = "Romania">Romania</option>
+                <option value = "Russia">Russia</option>
+                <option value = "Rwanda">Rwanda</option>
+                <option value = "Saudi Arabia">Saudi Arabia</option>
+                <option value = "Senegal">Senegal</option>
+                <option value = "Serbia">Serbia</option>
+                <option value = "Singapore">Singapore</option>
+                <option value = "Slovakia">Slovakia</option>
+                <option value = "Slovenia">Slovenia</option>
+                <option value = "Somalia">Somalia</option>
+                <option value = "South Africa">South Africa</option>
+                <option value = "South Korea">South Korea</option>
+                <option value = "South Sudan">South Sudan</option>
+                <option value = "Spain">Spain</option>
+                <option value = "Sri Lanka">Sri Lanka</option>
+                <option value = "Sudan">Sudan</option>
+                <option value = "Svalbard and Jan Mayen">Svalbard and Jan Mayen</option>
+                <option value = "Sweden">Sweden</option>
+                <option value = "Switzerland">Switzerland</option>
+                <option value = "Syria">Syria</option>
+                <option value = "Taiwan">Taiwan</option>
+                <option value = "Tanzania">Tanzania</option>
+                <option value = "Thailand">Thailand</option>
+                <option value = "The Bahamas">The Bahamas</option>
+                <option value = "The Gambia">The Gambia</option>
+                <option value = "Timor-Leste">Timor-Leste</option>
+                <option value = "Tunisia">Tunisia</option>
+                <option value = "Turkey">Turkey</option>
+                <option value = "Turkmenistan">Turkmenistan</option>
+                <option value = "Uganda">Uganda</option>
+                <option value = "Ukraine">Ukraine</option>
+                <option value = "United Arab Emirates">United Arab Emirates</option>
+                <option value = "United Kingdom">United Kingdom</option>
+                <option value = "United States">United States</option>
+                <option value = "Uruguay">Uruguay</option>
+                <option value = "Uzbekistan">Uzbekistan</option>
+                <option value = "Venezuela">Venezuela</option>
+                <option value = "Vietnam">Vietnam</option>
+                <option value = "West Africa">West Africa</option>
+                <option value = "West Bank">West Bank</option>
+                <option value = "Yemen">Yemen</option>
+                <option value = "Zambia">Zambia</option>
+                <option value = "Zimbabwe">Zimbabwe</option>
+            </select>
+
+              <!-- <button type="button" class="multiselect dropdown-toggle btn btn-default btn-sm ph15" data-toggle="dropdown" title="Last 60 Days">
+                All Categories
+                <b class="caret"></b>
+              </button> -->
+              <!-- <ul class="multiselect-container dropdown-menu pull-right" id="mySelectCat" value="All" onclick="categoryChange()"> -->
+                <select class="multiselect dropdown-toggle btn btn-default btn-sm ph15" id="mySelectCat" value="All" onchange="categoryChange()">
+                  <option value="All">All</option>
+                  <option value="Military Conflicts">Military Conflicts</option>
+                  <option value="Accidents">Disasters / Accidents</option>
+                  <option value="Nuclear Proliferation">Nuclear Warfare</option>
+                  <option value="Judicial Process"> Judicial Process </option>
+                  <option value="International Trade">International Trade</option>
+                  <option value="Middle East">Middle East</option>
+
+                </select>
+          </div>
+
+
+          <div class="ml30 ib va-m" id="toggle_sidemenu_r">
+            <a href="#" class="pl5">
+              <span class="fa fa-calendar"></span>
+            </a>
+          </div>
+        </div>
+      </header>
+      <!-- End: Topbar -->      <!-- Begin: Content -->
+      <section id="content" class="table-layout">
+
+        <!-- begin: .tray-center -->
+        <div class="tray tray-center" style="height: 611px;">
+
+          <!-- dashboard tiles -->
+
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="panel panel-tile br-a br-grey">
+                <div class="panel-body" id="textspace">
+                  <!-- Insert summary here -->
+                  <div style="padding-left: 10px; padding-bottom: 20px; font-size: 12px;" id="summary">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="panel panel-tile br-a br-grey">
+                <div class="panel-body">
+                  <div class="svg">
+                    <script src="js/globe.js"></script>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="panel panel-tile br-a br-grey">
+                <div class="panel-body">
+                  <div id="forcedDirectedImages"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-10">
+              <div class="panel panel-tile br-a br-grey">
+                <div class="panel-body">
+                  <div id="chartgraph1"></div>
+                </div>
+              </div>
+            </div>
+            <!-- <div class="col-sm-2">
+              <div class="panel panel-tile br-a br-grey">
+                <div class="panel-body">
+                  <div class="tab-pane active"> -->
+<!--                     <ul id="navlist">
+                      <li id="sr" class="title-divider text-muted mb20"><a href="charts/Syria-Russia.html">Syria - Russia</a></li>
+                      <li id="tus" class="title-divider text-muted mb20"><a href="charts/UnitedStates-Turkey.html">Turkey - United States</a></li>
+                      <li id="usc" class="title-divider text-muted mb20"><a href="charts/UnitedStates-China.html">China - United States</a></li>
+                      <li id="usaf" class="title-divider text-muted mb20"><a href="charts/UnitedStates-Afghanistan.html">United States - Afghanistan</a></li>
+                      <li id="usi" class="title-divider text-muted mb20"><a href="charts/UnitedStates-Iran.html">United States - Iran</a></li>
+                      <li id="usnk" class="title-divider text-muted mb20"><a href="charts/UnitedStates-North.html">United States - North Korea</a></li>
+                      <li id="usr" class="title-divider text-muted mb20"><a href="charts/UnitedStates-Russia.html">United States - Russia</a></li>
+                      <li id="usv" class="title-divider text-muted mb20"><a href="charts/UnitedStates-Venezuela.html">United States - Venezuela</a></li>
+                  </ul> -->
+                  </div>
+         <div class="row">
+            <div class="col-sm-10">
+              <div class="panel panel-tile br-a br-grey">
+                <div class="panel-body">
+                  <div id="chartgraph2"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+                </div>
+              </div>
+            </div>
+          </div>
+      </section>
+      <!-- End: Content -->
+
+      <!-- Begin: Page Footer -->
+      <footer id="content-footer" class="affix">
+        <div class="row">
+          <div class="col-xs-10">
+            <div class="ticker-wrap">
+                <div class="ticker">
+                </div>
+              </div>
+          </div>
+          <div class="col-xs-2 text-right">
+            <a href="#content" class="footer-return-top">
+              <span class="fa fa-arrow-up"></span>
+            </a>
+          </div>
+        </div>
+      </footer>
+      <!-- End: Page Footer -->
+
+    </section>
+    <!-- End: Content-Wrapper -->
+
+    <!-- Start: Right Sidebar -->
+    <aside id="sidebar_right" class="nano affix has-scrollbar">
+
+      <!-- Start: Sidebar Right Content -->
+      <div class="sidebar-right-content nano-content" tabindex="0" style="margin-right: -13px;">
+
+        <div class="tab-block sidebar-block br-n">
+          <ul class="nav nav-tabs tabs-border nav-justified hidden">
+            <li class="active">
+              <a href="#sidebar-right-tab1" data-toggle="tab">Tab 1</a>
+            </li>
+            <li>
+              <a href="#sidebar-right-tab2" data-toggle="tab">Tab 2</a>
+            </li>
+            <li>
+              <a href="#sidebar-right-tab3" data-toggle="tab">Tab 3</a>
+            </li>
+          </ul>
+          <div class="tab-content br-n">
+            <div id="sidebar-right-tab1" class="tab-pane active">
+
+<!--           <ul class="dropdown-menu white-drop left" role="menu">
+            <li id="1"><a onclick="updateData1()" href="#">June, 2017</a></li>
+            <li id="2"><a onclick="updateData2()" href="#">July, 2017</a></li>
+            <li id="3"><a onclick="updateData3()" href="#">Aug, 2017</a></li>
+            <li id="4"><a onclick="updateData4()" href="#">Sept, 2017</a></li>
+            <li id="5"><a onclick="updateData5()" href="#">Oct, 2017</a></li>
+            <li id="6"><a onclick="updateData6()" href="#">Nov, 2017</a></li>
+            <li id="7"><a onclick="updateData7()" href="#">Dec, 2017</a></li>
+            <li id="8"><a onclick="updateData8()" href="#">Jan, 2018</a></li>
+            <li id="9"><a onclick="updateData9()" href="#">Feb, 2018</a></li>
+          </ul> -->
+              <!-- <h5 class="title-divider mb20"> June, 2017
+              </h5>
+              <h5 class="title-divider mb20"> July, 2017
+              </h5>
+              <h5 class="title-divider mb20"> August, 2017
+              </h5>
+              <h5 class="title-divider mb20"> September, 2017
+              </h5>
+              <h5 class="title-divider mb20"> October, 2017
+              </h5>
+              <h5 class="title-divider mb20"> November, 2017
+              </h5>
+              <h5 class="title-divider text-muted mb20"> December, 2017
+              </h5>
+              <h5 class="title-divider text-muted mb20"> January, 2018
+              </h5>
+              <h5 class="title-divider text-muted mb20"> February, 2018
+              </h5>
+              <h5 class="title-divider text-muted mb20"> March, 2018
+              </h5> -->
+              <ul id="navlist" value="10">
+                  <li id="11" value="11" class="title-divider text-muted mb20"><a onclick="updateMonth11(); updateData11();" href="#">Apr, 2017</a></li>
+                  <li id="12" value="12" class="title-divider text-muted mb20"><a onclick="updateMonth12(); updateData12();" href="#">May, 2017</a></li>
+                  <li id="1" value="1" class="title-divider text-muted mb20"><a onclick="updateMonth1(); updateData1();" href="#">June, 2017</a></li>
+                  <li id="2" value="2" class="title-divider text-muted mb20"><a onclick="updateMonth2(); updateData2();" href="#">July, 2017</a></li>
+                  <li id="3" value="3" class="title-divider text-muted mb20"><a onclick="updateMonth3(); updateData3();" href="#">Aug, 2017</a></li>
+                  <li id="4" value="4" class="title-divider text-muted mb20"><a onclick="updateMonth4(); updateData4();" href="#">Sept, 2017</a></li>
+                  <li id="5" value="5" class="title-divider text-muted mb20"><a onclick="updateMonth5(); updateData5();" href="#">Oct, 2017</a></li>
+                  <li id="6" value="6" class="title-divider text-muted mb20"><a onclick="updateMonth6(); updateData6();" href="#">Nov, 2017</a></li>
+                  <li id="7" value="7" class="title-divider text-muted mb20"><a onclick="updateMonth7(); updateData7();" href="#">Dec, 2017</a></li>
+                  <li id="8" value="8" class="title-divider text-muted mb20"><a onclick="updateMonth8(); updateData8();" href="#">Jan, 2018</a></li>
+                  <li id="9" value="9" class="title-divider text-muted mb20"><a onclick="updateMonth9(); updateData9();" href="#">Feb, 2018</a></li>
+                  <li id="10" value="10" class="title-divider text-muted mb20"><a onclick="updateMonth10(); updateData10();" href="#">Mar, 2018</a></li>
+              </ul>
+
+            </div>
+            <div id="sidebar-right-tab2" class="tab-pane"></div>
+            <div id="sidebar-right-tab3" class="tab-pane"></div>
+          </div>
+          <!-- end: .tab-content -->
+        </div>
+      </div>
+    <div class="nano-pane" style="display: none;"><div class="nano-slider" style="height: 681px; transform: translate(0px, 0px);"></div></div></aside>
+    <!-- End: Right Sidebar -->
+
+  </div>
+  <!-- End: Main -->
+
+  <!-- BEGIN: PAGE SCRIPTS -->
+
+  <!-- jQuery -->
+  <script type="text/javascript" async="" src="theme_files/ec.js"></script><script type="text/javascript" async="" src="theme_files/analytics.js"></script><script async="" src="theme_files/gtm.js"></script><script src="theme_files/jquery-1.js"></script>
+  <script src="theme_files/jquery-ui.js"></script>
+
+  <!-- Bootstrap Tabdrop Plugin -->
+  <script src="theme_files/bootstrap-tabdrop.js"></script>
+
+  <!-- FullCalendar Plugin + moment Dependency -->
+  <script src="theme_files/moment.js"></script>
+  <script src="theme_files/fullcalendar.js"></script>
+
+  <!-- Theme Javascript -->
+  <script src="theme_files/utility.js"></script>
+  <script src="theme_files/demo.js"></script>
+  <script src="theme_files/main.js"></script>
+
+  <!-- Widget Javascript -->
+  <script src="theme_files/widgets.js"></script>
+  <script type="text/javascript">
+  jQuery(document).ready(function() {
+
+    "use strict";
+
+    // Init Demo JS
+    Demo.init();
+
+
+    // Init Theme Core
+    Core.init();
+
+
+    // Init Widget Demo JS
+    // demoHighCharts.init();
+
+    // Because we are using Admin Panels we use the OnFinish
+    // callback to activate the demoWidgets. It's smoother if
+    // we let the panels be moved and organized before
+    // filling them with content from various plugins
+
+    // Init plugins used on this page
+    // HighCharts, JvectorMap, Admin Panels
+
+    // Init Admin Panels on widgets inside the ".admin-panels" container
+    $('.admin-panels').adminpanel({
+      grid: '.admin-grid',
+      draggable: true,
+      preserveGrid: true,
+      // mobile: true,
+      onStart: function() {
+        // Do something before AdminPanels runs
+      },
+      onFinish: function() {
+        $('.admin-panels').addClass('animated fadeIn').removeClass('fade-onload');
+
+        // Init the rest of the plugins now that the panels
+        // have had a chance to be moved and organized.
+        // It's less taxing to organize empty panels
+        demoHighCharts.init();
+        runVectorMaps(); // function below
+      },
+      onSave: function() {
+        $(window).trigger('resize');
+      }
+    });
+
+
+    // Init plugins for ".calendar-widget"
+    // plugins: FullCalendar
+    //
+    $('#calendar-widget').fullCalendar({
+      // contentHeight: 397,
+      editable: true,
+//      intervalStart: true,
+      header: {
+        left:   'prev',
+        center: 'title',
+        right:  'next'
+      },
+      eventRender: function(event, element) {
+        // create event tooltip using bootstrap tooltips
+        $(element).attr("data-original-title", event.title);
+        $(element).tooltip({
+          container: 'body',
+          delay: {
+            "show": 100,
+            "hide": 200
+          }
+        });
+        // create a tooltip auto close timer
+        $(element).on('show.bs.tooltip', function() {
+          var autoClose = setTimeout(function() {
+            $('.tooltip').fadeOut();
+          }, 3500);
+        });
+      }
+    });
+
+
+    // Init plugins for ".task-widget"
+    // plugins: Custom Functions + jQuery Sortable
+    //
+    var taskWidget = $('div.task-widget');
+    var taskItems = taskWidget.find('li.task-item');
+    var currentItems = taskWidget.find('ul.task-current');
+    var completedItems = taskWidget.find('ul.task-completed');
+
+    // Init jQuery Sortable on Task Widget
+    taskWidget.sortable({
+      items: taskItems, // only init sortable on list items (not labels)
+      handle: '.task-menu',
+      axis: 'y',
+      connectWith: ".task-list",
+      update: function( event, ui ) {
+        var Item = ui.item;
+        var ParentList = Item.parent();
+
+        // If item is already checked move it to "current items list"
+        if (ParentList.hasClass('task-current')) {
+            Item.removeClass('item-checked').find('input[type="checkbox"]').prop('checked', false);
+        }
+        if (ParentList.hasClass('task-completed')) {
+            Item.addClass('item-checked').find('input[type="checkbox"]').prop('checked', true);
+        }
+
+      }
+    });
+
+    // Custom Functions to handle/assign list filter behavior
+    taskItems.on('click', function(e) {
+      e.preventDefault();
+      var This = $(this);
+      var Target = $(e.target);
+
+      if (Target.is('.task-menu') && Target.parents('.task-completed').length) {
+        This.remove();
+        return;
+      }
+
+      if (Target.parents('.task-handle').length) {
+		      // If item is already checked move it to "current items list"
+		      if (This.hasClass('item-checked')) {
+		        This.removeClass('item-checked').find('input[type="checkbox"]').prop('checked', false);
+		      }
+		      // Otherwise move it to the "completed items list"
+		      else {
+		        This.addClass('item-checked').find('input[type="checkbox"]').prop('checked', true);
+		      }
+      }
+
+    });
+
+
+    var highColors = [bgDanger, bgPrimaryLr, bgWarning, bgPrimary];
+
+    // Chart data
+    var seriesData = [{
+      name: 'Notebooks',
+      data: [2.9, 3.2, 4.7, 5.5, 8.9, 12.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8],
+      color: '#fdde3c',
+      shadow: {
+        enabled: true,
+        color: '#fdde3c',
+        width:40,
+        offsetY: 5,
+        opacity: 0.015
+      }
+    }, {
+      name: 'Phones',
+      data: [5.0, 9, 17, 22, 19, 11.5, 5.2, 9.5, 11.3, 15.3, 19.9, 24.6],
+      color: '#fb6820',
+      shadow: {
+        enabled: true,
+        color: '#fb6820',
+        width:40,
+        offsetY: 5,
+        opacity: 0.015
+      }
+    }, {
+      name: 'Desktops',
+      data: [15, 19, 22.7, 29.3, 22.0, 17.0, 23.8, 19.1, 22.1, 14.1, 11.6, 7.5],
+      color: '#2ae19e',
+      shadow: {
+        enabled: true,
+        color: '#2ae19e',
+        width:40,
+        offsetY: 5,
+        opacity: 0.015
+      }
+    }];
+
+    var ecomChart = $('#ecommerce_chart1');
+    if (ecomChart.length) {
+    }
+    // Widget VectorMap
+    function runVectorMaps() {
+
+      // Jvector Map Plugin
+      var runJvectorMap = function() {
+        // Data set
+        var mapData = [900, 700, 350, 500];
+        // Init Jvector Map
+        $('#WidgetMap').vectorMap({
+          map: 'us_lcc_en',
+          //regionsSelectable: true,
+          backgroundColor: 'transparent',
+          series: {
+            markers: [{
+              attribute: 'r',
+              scale: [0, 0],
+              values: mapData
+            }]
+          },
+          regionStyle: {
+            initial: {
+              fill: '#dfdfdf'
+            },
+            hover: {
+              fill: '#cbcbcb'
+            }
+          },
+          markers: [{
+            latLng: [37.78, -122.41],
+            name: 'San Francisco,CA'
+          }, {
+            latLng: [36.73, -103.98],
+            name: 'Texas,TX'
+          }, {
+            latLng: [38.62, -90.19],
+            name: 'St. Louis,MO'
+          }, {
+            latLng: [40.67, -73.94],
+            name: 'New York City,NY'
+          }],
+          markerStyle: {
+            initial: {
+              fill: '#a288d5',
+              stroke: '#b49ae0',
+              "fill-opacity": 1,
+              "stroke-width": 10,
+              "stroke-opacity": 0.3,
+              r: 3
+            },
+            hover: {
+              stroke: 'black',
+              "stroke-width": 2
+            },
+            selected: {
+              fill: 'blue'
+            },
+            selectedHover: {}
+          },
+        });
+        // Manual code to alter the Vector map plugin to
+        // allow for individual coloring of countries
+        var states = ['US-CA', 'US-TX', 'US-MO',
+          'US-NY'
+        ];
+        var colors = [bgPrimary, bgInfo, bgDanger, bgWarning];
+        var colors2 = [bgPrimaryDr, bgInfoDr, bgDangerDr, bgWarningDr];
+        $.each(states, function(i, e) {
+          $("#WidgetMap path[data-code=" + e + "]").css({
+            fill: colors[i]
+          });
+        });
+        $('#WidgetMap').find('.jvectormap-marker')
+          .each(function(i, e) {
+            $(e).css({
+              fill: colors2[i],
+              stroke: colors2[i]
+            });
+          });
+      }
+
+      if ($('#WidgetMap').length) {
+        runJvectorMap();
+      }
+    }
+
+
+    ecomChart.highcharts({
+      credits: false,
+      colors: highColors,
+
+      chart: {
+        backgroundColor: 'transparent',
+        className: '',
+        type: 'line',
+        zoomType: 'x',
+        panning: true,
+        panKey: 'shift',
+        marginTop: 45,
+        marginRight: 1,
+      },
+      title: {
+        text: null
+      },
+      xAxis: {
+        gridLineColor: '#eeefef',
+        lineColor: '#d7d7d7',
+        tickColor: '#d7d7d7',
+        categories: ['Jan', 'Feb', 'Mar', 'Apr',
+          'May', 'Jun', 'Jul', 'Aug',
+          'Sep', 'Oct', 'Nov', 'Dec'
+        ],
+        tickWidth: 1,
+        gridLineWidth: 1
+      },
+      yAxis: {
+        min: 0,
+        tickInterval: 5,
+        gridLineColor: '#eeefef',
+        title: {
+          text: null,
+        }
+      },
+      legend: {
+        enabled: true,
+        floating: false,
+        align: 'right',
+        verticalAlign: 'top',
+        x: -15
+      },
+      plotOptions: {
+        spline: {
+          lineWidth: 3,
+        },
+        line: {
+          lineWidth: 3,
+          marker: {
+            enabled: true,
+            symbol: 'circle',
+            radius: 5,
+            states: {
+              hover: {
+                enabled: true
+              }
+            }
+          },
+          shadow: {
+//              color: Highcharts.getOptions().colors[0],
+//              opacity: 0.03,
+//              width: 30,
+//              offsetY: 5
+          },
+          states: {
+            hover: {
+              lineWidth: 4
+            }
+          },
+          threshold: null
+        }
+      },
+      series: seriesData
+
+    });
+  });
+  </script>
+  <!-- END: PAGE SCRIPTS -->
+
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-P9FT69"height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-P9FT69');</script><!-- End Google Tag Manager -->
+
+
+<div class="jvectormap-label"></div></body><!-- Google Tag Manager --></html>
