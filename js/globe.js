@@ -145,6 +145,7 @@ function ready(error, world, places) {
               target: a.end.geometry.coordinates,
               title: a.title,
               src: a.src,
+                text: a.text
             })
           }
           else{
@@ -152,7 +153,8 @@ function ready(error, world, places) {
               source: a.geometry.coordinates,
               target: a.end.geometry.coordinates,
               title: a.title,
-              src: a.src
+              src: a.src,
+                text: a.text
             })
           }
         }
@@ -169,6 +171,7 @@ function ready(error, world, places) {
                 target: a.end.geometry.coordinates,
                 title: a.title,
                 src: a.src,
+                text: a.text
               })
             }
             else{
@@ -176,7 +179,8 @@ function ready(error, world, places) {
                 source: a.geometry.coordinates,
                 target: a.end.geometry.coordinates,
                 title: a.title,
-                src: a.src
+                src: a.src,
+                text: a.text
               })
             }
           }
@@ -194,14 +198,16 @@ function ready(error, world, places) {
                 target: a.end.geometry.coordinates,
                 title: a.title,
                 src: a.src,
-              })
+                 text: a.text
+             })
             }
             else{
               redlinks.push({
                 source: a.geometry.coordinates,
                 target: a.end.geometry.coordinates,
                 title: a.title,
-                src: a.src
+                src: a.src,
+                text: a.text
               })
             }
           }
@@ -219,6 +225,7 @@ function ready(error, world, places) {
                 target: a.end.geometry.coordinates,
                 title: a.title,
                 src: a.src,
+                text: a.text
               })
             }
             else{
@@ -226,7 +233,8 @@ function ready(error, world, places) {
                 source: a.geometry.coordinates,
                 target: a.end.geometry.coordinates,
                 title: a.title,
-                src: a.src
+                src: a.src,
+                text: a.text
               })
             }
           }
@@ -478,26 +486,28 @@ function updateData1(){
         .attr("class", "point")
         .attr("d", path);
 
-        var select;
+        var select ;
+        //decides what will be displayed
         var x = document.getElementById("countryselectid").value;
         //contains country name string
         var y = document.getElementById("mySelectCat").value;
         //contains country name string
-        //console.log(y);
 
-        if(x=="All" && y=="All"){
-        select = 1;
-        }
-        else if(y=="All"){
-        select = 2;
-        }
-        else if(x=="All"){
-        select = 3;
-        }
-        else{
-        select = 4;
-        }
-        console.log(select);
+if(x=="All" && y=="All"){
+  select = 1;
+}
+else if(y=="All"){
+  select = 2;
+}
+else if(x=="All"){
+  select = 3;
+}
+else{
+  select = 4;
+}
+
+
+
         // spawn links between cities as source/target coord pairs
         places.features.forEach(function(a) {
           if(select==1){
@@ -511,6 +521,7 @@ function updateData1(){
                 target: a.end.geometry.coordinates,
                 title: a.title,
                 src: a.src,
+                text: a.text
               })
             }
             else{
@@ -518,7 +529,8 @@ function updateData1(){
                 source: a.geometry.coordinates,
                 target: a.end.geometry.coordinates,
                 title: a.title,
-                src: a.src
+                src: a.src,
+                text: a.text
               })
             }
           }
@@ -535,6 +547,7 @@ function updateData1(){
                   target: a.end.geometry.coordinates,
                   title: a.title,
                   src: a.src,
+                  text: a.text
                 })
               }
               else{
@@ -542,7 +555,8 @@ function updateData1(){
                   source: a.geometry.coordinates,
                   target: a.end.geometry.coordinates,
                   title: a.title,
-                  src: a.src
+                  src: a.src,
+                  text: a.text
                 })
               }
             }
@@ -560,6 +574,7 @@ function updateData1(){
                   target: a.end.geometry.coordinates,
                   title: a.title,
                   src: a.src,
+                  text: a.text
                 })
               }
               else{
@@ -567,7 +582,8 @@ function updateData1(){
                   source: a.geometry.coordinates,
                   target: a.end.geometry.coordinates,
                   title: a.title,
-                  src: a.src
+                  src: a.src,
+                  text: a.text
                 })
               }
             }
@@ -585,6 +601,7 @@ function updateData1(){
                   target: a.end.geometry.coordinates,
                   title: a.title,
                   src: a.src,
+                  text: a.text
                 })
               }
               else{
@@ -592,12 +609,14 @@ function updateData1(){
                   source: a.geometry.coordinates,
                   target: a.end.geometry.coordinates,
                   title: a.title,
-                  src: a.src
+                  src: a.src,
+                  text: a.text
                 })
               }
             }
           }
         });
+
 
     // build geoJSON features from links array
     links.forEach(function(e,i,a) {
@@ -625,7 +644,8 @@ function updateData1(){
             .attr("d", function(d) { return swoosh(flying_arc(d)) })
             .on("mouseover", handleMouseOver)
             .on("mouseout", handleMouseOut)
-            .on("mouseenter", clicked);
+            .on("mouseenter", clicked)
+            .on("click", summy);
 
         svg.append("g").attr("class","flyers")
           .selectAll("path").data(greenlinks)
@@ -634,8 +654,14 @@ function updateData1(){
             .attr("d", function(d) { return swoosh(flying_arc(d)) })
             .on("mouseover", handleMouseOver)
             .on("mouseout", handleMouseOut)
-            .on("mouseenter", clicked);
+            .on("mouseenter", clicked)
+            .on("click", summy);
 
+
+            function summy(d){
+              // console.log(d)
+              document.getElementById("summary").innerHTML =(d.text);
+            }
 
   function clicked(d){
     svg.append("svg:image")
@@ -661,6 +687,7 @@ function updateData1(){
 
   }
   function handleMouseOut(d){
+    //console.log("Bye");
     d3.select(this)
         .style("stroke-width", 3)
     d3.select("#intext").remove();
@@ -846,26 +873,28 @@ function updateData2(){
         .attr("class", "point")
         .attr("d", path);
 
-        var select;
+        var select ;
+        //decides what will be displayed
         var x = document.getElementById("countryselectid").value;
         //contains country name string
         var y = document.getElementById("mySelectCat").value;
         //contains country name string
-        //console.log(y);
 
-        if(x=="All" && y=="All"){
-        select = 1;
-        }
-        else if(y=="All"){
-        select = 2;
-        }
-        else if(x=="All"){
-        select = 3;
-        }
-        else{
-        select = 4;
-        }
-        console.log(select);
+if(x=="All" && y=="All"){
+  select = 1;
+}
+else if(y=="All"){
+  select = 2;
+}
+else if(x=="All"){
+  select = 3;
+}
+else{
+  select = 4;
+}
+
+
+
         // spawn links between cities as source/target coord pairs
         places.features.forEach(function(a) {
           if(select==1){
@@ -879,6 +908,7 @@ function updateData2(){
                 target: a.end.geometry.coordinates,
                 title: a.title,
                 src: a.src,
+                text: a.text
               })
             }
             else{
@@ -886,7 +916,8 @@ function updateData2(){
                 source: a.geometry.coordinates,
                 target: a.end.geometry.coordinates,
                 title: a.title,
-                src: a.src
+                src: a.src,
+                text: a.text
               })
             }
           }
@@ -903,6 +934,7 @@ function updateData2(){
                   target: a.end.geometry.coordinates,
                   title: a.title,
                   src: a.src,
+                  text: a.text
                 })
               }
               else{
@@ -910,7 +942,8 @@ function updateData2(){
                   source: a.geometry.coordinates,
                   target: a.end.geometry.coordinates,
                   title: a.title,
-                  src: a.src
+                  src: a.src,
+                  text: a.text
                 })
               }
             }
@@ -928,6 +961,7 @@ function updateData2(){
                   target: a.end.geometry.coordinates,
                   title: a.title,
                   src: a.src,
+                  text: a.text
                 })
               }
               else{
@@ -935,7 +969,8 @@ function updateData2(){
                   source: a.geometry.coordinates,
                   target: a.end.geometry.coordinates,
                   title: a.title,
-                  src: a.src
+                  src: a.src,
+                  text: a.text
                 })
               }
             }
@@ -953,6 +988,7 @@ function updateData2(){
                   target: a.end.geometry.coordinates,
                   title: a.title,
                   src: a.src,
+                  text: a.text
                 })
               }
               else{
@@ -960,12 +996,14 @@ function updateData2(){
                   source: a.geometry.coordinates,
                   target: a.end.geometry.coordinates,
                   title: a.title,
-                  src: a.src
+                  src: a.src,
+                  text: a.text
                 })
               }
             }
           }
         });
+
 
     // build geoJSON features from links array
     links.forEach(function(e,i,a) {
@@ -993,7 +1031,8 @@ function updateData2(){
             .attr("d", function(d) { return swoosh(flying_arc(d)) })
             .on("mouseover", handleMouseOver)
             .on("mouseout", handleMouseOut)
-            .on("mouseenter", clicked);
+            .on("mouseenter", clicked)
+            .on("click", summy);
 
         svg.append("g").attr("class","flyers")
           .selectAll("path").data(greenlinks)
@@ -1002,8 +1041,14 @@ function updateData2(){
             .attr("d", function(d) { return swoosh(flying_arc(d)) })
             .on("mouseover", handleMouseOver)
             .on("mouseout", handleMouseOut)
-            .on("mouseenter", clicked);
+            .on("mouseenter", clicked)
+            .on("click", summy);
 
+
+            function summy(d){
+              // console.log(d)
+              document.getElementById("summary").innerHTML =(d.text);
+            }
 
   function clicked(d){
     svg.append("svg:image")
@@ -1029,6 +1074,7 @@ function updateData2(){
 
   }
   function handleMouseOut(d){
+    //console.log("Bye");
     d3.select(this)
         .style("stroke-width", 3)
     d3.select("#intext").remove();
@@ -1214,26 +1260,28 @@ function updateData3(){
         .attr("class", "point")
         .attr("d", path);
 
-        var select;
+        var select ;
+        //decides what will be displayed
         var x = document.getElementById("countryselectid").value;
         //contains country name string
         var y = document.getElementById("mySelectCat").value;
         //contains country name string
-        //console.log(y);
 
-        if(x=="All" && y=="All"){
-        select = 1;
-        }
-        else if(y=="All"){
-        select = 2;
-        }
-        else if(x=="All"){
-        select = 3;
-        }
-        else{
-        select = 4;
-        }
-        console.log(select);
+if(x=="All" && y=="All"){
+  select = 1;
+}
+else if(y=="All"){
+  select = 2;
+}
+else if(x=="All"){
+  select = 3;
+}
+else{
+  select = 4;
+}
+
+
+
         // spawn links between cities as source/target coord pairs
         places.features.forEach(function(a) {
           if(select==1){
@@ -1247,6 +1295,7 @@ function updateData3(){
                 target: a.end.geometry.coordinates,
                 title: a.title,
                 src: a.src,
+                text: a.text
               })
             }
             else{
@@ -1254,7 +1303,8 @@ function updateData3(){
                 source: a.geometry.coordinates,
                 target: a.end.geometry.coordinates,
                 title: a.title,
-                src: a.src
+                src: a.src,
+                text: a.text
               })
             }
           }
@@ -1271,6 +1321,7 @@ function updateData3(){
                   target: a.end.geometry.coordinates,
                   title: a.title,
                   src: a.src,
+                  text: a.text
                 })
               }
               else{
@@ -1278,7 +1329,8 @@ function updateData3(){
                   source: a.geometry.coordinates,
                   target: a.end.geometry.coordinates,
                   title: a.title,
-                  src: a.src
+                  src: a.src,
+                  text: a.text
                 })
               }
             }
@@ -1296,6 +1348,7 @@ function updateData3(){
                   target: a.end.geometry.coordinates,
                   title: a.title,
                   src: a.src,
+                  text: a.text
                 })
               }
               else{
@@ -1303,7 +1356,8 @@ function updateData3(){
                   source: a.geometry.coordinates,
                   target: a.end.geometry.coordinates,
                   title: a.title,
-                  src: a.src
+                  src: a.src,
+                  text: a.text
                 })
               }
             }
@@ -1321,6 +1375,7 @@ function updateData3(){
                   target: a.end.geometry.coordinates,
                   title: a.title,
                   src: a.src,
+                  text: a.text
                 })
               }
               else{
@@ -1328,12 +1383,14 @@ function updateData3(){
                   source: a.geometry.coordinates,
                   target: a.end.geometry.coordinates,
                   title: a.title,
-                  src: a.src
+                  src: a.src,
+                  text: a.text
                 })
               }
             }
           }
         });
+
 
     // build geoJSON features from links array
     links.forEach(function(e,i,a) {
@@ -1361,7 +1418,8 @@ function updateData3(){
             .attr("d", function(d) { return swoosh(flying_arc(d)) })
             .on("mouseover", handleMouseOver)
             .on("mouseout", handleMouseOut)
-            .on("mouseenter", clicked);
+            .on("mouseenter", clicked)
+            .on("click", summy);
 
         svg.append("g").attr("class","flyers")
           .selectAll("path").data(greenlinks)
@@ -1370,8 +1428,14 @@ function updateData3(){
             .attr("d", function(d) { return swoosh(flying_arc(d)) })
             .on("mouseover", handleMouseOver)
             .on("mouseout", handleMouseOut)
-            .on("mouseenter", clicked);
+            .on("mouseenter", clicked)
+            .on("click", summy);
 
+
+            function summy(d){
+              // console.log(d)
+              document.getElementById("summary").innerHTML =(d.text);
+            }
 
   function clicked(d){
     svg.append("svg:image")
@@ -1397,6 +1461,7 @@ function updateData3(){
 
   }
   function handleMouseOut(d){
+    //console.log("Bye");
     d3.select(this)
         .style("stroke-width", 3)
     d3.select("#intext").remove();
@@ -1582,26 +1647,28 @@ function updateData4(){
         .attr("class", "point")
         .attr("d", path);
 
-        var select;
+        var select ;
+        //decides what will be displayed
         var x = document.getElementById("countryselectid").value;
         //contains country name string
         var y = document.getElementById("mySelectCat").value;
         //contains country name string
-        //console.log(y);
 
-        if(x=="All" && y=="All"){
-        select = 1;
-        }
-        else if(y=="All"){
-        select = 2;
-        }
-        else if(x=="All"){
-        select = 3;
-        }
-        else{
-        select = 4;
-        }
-        console.log(select);
+if(x=="All" && y=="All"){
+  select = 1;
+}
+else if(y=="All"){
+  select = 2;
+}
+else if(x=="All"){
+  select = 3;
+}
+else{
+  select = 4;
+}
+
+
+
         // spawn links between cities as source/target coord pairs
         places.features.forEach(function(a) {
           if(select==1){
@@ -1615,6 +1682,7 @@ function updateData4(){
                 target: a.end.geometry.coordinates,
                 title: a.title,
                 src: a.src,
+                text: a.text
               })
             }
             else{
@@ -1622,7 +1690,8 @@ function updateData4(){
                 source: a.geometry.coordinates,
                 target: a.end.geometry.coordinates,
                 title: a.title,
-                src: a.src
+                src: a.src,
+                text: a.text
               })
             }
           }
@@ -1639,6 +1708,7 @@ function updateData4(){
                   target: a.end.geometry.coordinates,
                   title: a.title,
                   src: a.src,
+                  text: a.text
                 })
               }
               else{
@@ -1646,7 +1716,8 @@ function updateData4(){
                   source: a.geometry.coordinates,
                   target: a.end.geometry.coordinates,
                   title: a.title,
-                  src: a.src
+                  src: a.src,
+                  text: a.text
                 })
               }
             }
@@ -1664,6 +1735,7 @@ function updateData4(){
                   target: a.end.geometry.coordinates,
                   title: a.title,
                   src: a.src,
+                  text: a.text
                 })
               }
               else{
@@ -1671,7 +1743,8 @@ function updateData4(){
                   source: a.geometry.coordinates,
                   target: a.end.geometry.coordinates,
                   title: a.title,
-                  src: a.src
+                  src: a.src,
+                  text: a.text
                 })
               }
             }
@@ -1689,6 +1762,7 @@ function updateData4(){
                   target: a.end.geometry.coordinates,
                   title: a.title,
                   src: a.src,
+                  text: a.text
                 })
               }
               else{
@@ -1696,12 +1770,14 @@ function updateData4(){
                   source: a.geometry.coordinates,
                   target: a.end.geometry.coordinates,
                   title: a.title,
-                  src: a.src
+                  src: a.src,
+                  text: a.text
                 })
               }
             }
           }
         });
+
 
     // build geoJSON features from links array
     links.forEach(function(e,i,a) {
@@ -1729,7 +1805,8 @@ function updateData4(){
             .attr("d", function(d) { return swoosh(flying_arc(d)) })
             .on("mouseover", handleMouseOver)
             .on("mouseout", handleMouseOut)
-            .on("mouseenter", clicked);
+            .on("mouseenter", clicked)
+            .on("click", summy);
 
         svg.append("g").attr("class","flyers")
           .selectAll("path").data(greenlinks)
@@ -1738,8 +1815,14 @@ function updateData4(){
             .attr("d", function(d) { return swoosh(flying_arc(d)) })
             .on("mouseover", handleMouseOver)
             .on("mouseout", handleMouseOut)
-            .on("mouseenter", clicked);
+            .on("mouseenter", clicked)
+            .on("click", summy);
 
+
+            function summy(d){
+              // console.log(d)
+              document.getElementById("summary").innerHTML =(d.text);
+            }
 
   function clicked(d){
     svg.append("svg:image")
@@ -1765,6 +1848,7 @@ function updateData4(){
 
   }
   function handleMouseOut(d){
+    //console.log("Bye");
     d3.select(this)
         .style("stroke-width", 3)
     d3.select("#intext").remove();
@@ -1950,26 +2034,28 @@ function updateData5(){
         .attr("class", "point")
         .attr("d", path);
 
-        var select;
+        var select ;
+        //decides what will be displayed
         var x = document.getElementById("countryselectid").value;
         //contains country name string
         var y = document.getElementById("mySelectCat").value;
         //contains country name string
-        //console.log(y);
 
-        if(x=="All" && y=="All"){
-        select = 1;
-        }
-        else if(y=="All"){
-        select = 2;
-        }
-        else if(x=="All"){
-        select = 3;
-        }
-        else{
-        select = 4;
-        }
-        console.log(select);
+if(x=="All" && y=="All"){
+  select = 1;
+}
+else if(y=="All"){
+  select = 2;
+}
+else if(x=="All"){
+  select = 3;
+}
+else{
+  select = 4;
+}
+
+
+
         // spawn links between cities as source/target coord pairs
         places.features.forEach(function(a) {
           if(select==1){
@@ -1983,6 +2069,7 @@ function updateData5(){
                 target: a.end.geometry.coordinates,
                 title: a.title,
                 src: a.src,
+                text: a.text
               })
             }
             else{
@@ -1990,7 +2077,8 @@ function updateData5(){
                 source: a.geometry.coordinates,
                 target: a.end.geometry.coordinates,
                 title: a.title,
-                src: a.src
+                src: a.src,
+                text: a.text
               })
             }
           }
@@ -2007,6 +2095,7 @@ function updateData5(){
                   target: a.end.geometry.coordinates,
                   title: a.title,
                   src: a.src,
+                  text: a.text
                 })
               }
               else{
@@ -2014,7 +2103,8 @@ function updateData5(){
                   source: a.geometry.coordinates,
                   target: a.end.geometry.coordinates,
                   title: a.title,
-                  src: a.src
+                  src: a.src,
+                  text: a.text
                 })
               }
             }
@@ -2032,6 +2122,7 @@ function updateData5(){
                   target: a.end.geometry.coordinates,
                   title: a.title,
                   src: a.src,
+                  text: a.text
                 })
               }
               else{
@@ -2039,7 +2130,8 @@ function updateData5(){
                   source: a.geometry.coordinates,
                   target: a.end.geometry.coordinates,
                   title: a.title,
-                  src: a.src
+                  src: a.src,
+                  text: a.text
                 })
               }
             }
@@ -2057,6 +2149,7 @@ function updateData5(){
                   target: a.end.geometry.coordinates,
                   title: a.title,
                   src: a.src,
+                  text: a.text
                 })
               }
               else{
@@ -2064,12 +2157,14 @@ function updateData5(){
                   source: a.geometry.coordinates,
                   target: a.end.geometry.coordinates,
                   title: a.title,
-                  src: a.src
+                  src: a.src,
+                  text: a.text
                 })
               }
             }
           }
         });
+
 
     // build geoJSON features from links array
     links.forEach(function(e,i,a) {
@@ -2097,7 +2192,8 @@ function updateData5(){
             .attr("d", function(d) { return swoosh(flying_arc(d)) })
             .on("mouseover", handleMouseOver)
             .on("mouseout", handleMouseOut)
-            .on("mouseenter", clicked);
+            .on("mouseenter", clicked)
+            .on("click", summy);
 
         svg.append("g").attr("class","flyers")
           .selectAll("path").data(greenlinks)
@@ -2106,8 +2202,14 @@ function updateData5(){
             .attr("d", function(d) { return swoosh(flying_arc(d)) })
             .on("mouseover", handleMouseOver)
             .on("mouseout", handleMouseOut)
-            .on("mouseenter", clicked);
+            .on("mouseenter", clicked)
+            .on("click", summy);
 
+
+            function summy(d){
+              // console.log(d)
+              document.getElementById("summary").innerHTML =(d.text);
+            }
 
   function clicked(d){
     svg.append("svg:image")
@@ -2133,6 +2235,7 @@ function updateData5(){
 
   }
   function handleMouseOut(d){
+    //console.log("Bye");
     d3.select(this)
         .style("stroke-width", 3)
     d3.select("#intext").remove();
@@ -2318,26 +2421,28 @@ function updateData6(){
         .attr("class", "point")
         .attr("d", path);
 
-        var select;
+        var select ;
+        //decides what will be displayed
         var x = document.getElementById("countryselectid").value;
         //contains country name string
         var y = document.getElementById("mySelectCat").value;
         //contains country name string
-        //console.log(y);
 
-        if(x=="All" && y=="All"){
-        select = 1;
-        }
-        else if(y=="All"){
-        select = 2;
-        }
-        else if(x=="All"){
-        select = 3;
-        }
-        else{
-        select = 4;
-        }
-        console.log(select);
+if(x=="All" && y=="All"){
+  select = 1;
+}
+else if(y=="All"){
+  select = 2;
+}
+else if(x=="All"){
+  select = 3;
+}
+else{
+  select = 4;
+}
+
+
+
         // spawn links between cities as source/target coord pairs
         places.features.forEach(function(a) {
           if(select==1){
@@ -2351,6 +2456,7 @@ function updateData6(){
                 target: a.end.geometry.coordinates,
                 title: a.title,
                 src: a.src,
+                text: a.text
               })
             }
             else{
@@ -2358,7 +2464,8 @@ function updateData6(){
                 source: a.geometry.coordinates,
                 target: a.end.geometry.coordinates,
                 title: a.title,
-                src: a.src
+                src: a.src,
+                text: a.text
               })
             }
           }
@@ -2375,6 +2482,7 @@ function updateData6(){
                   target: a.end.geometry.coordinates,
                   title: a.title,
                   src: a.src,
+                  text: a.text
                 })
               }
               else{
@@ -2382,7 +2490,8 @@ function updateData6(){
                   source: a.geometry.coordinates,
                   target: a.end.geometry.coordinates,
                   title: a.title,
-                  src: a.src
+                  src: a.src,
+                  text: a.text
                 })
               }
             }
@@ -2400,6 +2509,7 @@ function updateData6(){
                   target: a.end.geometry.coordinates,
                   title: a.title,
                   src: a.src,
+                  text: a.text
                 })
               }
               else{
@@ -2407,7 +2517,8 @@ function updateData6(){
                   source: a.geometry.coordinates,
                   target: a.end.geometry.coordinates,
                   title: a.title,
-                  src: a.src
+                  src: a.src,
+                  text: a.text
                 })
               }
             }
@@ -2425,6 +2536,7 @@ function updateData6(){
                   target: a.end.geometry.coordinates,
                   title: a.title,
                   src: a.src,
+                  text: a.text
                 })
               }
               else{
@@ -2432,12 +2544,14 @@ function updateData6(){
                   source: a.geometry.coordinates,
                   target: a.end.geometry.coordinates,
                   title: a.title,
-                  src: a.src
+                  src: a.src,
+                  text: a.text
                 })
               }
             }
           }
         });
+
 
     // build geoJSON features from links array
     links.forEach(function(e,i,a) {
@@ -2465,7 +2579,8 @@ function updateData6(){
             .attr("d", function(d) { return swoosh(flying_arc(d)) })
             .on("mouseover", handleMouseOver)
             .on("mouseout", handleMouseOut)
-            .on("mouseenter", clicked);
+            .on("mouseenter", clicked)
+            .on("click", summy);
 
         svg.append("g").attr("class","flyers")
           .selectAll("path").data(greenlinks)
@@ -2474,8 +2589,14 @@ function updateData6(){
             .attr("d", function(d) { return swoosh(flying_arc(d)) })
             .on("mouseover", handleMouseOver)
             .on("mouseout", handleMouseOut)
-            .on("mouseenter", clicked);
+            .on("mouseenter", clicked)
+            .on("click", summy);
 
+
+            function summy(d){
+              // console.log(d)
+              document.getElementById("summary").innerHTML =(d.text);
+            }
 
   function clicked(d){
     svg.append("svg:image")
@@ -2501,7 +2622,7 @@ function updateData6(){
 
   }
   function handleMouseOut(d){
-    ////console.log("Bye");
+    //console.log("Bye");
     d3.select(this)
         .style("stroke-width", 3)
     d3.select("#intext").remove();
@@ -2687,378 +2808,6 @@ function updateData7(){
         .attr("class", "point")
         .attr("d", path);
 
-        var select;
-        var x = document.getElementById("countryselectid").value;
-        //contains country name string
-        var y = document.getElementById("mySelectCat").value;
-        //contains country name string
-        //console.log(y);
-
-        if(x=="All" && y=="All"){
-        select = 1;
-        }
-        else if(y=="All"){
-        select = 2;
-        }
-        else if(x=="All"){
-        select = 3;
-        }
-        else{
-        select = 4;
-        }
-        console.log(select);
-        // spawn links between cities as source/target coord pairs
-        places.features.forEach(function(a) {
-          if(select==1){
-            links.push({
-              source: a.geometry.coordinates,
-              target: a.end.geometry.coordinates,
-            });
-            if(a.relation>0){
-              greenlinks.push({
-                source: a.geometry.coordinates,
-                target: a.end.geometry.coordinates,
-                title: a.title,
-                src: a.src,
-              })
-            }
-            else{
-              redlinks.push({
-                source: a.geometry.coordinates,
-                target: a.end.geometry.coordinates,
-                title: a.title,
-                src: a.src
-              })
-            }
-          }
-
-          else if(select==2){
-            if(a.countries.includes(x)){
-              links.push({
-                source: a.geometry.coordinates,
-                target: a.end.geometry.coordinates,
-              });
-              if(a.relation>0){
-                greenlinks.push({
-                  source: a.geometry.coordinates,
-                  target: a.end.geometry.coordinates,
-                  title: a.title,
-                  src: a.src,
-                })
-              }
-              else{
-                redlinks.push({
-                  source: a.geometry.coordinates,
-                  target: a.end.geometry.coordinates,
-                  title: a.title,
-                  src: a.src
-                })
-              }
-            }
-          }
-
-          else if(select==3){
-            if(a.tags[0].includes(y)){
-              links.push({
-                source: a.geometry.coordinates,
-                target: a.end.geometry.coordinates,
-              });
-              if(a.relation>0){
-                greenlinks.push({
-                  source: a.geometry.coordinates,
-                  target: a.end.geometry.coordinates,
-                  title: a.title,
-                  src: a.src,
-                })
-              }
-              else{
-                redlinks.push({
-                  source: a.geometry.coordinates,
-                  target: a.end.geometry.coordinates,
-                  title: a.title,
-                  src: a.src
-                })
-              }
-            }
-          }
-
-          else if(select==4){
-            if(a.countries.includes(x) && a.tags[0].includes(y)){
-              links.push({
-                source: a.geometry.coordinates,
-                target: a.end.geometry.coordinates,
-              });
-              if(a.relation>0){
-                greenlinks.push({
-                  source: a.geometry.coordinates,
-                  target: a.end.geometry.coordinates,
-                  title: a.title,
-                  src: a.src,
-                })
-              }
-              else{
-                redlinks.push({
-                  source: a.geometry.coordinates,
-                  target: a.end.geometry.coordinates,
-                  title: a.title,
-                  src: a.src
-                })
-              }
-            }
-          }
-        });
-
-    // build geoJSON features from links array
-    links.forEach(function(e,i,a) {
-      var feature =   { "type": "Feature", "geometry": { "type": "LineString", "coordinates": [e.source,e.target] }}
-      arcLines.push(feature)
-    })
-
-    d3.select("#myRange")
-      .on("input", function() {
-
-        var myValue = this.value
-        console.log(myValue);
-    })
-
-    svg.append("g").attr("class","arcs")
-      .selectAll("path").data(arcLines)
-      .enter().append("path")
-        .attr("class","arc")
-        .attr("d",path)
-
-        svg.append("g").attr("class","flyers")
-          .selectAll("path").data(redlinks)
-          .enter().append("path")
-            .attr("class","redflyer")
-            .attr("d", function(d) { return swoosh(flying_arc(d)) })
-            .on("mouseover", handleMouseOver)
-            .on("mouseout", handleMouseOut)
-            .on("mouseenter", clicked);
-
-        svg.append("g").attr("class","flyers")
-          .selectAll("path").data(greenlinks)
-          .enter().append("path")
-            .attr("class","greenflyer")
-            .attr("d", function(d) { return swoosh(flying_arc(d)) })
-            .on("mouseover", handleMouseOver)
-            .on("mouseout", handleMouseOut)
-            .on("mouseenter", clicked);
-
-
-  function clicked(d){
-    svg.append("svg:image")
-    .attr("id", "myimg")
-    .attr("xlink:href", d.src)
-    .attr("width", 300)
-    .attr("height", 300)
-    .attr("x", 580)
-    .attr("y",80);
-  }
-
-  function handleMouseOver(d){
-    d3.select(this)
-        .style("stroke-width", 8)
-    svg.append("text").attr({
-                 id: "intext",  // Create an id for text so we can select it later for removing on mouseout
-                  x: "100",
-                  y: "20",
-                })
-              .text(function() {
-                return [d.title];  // Value of the text
-              });
-
-    document.getElementById('textspace').innerHTML = d.title;
-
-  }
-  function handleMouseOut(d){
-    //console.log("Bye");
-    d3.select(this)
-        .style("stroke-width", 3)
-    d3.select("#intext").remove();
-    d3.select("#myimg").remove();
-    document.getElementById('textspace').innerHTML = "";
-  }
-    refresh();
-  }
-
-  function flying_arc(pts) {
-    var source = pts.source,
-        target = pts.target;
-
-    var mid = location_along_arc(source, target, .5);
-    var result = [ proj(source),
-                   sky(mid),
-                   proj(target) ]
-    return result;
-  }
-
-
-
-  function refresh() {
-    svg.selectAll(".land").attr("d", path);
-    svg.selectAll(".point").attr("d", path);
-
-    svg.selectAll(".arc").attr("d", path)
-      .attr("opacity", function(d) {
-          return fade_at_edge(d)
-      })
-
-    svg.selectAll(".greenflyer")
-      .attr("d", function(d) { return swoosh(flying_arc(d)) })
-      .attr("opacity", function(d) {
-        return fade_at_edge(d)
-      })
-    svg.selectAll(".redflyer")
-      .attr("d", function(d) { return swoosh(flying_arc(d)) })
-      .attr("opacity", function(d) {
-        return fade_at_edge(d)
-    })
-  }
-
-  function fade_at_edge(d) {
-    var centerPos = proj.invert([width/2,height/2]),
-        arc = d3.geo.greatArc(),
-        start, end;
-    // function is called on 2 different data structures..
-    if (d.source) {
-      start = d.source,
-      end = d.target;
-    }
-    else {
-      start = d.geometry.coordinates[0];
-      end = d.geometry.coordinates[1];
-    }
-
-    var start_dist = 1.57 - arc.distance({source: start, target: centerPos}),
-        end_dist = 1.57 - arc.distance({source: end, target: centerPos});
-
-    var fade = d3.scale.linear().domain([-.1,0]).range([0,.1])
-    var dist = start_dist < end_dist ? start_dist : end_dist;
-
-    return fade(dist)
-  }
-
-  function location_along_arc(start, end, loc) {
-    var interpolator = d3.geo.interpolate(start,end);
-    return interpolator(loc)
-  }
-
-  // modified from http://bl.ocks.org/1392560
-  var m0, o0;
-  function mousedown() {
-    m0 = [d3.event.pageX, d3.event.pageY];
-    o0 = proj.rotate();
-    d3.event.preventDefault();
-  }
-  function mousemove() {
-    if (m0) {
-      var m1 = [d3.event.pageX, d3.event.pageY]
-        , o1 = [o0[0] + (m1[0] - m0[0]) / 6, o0[1] + (m0[1] - m1[1]) / 6];
-      o1[1] = o1[1] > 30  ? 30  :
-              o1[1] < -30 ? -30 :
-              o1[1];
-      proj.rotate(o1);
-      sky.rotate(o1);
-      refresh();
-    }
-  }
-  function mouseup() {
-    if (m0) {
-      mousemove();
-      m0 = null;
-    }
-  }
-}
-
-function updateData8(){
-  svg.selectAll("*").remove();
-  links.length = 0;
-  redlinks.length = 0;
-  greenlinks.length = 0;
-  arcLines.length = 0;
-
-  queue()
-      .defer(d3.json, "world-110m.json")
-      .defer(d3.json, "data/places8.json")
-      .await(ready);
-  function ready(error, world, places) {
-    var ocean_fill = svg.append("defs").append("radialGradient")
-          .attr("id", "ocean_fill")
-          .attr("cx", "75%")
-          .attr("cy", "25%");
-        ocean_fill.append("stop").attr("offset", "5%").attr("stop-color", "blue");
-        ocean_fill.append("stop").attr("offset", "100%").attr("stop-color", "blue");
-
-    var globe_highlight = svg.append("defs").append("radialGradient")
-          .attr("id", "globe_highlight")
-          .attr("cx", "75%")
-          .attr("cy", "25%");
-        globe_highlight.append("stop")
-          .attr("offset", "5%").attr("stop-color", "#ffd")
-          .attr("stop-opacity","0.6");
-        globe_highlight.append("stop")
-          .attr("offset", "100%").attr("stop-color", "#ba9")
-          .attr("stop-opacity","0.2");
-
-    var globe_shading = svg.append("defs").append("radialGradient")
-          .attr("id", "globe_shading")
-          .attr("cx", "55%")
-          .attr("cy", "45%");
-        globe_shading.append("stop")
-          .attr("offset","30%").attr("stop-color", "yellow")
-          .attr("stop-opacity","0")
-        globe_shading.append("stop")
-          .attr("offset","100%").attr("stop-color", "yellow")
-          .attr("stop-opacity","0.3")
-
-    var drop_shadow = svg.append("defs").append("radialGradient")
-          .attr("id", "drop_shadow")
-          .attr("cx", "50%")
-          .attr("cy", "50%");
-        drop_shadow.append("stop")
-          .attr("offset","20%").attr("stop-color", "#000")
-          .attr("stop-opacity",".5")
-        drop_shadow.append("stop")
-          .attr("offset","100%").attr("stop-color", "#000")
-          .attr("stop-opacity","0")
-
-    svg.append("ellipse")
-      .attr("cx", 440).attr("cy", 450)
-      .attr("rx", proj.scale()*.90)
-      .attr("ry", proj.scale()*.25)
-      .attr("class", "noclicks")
-      .style("fill", "url(#drop_shadow)");
-
-    svg.append("circle")
-      .attr("cx", width / 2).attr("cy", height / 2)
-      .attr("r", proj.scale())
-      .attr("class", "noclicks")
-      .style("fill", "url(#ocean_fill)");
-
-    svg.append("path")
-      .datum(topojson.object(world, world.objects.land))
-      .attr("class", "land noclicks")
-      .attr("d", path);
-
-    svg.append("circle")
-      .attr("cx", width / 2).attr("cy", height / 2)
-      .attr("r", proj.scale())
-      .attr("class","noclicks")
-      .style("fill", "url(#globe_highlight)");
-
-    svg.append("circle")
-      .attr("cx", width / 2).attr("cy", height / 2)
-      .attr("r", proj.scale())
-      .attr("class","noclicks")
-      .style("fill", "url(#globe_shading)");
-
-    svg.append("g").attr("class","points")
-        .selectAll("text").data(places.features)
-      .enter().append("path")
-        .attr("class", "point")
-        .attr("d", path);
-
         var select ;
         //decides what will be displayed
         var x = document.getElementById("countryselectid").value;
@@ -3094,384 +2843,16 @@ else{
                 target: a.end.geometry.coordinates,
                 title: a.title,
                 src: a.src,
+                text: a.text
               })
             }
             else{
               redlinks.push({
-                source: a.geometry.coordinates,
-                target: a.end.geometry.coordinates,
-                title: a.title,
-                src: a.src
-              })
-            }
-          }
-
-          else if(select==2){
-            if(a.countries.includes(x)){
-              links.push({
-                source: a.geometry.coordinates,
-                target: a.end.geometry.coordinates,
-              });
-              if(a.relation>0){
-                greenlinks.push({
-                  source: a.geometry.coordinates,
-                  target: a.end.geometry.coordinates,
-                  title: a.title,
-                  src: a.src,
-                })
-              }
-              else{
-                redlinks.push({
-                  source: a.geometry.coordinates,
-                  target: a.end.geometry.coordinates,
-                  title: a.title,
-                  src: a.src
-                })
-              }
-            }
-          }
-
-          else if(select==3){
-            if(a.tags[0].includes(y)){
-              links.push({
-                source: a.geometry.coordinates,
-                target: a.end.geometry.coordinates,
-              });
-              if(a.relation>0){
-                greenlinks.push({
-                  source: a.geometry.coordinates,
-                  target: a.end.geometry.coordinates,
-                  title: a.title,
-                  src: a.src,
-                })
-              }
-              else{
-                redlinks.push({
-                  source: a.geometry.coordinates,
-                  target: a.end.geometry.coordinates,
-                  title: a.title,
-                  src: a.src
-                })
-              }
-            }
-          }
-
-          else if(select==4){
-            if(a.countries.includes(x) && a.tags[0].includes(y)){
-              links.push({
-                source: a.geometry.coordinates,
-                target: a.end.geometry.coordinates,
-              });
-              if(a.relation>0){
-                greenlinks.push({
-                  source: a.geometry.coordinates,
-                  target: a.end.geometry.coordinates,
-                  title: a.title,
-                  src: a.src,
-                })
-              }
-              else{
-                redlinks.push({
-                  source: a.geometry.coordinates,
-                  target: a.end.geometry.coordinates,
-                  title: a.title,
-                  src: a.src
-                })
-              }
-            }
-          }
-        });
-
-
-    // build geoJSON features from links array
-    links.forEach(function(e,i,a) {
-      var feature =   { "type": "Feature", "geometry": { "type": "LineString", "coordinates": [e.source,e.target] }}
-      arcLines.push(feature)
-    })
-
-    d3.select("#myRange")
-      .on("input", function() {
-
-        var myValue = this.value
-        console.log(myValue);
-    })
-
-    svg.append("g").attr("class","arcs")
-      .selectAll("path").data(arcLines)
-      .enter().append("path")
-        .attr("class","arc")
-        .attr("d",path)
-
-        svg.append("g").attr("class","flyers")
-          .selectAll("path").data(redlinks)
-          .enter().append("path")
-            .attr("class","redflyer")
-            .attr("d", function(d) { return swoosh(flying_arc(d)) })
-            .on("mouseover", handleMouseOver)
-            .on("mouseout", handleMouseOut)
-            .on("mouseenter", clicked);
-
-        svg.append("g").attr("class","flyers")
-          .selectAll("path").data(greenlinks)
-          .enter().append("path")
-            .attr("class","greenflyer")
-            .attr("d", function(d) { return swoosh(flying_arc(d)) })
-            .on("mouseover", handleMouseOver)
-            .on("mouseout", handleMouseOut)
-            .on("mouseenter", clicked);
-
-
-  function clicked(d){
-    svg.append("svg:image")
-    .attr("id", "myimg")
-    .attr("xlink:href", d.src)
-    .attr("width", 300)
-    .attr("height", 300)
-    .attr("x", 580)
-    .attr("y",80);
-  }
-
-  function handleMouseOver(d){
-    d3.select(this)
-        .style("stroke-width", 8)
-    svg.append("text").attr({
-                 id: "intext",  // Create an id for text so we can select it later for removing on mouseout
-                  x: "100",
-                  y: "20",
-                })
-              .text(function() {
-                return [d.title];  // Value of the text
-              });
-
-  }
-  function handleMouseOut(d){
-    //console.log("Bye");
-    d3.select(this)
-        .style("stroke-width", 3)
-    d3.select("#intext").remove();
-    d3.select("#myimg").remove();
-  }
-    refresh();
-  }
-
-  function flying_arc(pts) {
-    var source = pts.source,
-        target = pts.target;
-
-    var mid = location_along_arc(source, target, .5);
-    var result = [ proj(source),
-                   sky(mid),
-                   proj(target) ]
-    return result;
-  }
-
-
-
-  function refresh() {
-    svg.selectAll(".land").attr("d", path);
-    svg.selectAll(".point").attr("d", path);
-
-    svg.selectAll(".arc").attr("d", path)
-      .attr("opacity", function(d) {
-          return fade_at_edge(d)
-      })
-
-    svg.selectAll(".greenflyer")
-      .attr("d", function(d) { return swoosh(flying_arc(d)) })
-      .attr("opacity", function(d) {
-        return fade_at_edge(d)
-      })
-    svg.selectAll(".redflyer")
-      .attr("d", function(d) { return swoosh(flying_arc(d)) })
-      .attr("opacity", function(d) {
-        return fade_at_edge(d)
-    })
-  }
-
-  function fade_at_edge(d) {
-    var centerPos = proj.invert([width/2,height/2]),
-        arc = d3.geo.greatArc(),
-        start, end;
-    // function is called on 2 different data structures..
-    if (d.source) {
-      start = d.source,
-      end = d.target;
-    }
-    else {
-      start = d.geometry.coordinates[0];
-      end = d.geometry.coordinates[1];
-    }
-
-    var start_dist = 1.57 - arc.distance({source: start, target: centerPos}),
-        end_dist = 1.57 - arc.distance({source: end, target: centerPos});
-
-    var fade = d3.scale.linear().domain([-.1,0]).range([0,.1])
-    var dist = start_dist < end_dist ? start_dist : end_dist;
-
-    return fade(dist)
-  }
-
-  function location_along_arc(start, end, loc) {
-    var interpolator = d3.geo.interpolate(start,end);
-    return interpolator(loc)
-  }
-
-  // modified from http://bl.ocks.org/1392560
-  var m0, o0;
-  function mousedown() {
-    m0 = [d3.event.pageX, d3.event.pageY];
-    o0 = proj.rotate();
-    d3.event.preventDefault();
-  }
-  function mousemove() {
-    if (m0) {
-      var m1 = [d3.event.pageX, d3.event.pageY]
-        , o1 = [o0[0] + (m1[0] - m0[0]) / 6, o0[1] + (m0[1] - m1[1]) / 6];
-      o1[1] = o1[1] > 30  ? 30  :
-              o1[1] < -30 ? -30 :
-              o1[1];
-      proj.rotate(o1);
-      sky.rotate(o1);
-      refresh();
-    }
-  }
-  function mouseup() {
-    if (m0) {
-      mousemove();
-      m0 = null;
-    }
-  }
-}
-
-function updateData9(){
-  svg.selectAll("*").remove();
-  links.length = 0;
-  redlinks.length = 0;
-  greenlinks.length = 0;
-  arcLines.length = 0;
-
-  queue()
-      .defer(d3.json, "world-110m.json")
-      .defer(d3.json, "data/places9.json")
-      .await(ready);
-  function ready(error, world, places) {
-    var ocean_fill = svg.append("defs").append("radialGradient")
-          .attr("id", "ocean_fill")
-          .attr("cx", "75%")
-          .attr("cy", "25%");
-        ocean_fill.append("stop").attr("offset", "5%").attr("stop-color", "blue");
-        ocean_fill.append("stop").attr("offset", "100%").attr("stop-color", "blue");
-
-    var globe_highlight = svg.append("defs").append("radialGradient")
-          .attr("id", "globe_highlight")
-          .attr("cx", "75%")
-          .attr("cy", "25%");
-        globe_highlight.append("stop")
-          .attr("offset", "5%").attr("stop-color", "#ffd")
-          .attr("stop-opacity","0.6");
-        globe_highlight.append("stop")
-          .attr("offset", "100%").attr("stop-color", "#ba9")
-          .attr("stop-opacity","0.2");
-
-    var globe_shading = svg.append("defs").append("radialGradient")
-          .attr("id", "globe_shading")
-          .attr("cx", "55%")
-          .attr("cy", "45%");
-        globe_shading.append("stop")
-          .attr("offset","30%").attr("stop-color", "yellow")
-          .attr("stop-opacity","0")
-        globe_shading.append("stop")
-          .attr("offset","100%").attr("stop-color", "yellow")
-          .attr("stop-opacity","0.3")
-
-    var drop_shadow = svg.append("defs").append("radialGradient")
-          .attr("id", "drop_shadow")
-          .attr("cx", "50%")
-          .attr("cy", "50%");
-        drop_shadow.append("stop")
-          .attr("offset","20%").attr("stop-color", "#000")
-          .attr("stop-opacity",".5")
-        drop_shadow.append("stop")
-          .attr("offset","100%").attr("stop-color", "#000")
-          .attr("stop-opacity","0")
-
-    svg.append("ellipse")
-      .attr("cx", 440).attr("cy", 450)
-      .attr("rx", proj.scale()*.90)
-      .attr("ry", proj.scale()*.25)
-      .attr("class", "noclicks")
-      .style("fill", "url(#drop_shadow)");
-
-    svg.append("circle")
-      .attr("cx", width / 2).attr("cy", height / 2)
-      .attr("r", proj.scale())
-      .attr("class", "noclicks")
-      .style("fill", "url(#ocean_fill)");
-
-    svg.append("path")
-      .datum(topojson.object(world, world.objects.land))
-      .attr("class", "land noclicks")
-      .attr("d", path);
-
-    svg.append("circle")
-      .attr("cx", width / 2).attr("cy", height / 2)
-      .attr("r", proj.scale())
-      .attr("class","noclicks")
-      .style("fill", "url(#globe_highlight)");
-
-    svg.append("circle")
-      .attr("cx", width / 2).attr("cy", height / 2)
-      .attr("r", proj.scale())
-      .attr("class","noclicks")
-      .style("fill", "url(#globe_shading)");
-
-    svg.append("g").attr("class","points")
-        .selectAll("text").data(places.features)
-      .enter().append("path")
-        .attr("class", "point")
-        .attr("d", path);
-
-        var select;
-        var x = document.getElementById("countryselectid").value;
-        //contains country name string
-        var y = document.getElementById("mySelectCat").value;
-        //contains country name string
-        //console.log(y);
-
-        if(x=="All" && y=="All"){
-        select = 1;
-        }
-        else if(y=="All"){
-        select = 2;
-        }
-        else if(x=="All"){
-        select = 3;
-        }
-        else{
-        select = 4;
-        }
-        console.log(select);
-        // spawn links between cities as source/target coord pairs
-        places.features.forEach(function(a) {
-          if(select==1){
-            links.push({
-              source: a.geometry.coordinates,
-              target: a.end.geometry.coordinates,
-            });
-            if(a.relation>0){
-              greenlinks.push({
                 source: a.geometry.coordinates,
                 target: a.end.geometry.coordinates,
                 title: a.title,
                 src: a.src,
-              })
-            }
-            else{
-              redlinks.push({
-                source: a.geometry.coordinates,
-                target: a.end.geometry.coordinates,
-                title: a.title,
-                src: a.src
+                text: a.text
               })
             }
           }
@@ -3488,6 +2869,7 @@ function updateData9(){
                   target: a.end.geometry.coordinates,
                   title: a.title,
                   src: a.src,
+                  text: a.text
                 })
               }
               else{
@@ -3495,7 +2877,8 @@ function updateData9(){
                   source: a.geometry.coordinates,
                   target: a.end.geometry.coordinates,
                   title: a.title,
-                  src: a.src
+                  src: a.src,
+                  text: a.text
                 })
               }
             }
@@ -3513,6 +2896,7 @@ function updateData9(){
                   target: a.end.geometry.coordinates,
                   title: a.title,
                   src: a.src,
+                  text: a.text
                 })
               }
               else{
@@ -3520,7 +2904,8 @@ function updateData9(){
                   source: a.geometry.coordinates,
                   target: a.end.geometry.coordinates,
                   title: a.title,
-                  src: a.src
+                  src: a.src,
+                  text: a.text
                 })
               }
             }
@@ -3538,6 +2923,7 @@ function updateData9(){
                   target: a.end.geometry.coordinates,
                   title: a.title,
                   src: a.src,
+                  text: a.text
                 })
               }
               else{
@@ -3545,7 +2931,8 @@ function updateData9(){
                   source: a.geometry.coordinates,
                   target: a.end.geometry.coordinates,
                   title: a.title,
-                  src: a.src
+                  src: a.src,
+                  text: a.text
                 })
               }
             }
@@ -3580,7 +2967,7 @@ function updateData9(){
             .on("mouseover", handleMouseOver)
             .on("mouseout", handleMouseOut)
             .on("mouseenter", clicked)
-            .on("click", summary);
+            .on("click", summy);
 
         svg.append("g").attr("class","flyers")
           .selectAll("path").data(greenlinks)
@@ -3589,40 +2976,14 @@ function updateData9(){
             .attr("d", function(d) { return swoosh(flying_arc(d)) })
             .on("mouseover", handleMouseOver)
             .on("mouseout", handleMouseOut)
-           .on("mouseenter", clicked)
-            .on("click", summary);
-
-   function summary(d){
-    /* var box = document.createElement("BOX");
-      box.type="text";
-      box.value = "Hi";
-      d3.select(this)
-          .style("stroke-width", 10)
-      svg.appendChild(box);
-   }*/
-
-   // d3.select(this)
-   //     .style("stroke-width", 10)
-   // svg.append("text").attr({
-   //              id: "itext",  // Create an id for text so we can select it later for removing on mouseout
-   //               x: "100",
-   //               y: "20",
-   //             })
-   //           .text("HI");
-
-      var overlay = document.getElementById("overlay");
-      //Set a variable to contain the DOM element of the popup
-      var popup = document.getElementById("popup");
-      popup.innerHTML = d.title;
-
-      //Changing the display css style from none to block will make it visible
-      overlay.style.display = "block";
-      //Same goes for the popup
-      popup.style.display = "block";
-      document.getElementById("Cancel").style.display = "block";
-  }
+            .on("mouseenter", clicked)
+            .on("click", summy);
 
 
+            function summy(d){
+              // console.log(d)
+              document.getElementById("summary").innerHTML =(d.text);
+            }
 
   function clicked(d){
     svg.append("svg:image")
@@ -3646,15 +3007,13 @@ function updateData9(){
                 return [d.title];  // Value of the text
               });
 
-      document.getElementById('textspace').innerHTML = d.text;
-
   }
   function handleMouseOut(d){
+    //console.log("Bye");
     d3.select(this)
         .style("stroke-width", 3)
     d3.select("#intext").remove();
     d3.select("#myimg").remove();
-      document.getElementById('textspace').innerHTML = "";
   }
     refresh();
   }
@@ -3871,6 +3230,7 @@ else{
                 target: a.end.geometry.coordinates,
                 title: a.title,
                 src: a.src,
+                text: a.text
               })
             }
             else{
@@ -3878,7 +3238,8 @@ else{
                 source: a.geometry.coordinates,
                 target: a.end.geometry.coordinates,
                 title: a.title,
-                src: a.src
+                src: a.src,
+                text: a.text
               })
             }
           }
@@ -3895,6 +3256,7 @@ else{
                   target: a.end.geometry.coordinates,
                   title: a.title,
                   src: a.src,
+                  text: a.text
                 })
               }
               else{
@@ -3902,7 +3264,8 @@ else{
                   source: a.geometry.coordinates,
                   target: a.end.geometry.coordinates,
                   title: a.title,
-                  src: a.src
+                  src: a.src,
+                  text: a.text
                 })
               }
             }
@@ -3920,6 +3283,7 @@ else{
                   target: a.end.geometry.coordinates,
                   title: a.title,
                   src: a.src,
+                  text: a.text
                 })
               }
               else{
@@ -3927,7 +3291,8 @@ else{
                   source: a.geometry.coordinates,
                   target: a.end.geometry.coordinates,
                   title: a.title,
-                  src: a.src
+                  src: a.src,
+                  text: a.text
                 })
               }
             }
@@ -3945,6 +3310,7 @@ else{
                   target: a.end.geometry.coordinates,
                   title: a.title,
                   src: a.src,
+                  text: a.text
                 })
               }
               else{
@@ -3952,7 +3318,8 @@ else{
                   source: a.geometry.coordinates,
                   target: a.end.geometry.coordinates,
                   title: a.title,
-                  src: a.src
+                  src: a.src,
+                  text: a.text
                 })
               }
             }
@@ -3986,7 +3353,8 @@ else{
             .attr("d", function(d) { return swoosh(flying_arc(d)) })
             .on("mouseover", handleMouseOver)
             .on("mouseout", handleMouseOut)
-            .on("mouseenter", clicked);
+            .on("mouseenter", clicked)
+            .on("click", summy);
 
         svg.append("g").attr("class","flyers")
           .selectAll("path").data(greenlinks)
@@ -3995,8 +3363,788 @@ else{
             .attr("d", function(d) { return swoosh(flying_arc(d)) })
             .on("mouseover", handleMouseOver)
             .on("mouseout", handleMouseOut)
-            .on("mouseenter", clicked);
+            .on("mouseenter", clicked)
+            .on("click", summy);
 
+
+            function summy(d){
+              // console.log(d)
+              document.getElementById("summary").innerHTML =(d.text);
+            }
+
+  function clicked(d){
+    svg.append("svg:image")
+    .attr("id", "myimg")
+    .attr("xlink:href", d.src)
+    .attr("width", 300)
+    .attr("height", 300)
+    .attr("x", 580)
+    .attr("y",80);
+  }
+
+  function handleMouseOver(d){
+    d3.select(this)
+        .style("stroke-width", 8)
+    svg.append("text").attr({
+                 id: "intext",  // Create an id for text so we can select it later for removing on mouseout
+                  x: "100",
+                  y: "20",
+                })
+              .text(function() {
+                return [d.title];  // Value of the text
+              });
+
+  }
+  function handleMouseOut(d){
+    //console.log("Bye");
+    d3.select(this)
+        .style("stroke-width", 3)
+    d3.select("#intext").remove();
+    d3.select("#myimg").remove();
+  }
+    refresh();
+  }
+
+  function flying_arc(pts) {
+    var source = pts.source,
+        target = pts.target;
+
+    var mid = location_along_arc(source, target, .5);
+    var result = [ proj(source),
+                   sky(mid),
+                   proj(target) ]
+    return result;
+  }
+
+
+
+  function refresh() {
+    svg.selectAll(".land").attr("d", path);
+    svg.selectAll(".point").attr("d", path);
+
+    svg.selectAll(".arc").attr("d", path)
+      .attr("opacity", function(d) {
+          return fade_at_edge(d)
+      })
+
+    svg.selectAll(".greenflyer")
+      .attr("d", function(d) { return swoosh(flying_arc(d)) })
+      .attr("opacity", function(d) {
+        return fade_at_edge(d)
+      })
+    svg.selectAll(".redflyer")
+      .attr("d", function(d) { return swoosh(flying_arc(d)) })
+      .attr("opacity", function(d) {
+        return fade_at_edge(d)
+    })
+  }
+
+  function fade_at_edge(d) {
+    var centerPos = proj.invert([width/2,height/2]),
+        arc = d3.geo.greatArc(),
+        start, end;
+    // function is called on 2 different data structures..
+    if (d.source) {
+      start = d.source,
+      end = d.target;
+    }
+    else {
+      start = d.geometry.coordinates[0];
+      end = d.geometry.coordinates[1];
+    }
+
+    var start_dist = 1.57 - arc.distance({source: start, target: centerPos}),
+        end_dist = 1.57 - arc.distance({source: end, target: centerPos});
+
+    var fade = d3.scale.linear().domain([-.1,0]).range([0,.1])
+    var dist = start_dist < end_dist ? start_dist : end_dist;
+
+    return fade(dist)
+  }
+
+  function location_along_arc(start, end, loc) {
+    var interpolator = d3.geo.interpolate(start,end);
+    return interpolator(loc)
+  }
+
+  // modified from http://bl.ocks.org/1392560
+  var m0, o0;
+  function mousedown() {
+    m0 = [d3.event.pageX, d3.event.pageY];
+    o0 = proj.rotate();
+    d3.event.preventDefault();
+  }
+  function mousemove() {
+    if (m0) {
+      var m1 = [d3.event.pageX, d3.event.pageY]
+        , o1 = [o0[0] + (m1[0] - m0[0]) / 6, o0[1] + (m0[1] - m1[1]) / 6];
+      o1[1] = o1[1] > 30  ? 30  :
+              o1[1] < -30 ? -30 :
+              o1[1];
+      proj.rotate(o1);
+      sky.rotate(o1);
+      refresh();
+    }
+  }
+  function mouseup() {
+    if (m0) {
+      mousemove();
+      m0 = null;
+    }
+  }
+}
+
+function updateData9(){
+  svg.selectAll("*").remove();
+  links.length = 0;
+  redlinks.length = 0;
+  greenlinks.length = 0;
+  arcLines.length = 0;
+
+  queue()
+      .defer(d3.json, "world-110m.json")
+      .defer(d3.json, "data/places9.json")
+      .await(ready);
+  function ready(error, world, places) {
+    var ocean_fill = svg.append("defs").append("radialGradient")
+          .attr("id", "ocean_fill")
+          .attr("cx", "75%")
+          .attr("cy", "25%");
+        ocean_fill.append("stop").attr("offset", "5%").attr("stop-color", "blue");
+        ocean_fill.append("stop").attr("offset", "100%").attr("stop-color", "blue");
+
+    var globe_highlight = svg.append("defs").append("radialGradient")
+          .attr("id", "globe_highlight")
+          .attr("cx", "75%")
+          .attr("cy", "25%");
+        globe_highlight.append("stop")
+          .attr("offset", "5%").attr("stop-color", "#ffd")
+          .attr("stop-opacity","0.6");
+        globe_highlight.append("stop")
+          .attr("offset", "100%").attr("stop-color", "#ba9")
+          .attr("stop-opacity","0.2");
+
+    var globe_shading = svg.append("defs").append("radialGradient")
+          .attr("id", "globe_shading")
+          .attr("cx", "55%")
+          .attr("cy", "45%");
+        globe_shading.append("stop")
+          .attr("offset","30%").attr("stop-color", "yellow")
+          .attr("stop-opacity","0")
+        globe_shading.append("stop")
+          .attr("offset","100%").attr("stop-color", "yellow")
+          .attr("stop-opacity","0.3")
+
+    var drop_shadow = svg.append("defs").append("radialGradient")
+          .attr("id", "drop_shadow")
+          .attr("cx", "50%")
+          .attr("cy", "50%");
+        drop_shadow.append("stop")
+          .attr("offset","20%").attr("stop-color", "#000")
+          .attr("stop-opacity",".5")
+        drop_shadow.append("stop")
+          .attr("offset","100%").attr("stop-color", "#000")
+          .attr("stop-opacity","0")
+
+    svg.append("ellipse")
+      .attr("cx", 440).attr("cy", 450)
+      .attr("rx", proj.scale()*.90)
+      .attr("ry", proj.scale()*.25)
+      .attr("class", "noclicks")
+      .style("fill", "url(#drop_shadow)");
+
+    svg.append("circle")
+      .attr("cx", width / 2).attr("cy", height / 2)
+      .attr("r", proj.scale())
+      .attr("class", "noclicks")
+      .style("fill", "url(#ocean_fill)");
+
+    svg.append("path")
+      .datum(topojson.object(world, world.objects.land))
+      .attr("class", "land noclicks")
+      .attr("d", path);
+
+    svg.append("circle")
+      .attr("cx", width / 2).attr("cy", height / 2)
+      .attr("r", proj.scale())
+      .attr("class","noclicks")
+      .style("fill", "url(#globe_highlight)");
+
+    svg.append("circle")
+      .attr("cx", width / 2).attr("cy", height / 2)
+      .attr("r", proj.scale())
+      .attr("class","noclicks")
+      .style("fill", "url(#globe_shading)");
+
+    svg.append("g").attr("class","points")
+        .selectAll("text").data(places.features)
+      .enter().append("path")
+        .attr("class", "point")
+        .attr("d", path);
+
+        var select ;
+        //decides what will be displayed
+        var x = document.getElementById("countryselectid").value;
+        //contains country name string
+        var y = document.getElementById("mySelectCat").value;
+        //contains country name string
+
+if(x=="All" && y=="All"){
+  select = 1;
+}
+else if(y=="All"){
+  select = 2;
+}
+else if(x=="All"){
+  select = 3;
+}
+else{
+  select = 4;
+}
+
+
+
+        // spawn links between cities as source/target coord pairs
+        places.features.forEach(function(a) {
+          if(select==1){
+            links.push({
+              source: a.geometry.coordinates,
+              target: a.end.geometry.coordinates,
+            });
+            if(a.relation>0){
+              greenlinks.push({
+                source: a.geometry.coordinates,
+                target: a.end.geometry.coordinates,
+                title: a.title,
+                src: a.src,
+                text: a.text
+              })
+            }
+            else{
+              redlinks.push({
+                source: a.geometry.coordinates,
+                target: a.end.geometry.coordinates,
+                title: a.title,
+                src: a.src,
+                text: a.text
+              })
+            }
+          }
+
+          else if(select==2){
+            if(a.countries.includes(x)){
+              links.push({
+                source: a.geometry.coordinates,
+                target: a.end.geometry.coordinates,
+              });
+              if(a.relation>0){
+                greenlinks.push({
+                  source: a.geometry.coordinates,
+                  target: a.end.geometry.coordinates,
+                  title: a.title,
+                  src: a.src,
+                  text: a.text
+                })
+              }
+              else{
+                redlinks.push({
+                  source: a.geometry.coordinates,
+                  target: a.end.geometry.coordinates,
+                  title: a.title,
+                  src: a.src,
+                  text: a.text
+                })
+              }
+            }
+          }
+
+          else if(select==3){
+            if(a.tags[0].includes(y)){
+              links.push({
+                source: a.geometry.coordinates,
+                target: a.end.geometry.coordinates,
+              });
+              if(a.relation>0){
+                greenlinks.push({
+                  source: a.geometry.coordinates,
+                  target: a.end.geometry.coordinates,
+                  title: a.title,
+                  src: a.src,
+                  text: a.text
+                })
+              }
+              else{
+                redlinks.push({
+                  source: a.geometry.coordinates,
+                  target: a.end.geometry.coordinates,
+                  title: a.title,
+                  src: a.src,
+                  text: a.text
+                })
+              }
+            }
+          }
+
+          else if(select==4){
+            if(a.countries.includes(x) && a.tags[0].includes(y)){
+              links.push({
+                source: a.geometry.coordinates,
+                target: a.end.geometry.coordinates,
+              });
+              if(a.relation>0){
+                greenlinks.push({
+                  source: a.geometry.coordinates,
+                  target: a.end.geometry.coordinates,
+                  title: a.title,
+                  src: a.src,
+                  text: a.text
+                })
+              }
+              else{
+                redlinks.push({
+                  source: a.geometry.coordinates,
+                  target: a.end.geometry.coordinates,
+                  title: a.title,
+                  src: a.src,
+                  text: a.text
+                })
+              }
+            }
+          }
+        });
+
+
+    // build geoJSON features from links array
+    links.forEach(function(e,i,a) {
+      var feature =   { "type": "Feature", "geometry": { "type": "LineString", "coordinates": [e.source,e.target] }}
+      arcLines.push(feature)
+    })
+
+    d3.select("#myRange")
+      .on("input", function() {
+
+        var myValue = this.value
+        console.log(myValue);
+    })
+
+    svg.append("g").attr("class","arcs")
+      .selectAll("path").data(arcLines)
+      .enter().append("path")
+        .attr("class","arc")
+        .attr("d",path)
+
+        svg.append("g").attr("class","flyers")
+          .selectAll("path").data(redlinks)
+          .enter().append("path")
+            .attr("class","redflyer")
+            .attr("d", function(d) { return swoosh(flying_arc(d)) })
+            .on("mouseover", handleMouseOver)
+            .on("mouseout", handleMouseOut)
+            .on("mouseenter", clicked)
+            .on("click", summy);
+
+        svg.append("g").attr("class","flyers")
+          .selectAll("path").data(greenlinks)
+          .enter().append("path")
+            .attr("class","greenflyer")
+            .attr("d", function(d) { return swoosh(flying_arc(d)) })
+            .on("mouseover", handleMouseOver)
+            .on("mouseout", handleMouseOut)
+            .on("mouseenter", clicked)
+            .on("click", summy);
+
+
+            function summy(d){
+              // console.log(d)
+              document.getElementById("summary").innerHTML =(d.text);
+            }
+
+  function clicked(d){
+    svg.append("svg:image")
+    .attr("id", "myimg")
+    .attr("xlink:href", d.src)
+    .attr("width", 300)
+    .attr("height", 300)
+    .attr("x", 580)
+    .attr("y",80);
+  }
+
+  function handleMouseOver(d){
+    d3.select(this)
+        .style("stroke-width", 8)
+    svg.append("text").attr({
+                 id: "intext",  // Create an id for text so we can select it later for removing on mouseout
+                  x: "100",
+                  y: "20",
+                })
+              .text(function() {
+                return [d.title];  // Value of the text
+              });
+
+  }
+  function handleMouseOut(d){
+    //console.log("Bye");
+    d3.select(this)
+        .style("stroke-width", 3)
+    d3.select("#intext").remove();
+    d3.select("#myimg").remove();
+  }
+    refresh();
+  }
+
+  function flying_arc(pts) {
+    var source = pts.source,
+        target = pts.target;
+
+    var mid = location_along_arc(source, target, .5);
+    var result = [ proj(source),
+                   sky(mid),
+                   proj(target) ]
+    return result;
+  }
+
+
+
+  function refresh() {
+    svg.selectAll(".land").attr("d", path);
+    svg.selectAll(".point").attr("d", path);
+
+    svg.selectAll(".arc").attr("d", path)
+      .attr("opacity", function(d) {
+          return fade_at_edge(d)
+      })
+
+    svg.selectAll(".greenflyer")
+      .attr("d", function(d) { return swoosh(flying_arc(d)) })
+      .attr("opacity", function(d) {
+        return fade_at_edge(d)
+      })
+    svg.selectAll(".redflyer")
+      .attr("d", function(d) { return swoosh(flying_arc(d)) })
+      .attr("opacity", function(d) {
+        return fade_at_edge(d)
+    })
+  }
+
+  function fade_at_edge(d) {
+    var centerPos = proj.invert([width/2,height/2]),
+        arc = d3.geo.greatArc(),
+        start, end;
+    // function is called on 2 different data structures..
+    if (d.source) {
+      start = d.source,
+      end = d.target;
+    }
+    else {
+      start = d.geometry.coordinates[0];
+      end = d.geometry.coordinates[1];
+    }
+
+    var start_dist = 1.57 - arc.distance({source: start, target: centerPos}),
+        end_dist = 1.57 - arc.distance({source: end, target: centerPos});
+
+    var fade = d3.scale.linear().domain([-.1,0]).range([0,.1])
+    var dist = start_dist < end_dist ? start_dist : end_dist;
+
+    return fade(dist)
+  }
+
+  function location_along_arc(start, end, loc) {
+    var interpolator = d3.geo.interpolate(start,end);
+    return interpolator(loc)
+  }
+
+  // modified from http://bl.ocks.org/1392560
+  var m0, o0;
+  function mousedown() {
+    m0 = [d3.event.pageX, d3.event.pageY];
+    o0 = proj.rotate();
+    d3.event.preventDefault();
+  }
+  function mousemove() {
+    if (m0) {
+      var m1 = [d3.event.pageX, d3.event.pageY]
+        , o1 = [o0[0] + (m1[0] - m0[0]) / 6, o0[1] + (m0[1] - m1[1]) / 6];
+      o1[1] = o1[1] > 30  ? 30  :
+              o1[1] < -30 ? -30 :
+              o1[1];
+      proj.rotate(o1);
+      sky.rotate(o1);
+      refresh();
+    }
+  }
+  function mouseup() {
+    if (m0) {
+      mousemove();
+      m0 = null;
+    }
+  }
+}
+
+function updateData8(){
+  svg.selectAll("*").remove();
+  links.length = 0;
+  redlinks.length = 0;
+  greenlinks.length = 0;
+  arcLines.length = 0;
+
+  queue()
+      .defer(d3.json, "world-110m.json")
+      .defer(d3.json, "data/places8.json")
+      .await(ready);
+  function ready(error, world, places) {
+    var ocean_fill = svg.append("defs").append("radialGradient")
+          .attr("id", "ocean_fill")
+          .attr("cx", "75%")
+          .attr("cy", "25%");
+        ocean_fill.append("stop").attr("offset", "5%").attr("stop-color", "blue");
+        ocean_fill.append("stop").attr("offset", "100%").attr("stop-color", "blue");
+
+    var globe_highlight = svg.append("defs").append("radialGradient")
+          .attr("id", "globe_highlight")
+          .attr("cx", "75%")
+          .attr("cy", "25%");
+        globe_highlight.append("stop")
+          .attr("offset", "5%").attr("stop-color", "#ffd")
+          .attr("stop-opacity","0.6");
+        globe_highlight.append("stop")
+          .attr("offset", "100%").attr("stop-color", "#ba9")
+          .attr("stop-opacity","0.2");
+
+    var globe_shading = svg.append("defs").append("radialGradient")
+          .attr("id", "globe_shading")
+          .attr("cx", "55%")
+          .attr("cy", "45%");
+        globe_shading.append("stop")
+          .attr("offset","30%").attr("stop-color", "yellow")
+          .attr("stop-opacity","0")
+        globe_shading.append("stop")
+          .attr("offset","100%").attr("stop-color", "yellow")
+          .attr("stop-opacity","0.3")
+
+    var drop_shadow = svg.append("defs").append("radialGradient")
+          .attr("id", "drop_shadow")
+          .attr("cx", "50%")
+          .attr("cy", "50%");
+        drop_shadow.append("stop")
+          .attr("offset","20%").attr("stop-color", "#000")
+          .attr("stop-opacity",".5")
+        drop_shadow.append("stop")
+          .attr("offset","100%").attr("stop-color", "#000")
+          .attr("stop-opacity","0")
+
+    svg.append("ellipse")
+      .attr("cx", 440).attr("cy", 450)
+      .attr("rx", proj.scale()*.90)
+      .attr("ry", proj.scale()*.25)
+      .attr("class", "noclicks")
+      .style("fill", "url(#drop_shadow)");
+
+    svg.append("circle")
+      .attr("cx", width / 2).attr("cy", height / 2)
+      .attr("r", proj.scale())
+      .attr("class", "noclicks")
+      .style("fill", "url(#ocean_fill)");
+
+    svg.append("path")
+      .datum(topojson.object(world, world.objects.land))
+      .attr("class", "land noclicks")
+      .attr("d", path);
+
+    svg.append("circle")
+      .attr("cx", width / 2).attr("cy", height / 2)
+      .attr("r", proj.scale())
+      .attr("class","noclicks")
+      .style("fill", "url(#globe_highlight)");
+
+    svg.append("circle")
+      .attr("cx", width / 2).attr("cy", height / 2)
+      .attr("r", proj.scale())
+      .attr("class","noclicks")
+      .style("fill", "url(#globe_shading)");
+
+    svg.append("g").attr("class","points")
+        .selectAll("text").data(places.features)
+      .enter().append("path")
+        .attr("class", "point")
+        .attr("d", path);
+
+        var select ;
+        //decides what will be displayed
+        var x = document.getElementById("countryselectid").value;
+        //contains country name string
+        var y = document.getElementById("mySelectCat").value;
+        //contains country name string
+
+if(x=="All" && y=="All"){
+  select = 1;
+}
+else if(y=="All"){
+  select = 2;
+}
+else if(x=="All"){
+  select = 3;
+}
+else{
+  select = 4;
+}
+
+
+
+        // spawn links between cities as source/target coord pairs
+        places.features.forEach(function(a) {
+          if(select==1){
+            links.push({
+              source: a.geometry.coordinates,
+              target: a.end.geometry.coordinates,
+            });
+            if(a.relation>0){
+              greenlinks.push({
+                source: a.geometry.coordinates,
+                target: a.end.geometry.coordinates,
+                title: a.title,
+                src: a.src,
+                text: a.text
+              })
+            }
+            else{
+              redlinks.push({
+                source: a.geometry.coordinates,
+                target: a.end.geometry.coordinates,
+                title: a.title,
+                src: a.src,
+                text: a.text
+              })
+            }
+          }
+
+          else if(select==2){
+            if(a.countries.includes(x)){
+              links.push({
+                source: a.geometry.coordinates,
+                target: a.end.geometry.coordinates,
+              });
+              if(a.relation>0){
+                greenlinks.push({
+                  source: a.geometry.coordinates,
+                  target: a.end.geometry.coordinates,
+                  title: a.title,
+                  src: a.src,
+                  text: a.text
+                })
+              }
+              else{
+                redlinks.push({
+                  source: a.geometry.coordinates,
+                  target: a.end.geometry.coordinates,
+                  title: a.title,
+                  src: a.src,
+                  text: a.text
+                })
+              }
+            }
+          }
+
+          else if(select==3){
+            if(a.tags[0].includes(y)){
+              links.push({
+                source: a.geometry.coordinates,
+                target: a.end.geometry.coordinates,
+              });
+              if(a.relation>0){
+                greenlinks.push({
+                  source: a.geometry.coordinates,
+                  target: a.end.geometry.coordinates,
+                  title: a.title,
+                  src: a.src,
+                  text: a.text
+                })
+              }
+              else{
+                redlinks.push({
+                  source: a.geometry.coordinates,
+                  target: a.end.geometry.coordinates,
+                  title: a.title,
+                  src: a.src,
+                  text: a.text
+                })
+              }
+            }
+          }
+
+          else if(select==4){
+            if(a.countries.includes(x) && a.tags[0].includes(y)){
+              links.push({
+                source: a.geometry.coordinates,
+                target: a.end.geometry.coordinates,
+              });
+              if(a.relation>0){
+                greenlinks.push({
+                  source: a.geometry.coordinates,
+                  target: a.end.geometry.coordinates,
+                  title: a.title,
+                  src: a.src,
+                  text: a.text
+                })
+              }
+              else{
+                redlinks.push({
+                  source: a.geometry.coordinates,
+                  target: a.end.geometry.coordinates,
+                  title: a.title,
+                  src: a.src,
+                  text: a.text
+                })
+              }
+            }
+          }
+        });
+
+
+    // build geoJSON features from links array
+    links.forEach(function(e,i,a) {
+      var feature =   { "type": "Feature", "geometry": { "type": "LineString", "coordinates": [e.source,e.target] }}
+      arcLines.push(feature)
+    })
+
+    d3.select("#myRange")
+      .on("input", function() {
+
+        var myValue = this.value
+        console.log(myValue);
+    })
+
+    svg.append("g").attr("class","arcs")
+      .selectAll("path").data(arcLines)
+      .enter().append("path")
+        .attr("class","arc")
+        .attr("d",path)
+
+        svg.append("g").attr("class","flyers")
+          .selectAll("path").data(redlinks)
+          .enter().append("path")
+            .attr("class","redflyer")
+            .attr("d", function(d) { return swoosh(flying_arc(d)) })
+            .on("mouseover", handleMouseOver)
+            .on("mouseout", handleMouseOut)
+            .on("mouseenter", clicked)
+            .on("click", summy);
+
+        svg.append("g").attr("class","flyers")
+          .selectAll("path").data(greenlinks)
+          .enter().append("path")
+            .attr("class","greenflyer")
+            .attr("d", function(d) { return swoosh(flying_arc(d)) })
+            .on("mouseover", handleMouseOver)
+            .on("mouseout", handleMouseOut)
+            .on("mouseenter", clicked)
+            .on("click", summy);
+
+
+            function summy(d){
+              // console.log(d)
+              document.getElementById("summary").innerHTML =(d.text);
+            }
 
   function clicked(d){
     svg.append("svg:image")
@@ -4243,6 +4391,7 @@ else{
                 target: a.end.geometry.coordinates,
                 title: a.title,
                 src: a.src,
+                text: a.text
               })
             }
             else{
@@ -4250,7 +4399,8 @@ else{
                 source: a.geometry.coordinates,
                 target: a.end.geometry.coordinates,
                 title: a.title,
-                src: a.src
+                src: a.src,
+                text: a.text
               })
             }
           }
@@ -4267,6 +4417,7 @@ else{
                   target: a.end.geometry.coordinates,
                   title: a.title,
                   src: a.src,
+                  text: a.text
                 })
               }
               else{
@@ -4274,7 +4425,8 @@ else{
                   source: a.geometry.coordinates,
                   target: a.end.geometry.coordinates,
                   title: a.title,
-                  src: a.src
+                  src: a.src,
+                  text: a.text
                 })
               }
             }
@@ -4292,6 +4444,7 @@ else{
                   target: a.end.geometry.coordinates,
                   title: a.title,
                   src: a.src,
+                  text: a.text
                 })
               }
               else{
@@ -4299,7 +4452,8 @@ else{
                   source: a.geometry.coordinates,
                   target: a.end.geometry.coordinates,
                   title: a.title,
-                  src: a.src
+                  src: a.src,
+                  text: a.text
                 })
               }
             }
@@ -4317,6 +4471,7 @@ else{
                   target: a.end.geometry.coordinates,
                   title: a.title,
                   src: a.src,
+                  text: a.text
                 })
               }
               else{
@@ -4324,7 +4479,8 @@ else{
                   source: a.geometry.coordinates,
                   target: a.end.geometry.coordinates,
                   title: a.title,
-                  src: a.src
+                  src: a.src,
+                  text: a.text
                 })
               }
             }
@@ -4358,7 +4514,8 @@ else{
             .attr("d", function(d) { return swoosh(flying_arc(d)) })
             .on("mouseover", handleMouseOver)
             .on("mouseout", handleMouseOut)
-            .on("mouseenter", clicked);
+            .on("mouseenter", clicked)
+            .on("click", summy);
 
         svg.append("g").attr("class","flyers")
           .selectAll("path").data(greenlinks)
@@ -4367,8 +4524,14 @@ else{
             .attr("d", function(d) { return swoosh(flying_arc(d)) })
             .on("mouseover", handleMouseOver)
             .on("mouseout", handleMouseOut)
-            .on("mouseenter", clicked);
+            .on("mouseenter", clicked)
+            .on("click", summy);
 
+
+            function summy(d){
+              // console.log(d)
+              document.getElementById("summary").innerHTML =(d.text);
+            }
 
   function clicked(d){
     svg.append("svg:image")
@@ -4615,6 +4778,7 @@ else{
                 target: a.end.geometry.coordinates,
                 title: a.title,
                 src: a.src,
+                text: a.text
               })
             }
             else{
@@ -4622,7 +4786,8 @@ else{
                 source: a.geometry.coordinates,
                 target: a.end.geometry.coordinates,
                 title: a.title,
-                src: a.src
+                src: a.src,
+                text: a.text
               })
             }
           }
@@ -4639,6 +4804,7 @@ else{
                   target: a.end.geometry.coordinates,
                   title: a.title,
                   src: a.src,
+                  text: a.text
                 })
               }
               else{
@@ -4646,7 +4812,8 @@ else{
                   source: a.geometry.coordinates,
                   target: a.end.geometry.coordinates,
                   title: a.title,
-                  src: a.src
+                  src: a.src,
+                  text: a.text
                 })
               }
             }
@@ -4664,6 +4831,7 @@ else{
                   target: a.end.geometry.coordinates,
                   title: a.title,
                   src: a.src,
+                  text: a.text
                 })
               }
               else{
@@ -4671,7 +4839,8 @@ else{
                   source: a.geometry.coordinates,
                   target: a.end.geometry.coordinates,
                   title: a.title,
-                  src: a.src
+                  src: a.src,
+                  text: a.text
                 })
               }
             }
@@ -4689,6 +4858,7 @@ else{
                   target: a.end.geometry.coordinates,
                   title: a.title,
                   src: a.src,
+                  text: a.text
                 })
               }
               else{
@@ -4696,7 +4866,8 @@ else{
                   source: a.geometry.coordinates,
                   target: a.end.geometry.coordinates,
                   title: a.title,
-                  src: a.src
+                  src: a.src,
+                  text: a.text
                 })
               }
             }
@@ -4730,7 +4901,8 @@ else{
             .attr("d", function(d) { return swoosh(flying_arc(d)) })
             .on("mouseover", handleMouseOver)
             .on("mouseout", handleMouseOut)
-            .on("mouseenter", clicked);
+            .on("mouseenter", clicked)
+            .on("click", summy);
 
         svg.append("g").attr("class","flyers")
           .selectAll("path").data(greenlinks)
@@ -4739,8 +4911,14 @@ else{
             .attr("d", function(d) { return swoosh(flying_arc(d)) })
             .on("mouseover", handleMouseOver)
             .on("mouseout", handleMouseOut)
-            .on("mouseenter", clicked);
+            .on("mouseenter", clicked)
+            .on("click", summy);
 
+
+            function summy(d){
+              // console.log(d)
+              document.getElementById("summary").innerHTML =(d.text);
+            }
 
   function clicked(d){
     svg.append("svg:image")
