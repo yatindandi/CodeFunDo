@@ -59,7 +59,7 @@
   <!-- Embed Charts -->
   <script>
     $(function(){
-      $("#chartgraph1").load("charts/UnitedStates-Venezuela.html");
+      $("#chartgraph1").load("charts/UnitedStates-Russia.html");
     });
     // $(function(){
     //   $("#chartgraph2").load("charts/UnitedStates-Venezuela.html");
@@ -127,7 +127,48 @@
     // });
 
   </script>
-  
+    <script type="text/javascript">
+            $(document).ready(function () {
+              var chart = new CanvasJS.Chart("chartContainer",
+              {
+
+                title:{
+                  text: "United States - Venezuela"
+                },
+                axisX:{  
+          //Try Changing to MMMM
+                        valueFormatString: "MMMM"
+                },
+
+                axisY: {
+                        valueFormatString: "0.0#"
+                },
+                
+                data: [
+                {        
+                  type: "line",
+                  lineThickness: 2,
+                  dataPoints: [ 
+{ x: new Date(2017,3), y: -0.266 },
+{ x: new Date(2017,4), y: -0.313 },
+{ x: new Date(2017,5), y: -0.399 },
+{ x: new Date(2017,6), y: -1.3259999999999998 },
+{ x: new Date(2017,7), y: -1.2719999999999998 },
+{ x: new Date(2017,8), y: -0.66 },
+{ x: new Date(2017,9), y: -0.438 },
+{ x: new Date(2017,10), y: -0.742 },
+{ x: new Date(2017,11), y: -0.395 },
+{ x: new Date(2018,0), y: -0.348 },
+{ x: new Date(2018,1), y: -0.394 }
+ 
+              ]}  
+                ]
+              });
+
+          chart.render();
+          });
+          </script>
+
 <script>
 
 
@@ -1504,14 +1545,14 @@ $(document).ready(function(){
       }
 
       if (Target.parents('.task-handle').length) {
-		      // If item is already checked move it to "current items list"
-		      if (This.hasClass('item-checked')) {
-		        This.removeClass('item-checked').find('input[type="checkbox"]').prop('checked', false);
-		      }
-		      // Otherwise move it to the "completed items list"
-		      else {
-		        This.addClass('item-checked').find('input[type="checkbox"]').prop('checked', true);
-		      }
+              // If item is already checked move it to "current items list"
+              if (This.hasClass('item-checked')) {
+                This.removeClass('item-checked').find('input[type="checkbox"]').prop('checked', false);
+              }
+              // Otherwise move it to the "completed items list"
+              else {
+                This.addClass('item-checked').find('input[type="checkbox"]').prop('checked', true);
+              }
       }
 
     });
