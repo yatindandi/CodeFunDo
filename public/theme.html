@@ -67,56 +67,56 @@
        $("#page1").click(function(){
          // e.preventDefault();
          // console.log("Hi");
-        document.getElementById("result").innerHTML='<object type="type/html" data="charts/UnitedStates-Afghanistan.html" height="300px" width="100%"></object>';
+        document.getElementById("result").innerHTML='<object type="type/html" data="charts/UnitedStates-Afghanistan.html" height="350px" width="100%"></object>';
          //alert("Thanks for visiting!");
        });
 
        $("#page2").click(function(){
          // e.preventDefault();
          // console.log("Hi");
-        document.getElementById("result").innerHTML='<object type="type/html" data="charts/UnitedStates-China.html" height="300px" width="100%"></object>';
+        document.getElementById("result").innerHTML='<object type="type/html" data="charts/UnitedStates-China.html" height="350px" width="100%"></object>';
          //alert("Thanks for visiting!");
        });
 
        $("#page3").click(function(){
          // e.preventDefault();
          // console.log("Hi");
-        document.getElementById("result").innerHTML='<object type="type/html" data="charts/UnitedStates-Iran.html" height="300px" width="100%"></object>';
+        document.getElementById("result").innerHTML='<object type="type/html" data="charts/UnitedStates-Iran.html" height="350px" width="100%"></object>';
          //alert("Thanks for visiting!");
        });
 
        $("#page4").click(function(){
          // e.preventDefault();
          // console.log("Hi");
-        document.getElementById("result").innerHTML='<object type="type/html" data="charts/UnitedStates-North.html" height="300px" width="100%"></object>';
+        document.getElementById("result").innerHTML='<object type="type/html" data="charts/UnitedStates-North.html" height="350px" width="100%"></object>';
          //alert("Thanks for visiting!");
        });
 
        $("#page5").click(function(){
          // e.preventDefault();
          // console.log("Hi");
-        document.getElementById("result").innerHTML='<object type="type/html" data="charts/UnitedStates-Russia.html" height="300px" width="100%"></object>';
+        document.getElementById("result").innerHTML='<object type="type/html" data="charts/UnitedStates-Russia.html" height="350px" width="100%"></object>';
          //alert("Thanks for visiting!");
        });
 
        $("#page6").click(function(){
          // e.preventDefault();
          // console.log("Hi");
-        document.getElementById("result").innerHTML='<object type="type/html" data="charts/UnitedStates-Turkey.html" height="300px" width="100%"></object>';
+        document.getElementById("result").innerHTML='<object type="type/html" data="charts/UnitedStates-Turkey.html" height="350px" width="100%"></object>';
          //alert("Thanks for visiting!");
        });
 
        $("#page7").click(function(){
          // e.preventDefault();
          // console.log("Hi");
-        document.getElementById("result").innerHTML='<object type="type/html" data="charts/UnitedStates-Venezuela.html" height="300px" width="100%"></object>';
+        document.getElementById("result").innerHTML='<object type="type/html" data="charts/UnitedStates-Venezuela.html" height="350px" width="100%"></object>';
          //alert("Thanks for visiting!");
        });
 
        $("#page8").click(function(){
          // e.preventDefault();
          // console.log("Hi");
-        document.getElementById("result").innerHTML='<object type="type/html" data="charts/Syria-Russia.html" height="300px" width="100%"></object>';
+        document.getElementById("result").innerHTML='<object type="type/html" data="charts/Syria-Russia.html" height="350px" width="100%"></object>';
          //alert("Thanks for visiting!");
        });
      });
@@ -900,15 +900,18 @@ $(document).ready(function(){
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Month
           </a>
           <ul class="dropdown-menu white-drop left" role="menu">
-            <li id="11"><a onclick="updateData1()" href="#">June, 2017</a></li>
-            <li id="12"><a onclick="updateData2()" href="#">July, 2017</a></li>
-            <li id="13"><a onclick="updateData3()" href="#">Aug, 2017</a></li>
-            <li id="14"><a onclick="updateData4()" href="#">Sept, 2017</a></li>
-            <li id="15"><a onclick="updateData5()" href="#">Oct, 2017</a></li>
-            <li id="16"><a onclick="updateData6()" href="#">Nov, 2017</a></li>
-            <li id="17"><a onclick="updateData7()" href="#">Dec, 2017</a></li>
-            <li id="18"><a onclick="updateData8()" href="#">Jan, 2018</a></li>
-            <li id="19"><a onclick="updateData9()" href="#">Feb, 2018</a></li>
+            <li id="19"><a onclick="updateMonth11(); updateData11()" href="#">Apr, 2017</a></li>
+            <li id="19"><a onclick="updateMonth12(); updateData12()" href="#">May, 2017</a></li>
+            <li id="11"><a onclick="updateMonth1(); updateData1()" href="#">June, 2017</a></li>
+            <li id="12"><a onclick="updateMonth2(); updateData2()" href="#">July, 2017</a></li>
+            <li id="13"><a onclick="updateMonth3(); updateData3()" href="#">Aug, 2017</a></li>
+            <li id="14"><a onclick="updateMonth4(); updateData4()" href="#">Sept, 2017</a></li>
+            <li id="15"><a onclick="updateMonth5(); updateData5()" href="#">Oct, 2017</a></li>
+            <li id="16"><a onclick="updateMonth6(); updateData6()" href="#">Nov, 2017</a></li>
+            <li id="17"><a onclick="updateMonth7(); updateData7()" href="#">Dec, 2017</a></li>
+            <li id="18"><a onclick="updateMonth8(); updateData8()" href="#">Jan, 2018</a></li>
+            <li id="19"><a onclick="updateMonth9(); updateData9()" href="#">Feb, 2018</a></li>
+            <li id="19"><a onclick="updateMonth10(); updateData10()" href="#">Mar, 2018</a></li>
           </ul>
         </li>
       </ul>
@@ -1279,7 +1282,8 @@ $(document).ready(function(){
               <div class="panel panel-tile br-a br-grey">
                 <div class="panel-body" id="textspace">
                   <!-- Insert summary here -->
-                  <div style="padding-left: 10px; padding-bottom: 20px; font-size: 12px;" id="summary">
+                  <div style="padding-left: 10px; padding-bottom: 20px; font-size: 1.5em;" id="summary">
+                    Select any month and click on a news flyer to get summary!
                   </div>
                 </div>
               </div>
@@ -1322,16 +1326,16 @@ $(document).ready(function(){
                 <div class="panel-body">
                   <div class="tab-pane active">
                     <div id="Left">
-                        <ul id="nav">
+                        <ul id="nav" style="list-style-type: none; padding-left: 10%; font-size: 1.1em;">
                         <!-- <li><a href="page1.html">Home</a></li> -->
-                        <li id="page1">US-Afghanistan</li>
-                        <li id="page2">US-China</li>
-                        <li id="page3">US-Iran</li>
-                        <li id="page4">US-North</li>
-                        <li id="page5">US-Russia</li>
-                        <li id="page6">US-Turkey</li>
-                        <li id="page7">US-Venezuela</li>
-                        <li id="page8">Syria-Russia</li>
+                        <li id="page1"><a href="#result">US-Afghanistan</a></li>
+                        <li id="page2"><a href="#result">US-China</a></li>
+                        <li id="page3"><a href="#result">US-Iran</a></li>
+                        <li id="page4"><a href="#result">US-North</a></li>
+                        <li id="page5"><a href="#result">US-Russia</a></li>
+                        <li id="page6"><a href="#result">US-Turkey</a></li>
+                        <li id="page7"><a href="#result">US-Venezuela</a></li>
+                        <li id="page8"><a href="#result">Syria-Russia</a></li>
                         </ul>
                     </div>
                   </div>
