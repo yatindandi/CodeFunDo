@@ -40,7 +40,7 @@
   <script src="https://apis.google.com/js/platform.js?onload=onLoad" async defer></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!--[if lt IE 9]>
   <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -57,13 +57,69 @@
 
   <!-- Embed Charts -->
   <script>
-    $(function(){
-      $("#chartgraph1").load("charts/UnitedStates-Russia.html");
-    });
-    $(function(){
-      $("#chartgraph2").load("charts/UnitedStates-Venezuela.html");
-    });
+    // $(function(){
+    //   $("#chartgraph1").load("charts/UnitedStates-Russia.html");
+    // });
+    // $(function(){
+    //   $("#chartgraph1").load("charts/UnitedStates-Venezuela.html");
+    // });
+    $(document).ready(function(){
+       $("#page1").click(function(){
+         // e.preventDefault();
+         // console.log("Hi");
+        document.getElementById("result").innerHTML='<object type="type/html" data="charts/UnitedStates-Afghanistan.html" height="300px" width="100%"></object>';
+         //alert("Thanks for visiting!");
+       });
 
+       $("#page2").click(function(){
+         // e.preventDefault();
+         // console.log("Hi");
+        document.getElementById("result").innerHTML='<object type="type/html" data="charts/UnitedStates-China.html" height="300px" width="100%"></object>';
+         //alert("Thanks for visiting!");
+       });
+
+       $("#page3").click(function(){
+         // e.preventDefault();
+         // console.log("Hi");
+        document.getElementById("result").innerHTML='<object type="type/html" data="charts/UnitedStates-Iran.html" height="300px" width="100%"></object>';
+         //alert("Thanks for visiting!");
+       });
+
+       $("#page4").click(function(){
+         // e.preventDefault();
+         // console.log("Hi");
+        document.getElementById("result").innerHTML='<object type="type/html" data="charts/UnitedStates-North.html" height="300px" width="100%"></object>';
+         //alert("Thanks for visiting!");
+       });
+
+       $("#page5").click(function(){
+         // e.preventDefault();
+         // console.log("Hi");
+        document.getElementById("result").innerHTML='<object type="type/html" data="charts/UnitedStates-Russia.html" height="300px" width="100%"></object>';
+         //alert("Thanks for visiting!");
+       });
+
+       $("#page6").click(function(){
+         // e.preventDefault();
+         // console.log("Hi");
+        document.getElementById("result").innerHTML='<object type="type/html" data="charts/UnitedStates-Turkey.html" height="300px" width="100%"></object>';
+         //alert("Thanks for visiting!");
+       });
+
+       $("#page7").click(function(){
+         // e.preventDefault();
+         // console.log("Hi");
+        document.getElementById("result").innerHTML='<object type="type/html" data="charts/UnitedStates-Venezuela.html" height="300px" width="100%"></object>';
+         //alert("Thanks for visiting!");
+       });
+
+       $("#page8").click(function(){
+         // e.preventDefault();
+         // console.log("Hi");
+        document.getElementById("result").innerHTML='<object type="type/html" data="charts/Syria-Russia.html" height="300px" width="100%"></object>';
+         //alert("Thanks for visiting!");
+       });
+     });
     // $('#sr').click(function(){
     // //Some code
     //       $("#chartgraph").load("charts/Syria-Russia.html");
@@ -1255,24 +1311,29 @@ $(document).ready(function(){
             <div class="col-sm-10">
               <div class="panel panel-tile br-a br-grey">
                 <div class="panel-body">
-                  <div id="chartgraph1"></div>
+                    <div id="result">
+                    </div>
+                  <!-- </div> -->
                 </div>
               </div>
             </div>
-            <!-- <div class="col-sm-2">
+            <div class="col-sm-2">
               <div class="panel panel-tile br-a br-grey">
                 <div class="panel-body">
-                  <div class="tab-pane active"> -->
-<!--                     <ul id="navlist">
-                      <li id="sr" class="title-divider text-muted mb20"><a href="charts/Syria-Russia.html">Syria - Russia</a></li>
-                      <li id="tus" class="title-divider text-muted mb20"><a href="charts/UnitedStates-Turkey.html">Turkey - United States</a></li>
-                      <li id="usc" class="title-divider text-muted mb20"><a href="charts/UnitedStates-China.html">China - United States</a></li>
-                      <li id="usaf" class="title-divider text-muted mb20"><a href="charts/UnitedStates-Afghanistan.html">United States - Afghanistan</a></li>
-                      <li id="usi" class="title-divider text-muted mb20"><a href="charts/UnitedStates-Iran.html">United States - Iran</a></li>
-                      <li id="usnk" class="title-divider text-muted mb20"><a href="charts/UnitedStates-North.html">United States - North Korea</a></li>
-                      <li id="usr" class="title-divider text-muted mb20"><a href="charts/UnitedStates-Russia.html">United States - Russia</a></li>
-                      <li id="usv" class="title-divider text-muted mb20"><a href="charts/UnitedStates-Venezuela.html">United States - Venezuela</a></li>
-                  </ul> -->
+                  <div class="tab-pane active">
+                    <div id="Left">
+                        <ul id="nav">
+                        <!-- <li><a href="page1.html">Home</a></li> -->
+                        <li id="page1">US-Afghanistan</li>
+                        <li id="page2">US-China</li>
+                        <li id="page3">US-Iran</li>
+                        <li id="page4">US-North</li>
+                        <li id="page5">US-Russia</li>
+                        <li id="page6">US-Turkey</li>
+                        <li id="page7">US-Venezuela</li>
+                        <li id="page8">Syria-Russia</li>
+                        </ul>
+                    </div>
                   </div>
 <!--          <div class="row">
             <div class="col-sm-10">
