@@ -266,7 +266,8 @@ function ready(error, world, places) {
           .attr("d", function(d) { return swoosh(flying_arc(d)) })
           .on("mouseover", handleMouseOver)
           .on("mouseout", handleMouseOut)
-          .on("mouseenter", clicked);
+          .on("mouseenter", clicked)
+          .on("click", summy);
 
       svg.append("g").attr("class","flyers")
         .selectAll("path").data(greenlinks)
@@ -275,7 +276,13 @@ function ready(error, world, places) {
           .attr("d", function(d) { return swoosh(flying_arc(d)) })
           .on("mouseover", handleMouseOver)
           .on("mouseout", handleMouseOut)
-          .on("mouseenter", clicked);
+          .on("mouseenter", clicked)
+          .on("click", summy);
+
+          function summy(d){
+            // console.log(d)
+            document.getElementById("summary").innerHTML =(d.text);
+          }
 
 
 function clicked(d){
@@ -404,6 +411,7 @@ function updateData1(){
   redlinks.length = 0;
   greenlinks.length = 0;
   arcLines.length = 0;
+  document.getElementById("summary").innerHTML = "Click on a news flyer to get the summary!";
 
   queue()
       .defer(d3.json, "world-110m.json")
@@ -791,6 +799,7 @@ function updateData2(){
   redlinks.length = 0;
   greenlinks.length = 0;
   arcLines.length = 0;
+  document.getElementById("summary").innerHTML = "Click on a news flyer to get the summary!";
 
   queue()
       .defer(d3.json, "world-110m.json")
@@ -1178,6 +1187,7 @@ function updateData3(){
   redlinks.length = 0;
   greenlinks.length = 0;
   arcLines.length = 0;
+  document.getElementById("summary").innerHTML = "Click on a news flyer to get the summary!";
 
   queue()
       .defer(d3.json, "world-110m.json")
@@ -1565,6 +1575,7 @@ function updateData4(){
   redlinks.length = 0;
   greenlinks.length = 0;
   arcLines.length = 0;
+  document.getElementById("summary").innerHTML = "Click on a news flyer to get the summary!";
 
   queue()
       .defer(d3.json, "world-110m.json")
@@ -1952,6 +1963,7 @@ function updateData5(){
   redlinks.length = 0;
   greenlinks.length = 0;
   arcLines.length = 0;
+  document.getElementById("summary").innerHTML = "Click on a news flyer to get the summary!";
 
   queue()
       .defer(d3.json, "world-110m.json")
@@ -2339,6 +2351,7 @@ function updateData6(){
   redlinks.length = 0;
   greenlinks.length = 0;
   arcLines.length = 0;
+  document.getElementById("summary").innerHTML = "Click on a news flyer to get the summary!";
 
   queue()
       .defer(d3.json, "world-110m.json")
@@ -2726,6 +2739,7 @@ function updateData7(){
   redlinks.length = 0;
   greenlinks.length = 0;
   arcLines.length = 0;
+  document.getElementById("summary").innerHTML = "Click on a news flyer to get the summary!";
 
   queue()
       .defer(d3.json, "world-110m.json")
@@ -3113,6 +3127,7 @@ function updateData10(){
   redlinks.length = 0;
   greenlinks.length = 0;
   arcLines.length = 0;
+  document.getElementById("summary").innerHTML = "Click on a news flyer to get the summary!";
 
   queue()
       .defer(d3.json, "world-110m.json")
@@ -3500,6 +3515,7 @@ function updateData9(){
   redlinks.length = 0;
   greenlinks.length = 0;
   arcLines.length = 0;
+  document.getElementById("summary").innerHTML = "Click on a news flyer to get the summary!";
 
   queue()
       .defer(d3.json, "world-110m.json")
@@ -3887,6 +3903,7 @@ function updateData8(){
   redlinks.length = 0;
   greenlinks.length = 0;
   arcLines.length = 0;
+  document.getElementById("summary").innerHTML = "Click on a news flyer to get the summary!";
 
   queue()
       .defer(d3.json, "world-110m.json")
@@ -4274,6 +4291,7 @@ function updateData11(){
   redlinks.length = 0;
   greenlinks.length = 0;
   arcLines.length = 0;
+  document.getElementById("summary").innerHTML = "Click on a news flyer to get the summary!";
 
   queue()
       .defer(d3.json, "world-110m.json")
@@ -4661,6 +4679,7 @@ function updateData12(){
   redlinks.length = 0;
   greenlinks.length = 0;
   arcLines.length = 0;
+  document.getElementById("summary").innerHTML = "Click on a news flyer to get the summary!";
 
   queue()
       .defer(d3.json, "world-110m.json")
